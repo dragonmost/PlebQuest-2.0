@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace PlebQuest
 {
+    [Serializable]
     class Stats
     {
+        private int ID;
+
         public int Strength { get; private set; }
         public int Constitution { get; private set; }
         public int Dexterity { get; private set; }

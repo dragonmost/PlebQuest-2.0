@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.butPlay = new System.Windows.Forms.Button();
-            this.butNew = new System.Windows.Forms.Button();
-            this.butCreate = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.butJoin = new System.Windows.Forms.Button();
+            this.butMenuPlay = new System.Windows.Forms.Button();
+            this.butMenuNew = new System.Windows.Forms.Button();
+            this.butMenuCreate = new System.Windows.Forms.Button();
+            this.txtMenuPassword = new System.Windows.Forms.TextBox();
+            this.txtMenuUsername = new System.Windows.Forms.TextBox();
+            this.butMenuJoin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlCharacterCreation = new System.Windows.Forms.Panel();
@@ -48,12 +48,14 @@
             this.colCreationStatValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.butRoll = new System.Windows.Forms.Button();
             this.butGenerate = new System.Windows.Forms.Button();
-            this.lstClass = new System.Windows.Forms.ListBox();
+            this.lstCreationClass = new System.Windows.Forms.ListBox();
             this.txtCreationName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lstRace = new System.Windows.Forms.ListBox();
-            this.butStart = new System.Windows.Forms.Button();
+            this.lstCreationRace = new System.Windows.Forms.ListBox();
+            this.butCreationStart = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.butCreationFemale = new System.Windows.Forms.RadioButton();
+            this.butCreationMale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCharacterCreation.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -69,60 +71,60 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // butPlay
+            // butMenuPlay
             // 
-            this.butPlay.Location = new System.Drawing.Point(12, 378);
-            this.butPlay.Name = "butPlay";
-            this.butPlay.Size = new System.Drawing.Size(121, 23);
-            this.butPlay.TabIndex = 5;
-            this.butPlay.Text = "Browse Plebs";
-            this.butPlay.UseVisualStyleBackColor = true;
-            this.butPlay.Click += new System.EventHandler(this.butPlay_Click);
+            this.butMenuPlay.Location = new System.Drawing.Point(12, 378);
+            this.butMenuPlay.Name = "butMenuPlay";
+            this.butMenuPlay.Size = new System.Drawing.Size(121, 23);
+            this.butMenuPlay.TabIndex = 5;
+            this.butMenuPlay.Text = "Browse Plebs";
+            this.butMenuPlay.UseVisualStyleBackColor = true;
+            this.butMenuPlay.Click += new System.EventHandler(this.butPlay_Click);
             // 
-            // butNew
+            // butMenuNew
             // 
-            this.butNew.Location = new System.Drawing.Point(12, 407);
-            this.butNew.Name = "butNew";
-            this.butNew.Size = new System.Drawing.Size(121, 23);
-            this.butNew.TabIndex = 6;
-            this.butNew.Text = "new Pleb";
-            this.butNew.UseVisualStyleBackColor = true;
-            this.butNew.Click += new System.EventHandler(this.butNew_Click);
+            this.butMenuNew.Location = new System.Drawing.Point(12, 407);
+            this.butMenuNew.Name = "butMenuNew";
+            this.butMenuNew.Size = new System.Drawing.Size(121, 23);
+            this.butMenuNew.TabIndex = 6;
+            this.butMenuNew.Text = "new Pleb";
+            this.butMenuNew.UseVisualStyleBackColor = true;
+            this.butMenuNew.Click += new System.EventHandler(this.butNew_Click);
             // 
-            // butCreate
+            // butMenuCreate
             // 
-            this.butCreate.Location = new System.Drawing.Point(512, 378);
-            this.butCreate.Name = "butCreate";
-            this.butCreate.Size = new System.Drawing.Size(100, 23);
-            this.butCreate.TabIndex = 4;
-            this.butCreate.Text = "Create Account";
-            this.butCreate.UseVisualStyleBackColor = true;
-            this.butCreate.Click += new System.EventHandler(this.butCreate_Click);
+            this.butMenuCreate.Location = new System.Drawing.Point(512, 378);
+            this.butMenuCreate.Name = "butMenuCreate";
+            this.butMenuCreate.Size = new System.Drawing.Size(100, 23);
+            this.butMenuCreate.TabIndex = 4;
+            this.butMenuCreate.Text = "Create Account";
+            this.butMenuCreate.UseVisualStyleBackColor = true;
+            this.butMenuCreate.Click += new System.EventHandler(this.butCreate_Click);
             // 
-            // txtPassword
+            // txtMenuPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(278, 381);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtPassword.TabIndex = 2;
-            this.txtPassword.UseSystemPasswordChar = true;
+            this.txtMenuPassword.Location = new System.Drawing.Point(278, 381);
+            this.txtMenuPassword.Name = "txtMenuPassword";
+            this.txtMenuPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtMenuPassword.TabIndex = 2;
+            this.txtMenuPassword.UseSystemPasswordChar = true;
             // 
-            // txtUsername
+            // txtMenuUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(278, 352);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtUsername.TabIndex = 1;
+            this.txtMenuUsername.Location = new System.Drawing.Point(278, 352);
+            this.txtMenuUsername.Name = "txtMenuUsername";
+            this.txtMenuUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtMenuUsername.TabIndex = 1;
             // 
-            // butJoin
+            // butMenuJoin
             // 
-            this.butJoin.Location = new System.Drawing.Point(512, 407);
-            this.butJoin.Name = "butJoin";
-            this.butJoin.Size = new System.Drawing.Size(100, 23);
-            this.butJoin.TabIndex = 3;
-            this.butJoin.Text = "Join";
-            this.butJoin.UseVisualStyleBackColor = true;
-            this.butJoin.Click += new System.EventHandler(this.butJoin_Click);
+            this.butMenuJoin.Location = new System.Drawing.Point(512, 407);
+            this.butMenuJoin.Name = "butMenuJoin";
+            this.butMenuJoin.Size = new System.Drawing.Size(100, 23);
+            this.butMenuJoin.TabIndex = 3;
+            this.butMenuJoin.Text = "Join";
+            this.butMenuJoin.UseVisualStyleBackColor = true;
+            this.butMenuJoin.Click += new System.EventHandler(this.butJoin_Click);
             // 
             // label1
             // 
@@ -144,14 +146,16 @@
             // 
             // pnlCharacterCreation
             // 
+            this.pnlCharacterCreation.Controls.Add(this.butCreationMale);
+            this.pnlCharacterCreation.Controls.Add(this.butCreationFemale);
             this.pnlCharacterCreation.Controls.Add(this.butCancelCreation);
             this.pnlCharacterCreation.Controls.Add(this.groupBox1);
             this.pnlCharacterCreation.Controls.Add(this.butGenerate);
-            this.pnlCharacterCreation.Controls.Add(this.lstClass);
+            this.pnlCharacterCreation.Controls.Add(this.lstCreationClass);
             this.pnlCharacterCreation.Controls.Add(this.txtCreationName);
             this.pnlCharacterCreation.Controls.Add(this.label3);
-            this.pnlCharacterCreation.Controls.Add(this.lstRace);
-            this.pnlCharacterCreation.Controls.Add(this.butStart);
+            this.pnlCharacterCreation.Controls.Add(this.lstCreationRace);
+            this.pnlCharacterCreation.Controls.Add(this.butCreationStart);
             this.pnlCharacterCreation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCharacterCreation.Location = new System.Drawing.Point(0, 0);
             this.pnlCharacterCreation.Name = "pnlCharacterCreation";
@@ -235,7 +239,7 @@
             // 
             // butGenerate
             // 
-            this.butGenerate.Location = new System.Drawing.Point(194, 6);
+            this.butGenerate.Location = new System.Drawing.Point(194, 4);
             this.butGenerate.Name = "butGenerate";
             this.butGenerate.Size = new System.Drawing.Size(75, 23);
             this.butGenerate.TabIndex = 5;
@@ -243,13 +247,14 @@
             this.butGenerate.UseVisualStyleBackColor = true;
             this.butGenerate.Click += new System.EventHandler(this.butGenerate_Click);
             // 
-            // lstClass
+            // lstCreationClass
             // 
-            this.lstClass.FormattingEnabled = true;
-            this.lstClass.Location = new System.Drawing.Point(194, 32);
-            this.lstClass.Name = "lstClass";
-            this.lstClass.Size = new System.Drawing.Size(165, 355);
-            this.lstClass.TabIndex = 4;
+            this.lstCreationClass.FormattingEnabled = true;
+            this.lstCreationClass.Location = new System.Drawing.Point(194, 32);
+            this.lstCreationClass.Name = "lstCreationClass";
+            this.lstCreationClass.Size = new System.Drawing.Size(165, 355);
+            this.lstCreationClass.TabIndex = 4;
+            this.lstCreationClass.SelectedIndexChanged += new System.EventHandler(this.SetControlState);
             // 
             // txtCreationName
             // 
@@ -257,6 +262,7 @@
             this.txtCreationName.Name = "txtCreationName";
             this.txtCreationName.Size = new System.Drawing.Size(100, 20);
             this.txtCreationName.TabIndex = 3;
+            this.txtCreationName.TextChanged += new System.EventHandler(this.SetControlState);
             // 
             // label3
             // 
@@ -267,23 +273,49 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Pleb Name";
             // 
-            // lstRace
+            // lstCreationRace
             // 
-            this.lstRace.FormattingEnabled = true;
-            this.lstRace.Location = new System.Drawing.Point(12, 32);
-            this.lstRace.Name = "lstRace";
-            this.lstRace.Size = new System.Drawing.Size(165, 355);
-            this.lstRace.TabIndex = 1;
+            this.lstCreationRace.FormattingEnabled = true;
+            this.lstCreationRace.Location = new System.Drawing.Point(12, 32);
+            this.lstCreationRace.Name = "lstCreationRace";
+            this.lstCreationRace.Size = new System.Drawing.Size(165, 355);
+            this.lstCreationRace.TabIndex = 1;
+            this.lstCreationRace.SelectedIndexChanged += new System.EventHandler(this.SetControlState);
             // 
-            // butStart
+            // butCreationStart
             // 
-            this.butStart.Location = new System.Drawing.Point(537, 407);
-            this.butStart.Name = "butStart";
-            this.butStart.Size = new System.Drawing.Size(75, 23);
-            this.butStart.TabIndex = 0;
-            this.butStart.Text = "Start";
-            this.butStart.UseVisualStyleBackColor = true;
-            this.butStart.Click += new System.EventHandler(this.butStart_Click);
+            this.butCreationStart.Enabled = false;
+            this.butCreationStart.Location = new System.Drawing.Point(537, 407);
+            this.butCreationStart.Name = "butCreationStart";
+            this.butCreationStart.Size = new System.Drawing.Size(75, 23);
+            this.butCreationStart.TabIndex = 0;
+            this.butCreationStart.Text = "Start";
+            this.butCreationStart.UseVisualStyleBackColor = true;
+            this.butCreationStart.Click += new System.EventHandler(this.butStart_Click);
+            // 
+            // butCreationFemale
+            // 
+            this.butCreationFemale.Appearance = System.Windows.Forms.Appearance.Button;
+            this.butCreationFemale.AutoSize = true;
+            this.butCreationFemale.Location = new System.Drawing.Point(330, 4);
+            this.butCreationFemale.Name = "butCreationFemale";
+            this.butCreationFemale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationFemale.TabIndex = 8;
+            this.butCreationFemale.Text = "♀";
+            this.butCreationFemale.UseVisualStyleBackColor = true;
+            // 
+            // butCreationMale
+            // 
+            this.butCreationMale.Appearance = System.Windows.Forms.Appearance.Button;
+            this.butCreationMale.AutoSize = true;
+            this.butCreationMale.Checked = true;
+            this.butCreationMale.Location = new System.Drawing.Point(295, 4);
+            this.butCreationMale.Name = "butCreationMale";
+            this.butCreationMale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationMale.TabIndex = 9;
+            this.butCreationMale.TabStop = true;
+            this.butCreationMale.Text = "\t♂";
+            this.butCreationMale.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -293,12 +325,12 @@
             this.Controls.Add(this.pnlCharacterCreation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.butJoin);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.butCreate);
-            this.Controls.Add(this.butNew);
-            this.Controls.Add(this.butPlay);
+            this.Controls.Add(this.butMenuJoin);
+            this.Controls.Add(this.txtMenuUsername);
+            this.Controls.Add(this.txtMenuPassword);
+            this.Controls.Add(this.butMenuCreate);
+            this.Controls.Add(this.butMenuNew);
+            this.Controls.Add(this.butMenuPlay);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -317,23 +349,23 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button butPlay;
-        private System.Windows.Forms.Button butNew;
-        private System.Windows.Forms.Button butCreate;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Button butJoin;
+        private System.Windows.Forms.Button butMenuPlay;
+        private System.Windows.Forms.Button butMenuNew;
+        private System.Windows.Forms.Button butMenuCreate;
+        private System.Windows.Forms.TextBox txtMenuPassword;
+        private System.Windows.Forms.TextBox txtMenuUsername;
+        private System.Windows.Forms.Button butMenuJoin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlCharacterCreation;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button butRoll;
         private System.Windows.Forms.Button butGenerate;
-        private System.Windows.Forms.ListBox lstClass;
+        private System.Windows.Forms.ListBox lstCreationClass;
         private System.Windows.Forms.TextBox txtCreationName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox lstRace;
-        private System.Windows.Forms.Button butStart;
+        private System.Windows.Forms.ListBox lstCreationRace;
+        private System.Windows.Forms.Button butCreationStart;
         private System.Windows.Forms.Button butCancelCreation;
         private System.Windows.Forms.ListView lstCreationStat;
         private System.Windows.Forms.ColumnHeader colCreationStat;
@@ -341,6 +373,8 @@
         private System.Windows.Forms.TextBox txtCreationTotalStats;
         private System.Windows.Forms.Label label4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.RadioButton butCreationMale;
+        private System.Windows.Forms.RadioButton butCreationFemale;
     }
 }
 

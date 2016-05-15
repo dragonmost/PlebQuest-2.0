@@ -43,8 +43,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\PlebQuest\Buff.cs">
+      <Link>Buff.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Classe.cs">
+      <Link>Classe.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Armor.cs">
+      <Link>Armor.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Boots.cs">
+      <Link>Boots.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Chest.cs">
+      <Link>Chest.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Equipment.cs">
+      <Link>Equipment.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Head.cs">
+      <Link>Head.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Pants.cs">
+      <Link>Pants.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Equipment\Weapon.cs">
+      <Link>Weapon.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Item.cs">
+      <Link>Item.cs</Link>
+    </Compile>
     <Compile Include="..\PlebQuest\Pleb.cs">
       <Link>Pleb.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Speel.cs">
+      <Link>Speel.cs</Link>
     </Compile>
     <Compile Include="..\PlebQuest\Stats.cs">
       <Link>Stats.cs</Link>

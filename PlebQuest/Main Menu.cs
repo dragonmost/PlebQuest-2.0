@@ -54,14 +54,21 @@ namespace PlebQuest
 
         private void butStart_Click(object sender, EventArgs e)
         {
-            pleb = new Pleb(-1, this.txtCreationName.Text, stats, this.cheated);
+            pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
         }
 
         private void butJoin_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(this.txtMenuUsername.Text) 
+                || string.IsNullOrWhiteSpace(this.txtMenuPassword.Text))
+            {
+                MessageBox.Show("Username and Password can't be empty");
+                return;
+            }
+
             client = new Client("localhost");
 
-            client.SendData(new string[] { Commands.PlayerConnection, txtUsername.Text, txtPassword.Text });
+            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });
         }
 
         private void butPlay_Click(object sender, EventArgs e)
@@ -132,6 +139,12 @@ namespace PlebQuest
         private void butGenerate_Click(object sender, EventArgs e)
         {
             this.txtCreationName.Text = nameGenerator.BuildName();
+        }
+
+        private void SetControlState(object sender, EventArgs e)
+        {
+            this.butCreationStart.Enabled = string.IsNullOrWhiteSpace(this.txtCreationName.Text)
+                && this.lstCreationRace.SelectedIndex != -1 && this.lstCreationClass.SelectedIndex != -1;
         }
     }
 }

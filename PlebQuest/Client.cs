@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using PlebServer;
 
 namespace PlebQuest
@@ -15,12 +16,12 @@ namespace PlebQuest
         TcpClient client;           // le client connecter au serveur
         StreamWriter Writer;        // envoi les informations au serveur
 
-        public Client(string _IP)
+        public Client(string IP)
         {
-            IP = _IP;
+            this.IP = IP;
             try
             {
-                client = new TcpClient(_IP, Config.Port);
+                client = new TcpClient(IP, Config.Port);
                 Writer = new StreamWriter(client.GetStream());
                 Writer.AutoFlush = true;
                 Task receiveTask = ReceiveData(client);
@@ -49,9 +50,9 @@ namespace PlebQuest
             SendData(dataToSend);
         }
 
-        static async Task ReceiveData(TcpClient _client)
+        private async Task ReceiveData(TcpClient client)
         {
-            StreamReader reader = new StreamReader(_client.GetStream());
+            StreamReader reader = new StreamReader(client.GetStream());
 
             try
             {
@@ -68,9 +69,24 @@ namespace PlebQuest
             }
         }
 
-        private static void ProcessData(string data)
+        private void ProcessData(string data)
         {
-            
+            string[] parsedData = data.Split(';');
+
+            switch (parsedData[0])
+            {
+                case Commands.ConnectionAccepted:
+                    
+                    break;
+                case Commands.ConnectionRefused:
+                    this.ConnectionRefused();
+                    break;
+            }
+        }
+
+        private void ConnectionRefused()
+        {
+            MessageBox.Show("Invalid Username and Password");
         }
     }
 }

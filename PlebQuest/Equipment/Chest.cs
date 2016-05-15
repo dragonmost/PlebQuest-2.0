@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlebServer
+namespace PlebQuest
 {
-    public static class Config
+    class Chest : Armor
     {
-        public static int Port => 4269;
     }
 }

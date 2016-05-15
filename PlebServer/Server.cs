@@ -66,12 +66,25 @@ namespace PlebServer
 
         private void PlayerConnection(GameClient gameClient, string[] data)
         {
+            string dataToSend = string.Empty;
             //DB request here
-            if (true)
+            if (data[1] == "dragonmost")
             {
                 Console.WriteLine(data[1] + " as joined the Quest!");
+                dataToSend = Commands.ConnectionAccepted + ";";//send character
             }
-            else { }
+            else
+            {
+                this.lstClient.Remove(gameClient);
+                Console.WriteLine(gameClient.RemoteEndPoint.ToString() + ": used invalid credentials");
+                dataToSend = Commands.ConnectionRefused + ";";
+            }
+
+            using (StreamWriter streamWriter = new StreamWriter(gameClient.client.GetStream()))
+            {
+                streamWriter.AutoFlush = true;
+                streamWriter.WriteLine(dataToSend);//send character
+            }
         }
 
         private void ProcessData(GameClient gameClient, string data)
