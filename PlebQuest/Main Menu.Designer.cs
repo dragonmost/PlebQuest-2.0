@@ -39,14 +39,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlCharacterCreation = new System.Windows.Forms.Panel();
-            this.butStart = new System.Windows.Forms.Button();
-            this.lstRace = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lstClass = new System.Windows.Forms.ListBox();
-            this.butGenerate = new System.Windows.Forms.Button();
+            this.butCancelCreation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCreationTotalStats = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstCreationStat = new System.Windows.Forms.ListView();
+            this.colCreationStat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCreationStatValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.butRoll = new System.Windows.Forms.Button();
+            this.butGenerate = new System.Windows.Forms.Button();
+            this.lstClass = new System.Windows.Forms.ListBox();
+            this.txtCreationName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstRace = new System.Windows.Forms.ListBox();
+            this.butStart = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCharacterCreation.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,6 +77,7 @@
             this.butPlay.TabIndex = 5;
             this.butPlay.Text = "Browse Plebs";
             this.butPlay.UseVisualStyleBackColor = true;
+            this.butPlay.Click += new System.EventHandler(this.butPlay_Click);
             // 
             // butNew
             // 
@@ -89,6 +97,7 @@
             this.butCreate.TabIndex = 4;
             this.butCreate.Text = "Create Account";
             this.butCreate.UseVisualStyleBackColor = true;
+            this.butCreate.Click += new System.EventHandler(this.butCreate_Click);
             // 
             // txtPassword
             // 
@@ -113,6 +122,7 @@
             this.butJoin.TabIndex = 3;
             this.butJoin.Text = "Join";
             this.butJoin.UseVisualStyleBackColor = true;
+            this.butJoin.Click += new System.EventHandler(this.butJoin_Click);
             // 
             // label1
             // 
@@ -134,10 +144,11 @@
             // 
             // pnlCharacterCreation
             // 
+            this.pnlCharacterCreation.Controls.Add(this.butCancelCreation);
             this.pnlCharacterCreation.Controls.Add(this.groupBox1);
             this.pnlCharacterCreation.Controls.Add(this.butGenerate);
             this.pnlCharacterCreation.Controls.Add(this.lstClass);
-            this.pnlCharacterCreation.Controls.Add(this.textBox1);
+            this.pnlCharacterCreation.Controls.Add(this.txtCreationName);
             this.pnlCharacterCreation.Controls.Add(this.label3);
             this.pnlCharacterCreation.Controls.Add(this.lstRace);
             this.pnlCharacterCreation.Controls.Add(this.butStart);
@@ -148,22 +159,104 @@
             this.pnlCharacterCreation.TabIndex = 11;
             this.pnlCharacterCreation.Visible = false;
             // 
-            // butStart
+            // butCancelCreation
             // 
-            this.butStart.Location = new System.Drawing.Point(537, 407);
-            this.butStart.Name = "butStart";
-            this.butStart.Size = new System.Drawing.Size(75, 23);
-            this.butStart.TabIndex = 0;
-            this.butStart.Text = "Start";
-            this.butStart.UseVisualStyleBackColor = true;
+            this.butCancelCreation.Location = new System.Drawing.Point(12, 407);
+            this.butCancelCreation.Name = "butCancelCreation";
+            this.butCancelCreation.Size = new System.Drawing.Size(75, 23);
+            this.butCancelCreation.TabIndex = 7;
+            this.butCancelCreation.Text = "Cancel";
+            this.butCancelCreation.UseVisualStyleBackColor = true;
+            this.butCancelCreation.Click += new System.EventHandler(this.butCancelCreation_Click);
             // 
-            // lstRace
+            // groupBox1
             // 
-            this.lstRace.FormattingEnabled = true;
-            this.lstRace.Location = new System.Drawing.Point(12, 32);
-            this.lstRace.Name = "lstRace";
-            this.lstRace.Size = new System.Drawing.Size(165, 355);
-            this.lstRace.TabIndex = 1;
+            this.groupBox1.Controls.Add(this.txtCreationTotalStats);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lstCreationStat);
+            this.groupBox1.Controls.Add(this.butRoll);
+            this.groupBox1.Location = new System.Drawing.Point(365, 32);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(247, 355);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Stat Generation";
+            // 
+            // txtCreationTotalStats
+            // 
+            this.txtCreationTotalStats.Location = new System.Drawing.Point(83, 322);
+            this.txtCreationTotalStats.Name = "txtCreationTotalStats";
+            this.txtCreationTotalStats.ReadOnly = true;
+            this.txtCreationTotalStats.Size = new System.Drawing.Size(45, 20);
+            this.txtCreationTotalStats.TabIndex = 3;
+            this.txtCreationTotalStats.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCreationTotalStats_KeyDown);
+            this.txtCreationTotalStats.Leave += new System.EventHandler(this.txtCreationTotalStats_Leave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 325);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Total Stats:";
+            // 
+            // lstCreationStat
+            // 
+            this.lstCreationStat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colCreationStat,
+            this.colCreationStatValue});
+            this.lstCreationStat.Location = new System.Drawing.Point(6, 19);
+            this.lstCreationStat.Name = "lstCreationStat";
+            this.lstCreationStat.Size = new System.Drawing.Size(235, 292);
+            this.lstCreationStat.TabIndex = 1;
+            this.lstCreationStat.UseCompatibleStateImageBehavior = false;
+            this.lstCreationStat.View = System.Windows.Forms.View.Details;
+            // 
+            // colCreationStat
+            // 
+            this.colCreationStat.Text = "Stats";
+            this.colCreationStat.Width = 133;
+            // 
+            // colCreationStatValue
+            // 
+            this.colCreationStatValue.Text = "Value";
+            this.colCreationStatValue.Width = 98;
+            // 
+            // butRoll
+            // 
+            this.butRoll.Location = new System.Drawing.Point(166, 320);
+            this.butRoll.Name = "butRoll";
+            this.butRoll.Size = new System.Drawing.Size(75, 23);
+            this.butRoll.TabIndex = 0;
+            this.butRoll.Text = "Roll";
+            this.butRoll.UseVisualStyleBackColor = true;
+            this.butRoll.Click += new System.EventHandler(this.butRoll_Click);
+            // 
+            // butGenerate
+            // 
+            this.butGenerate.Location = new System.Drawing.Point(194, 6);
+            this.butGenerate.Name = "butGenerate";
+            this.butGenerate.Size = new System.Drawing.Size(75, 23);
+            this.butGenerate.TabIndex = 5;
+            this.butGenerate.Text = "Generate Pleb";
+            this.butGenerate.UseVisualStyleBackColor = true;
+            this.butGenerate.Click += new System.EventHandler(this.butGenerate_Click);
+            // 
+            // lstClass
+            // 
+            this.lstClass.FormattingEnabled = true;
+            this.lstClass.Location = new System.Drawing.Point(194, 32);
+            this.lstClass.Name = "lstClass";
+            this.lstClass.Size = new System.Drawing.Size(165, 355);
+            this.lstClass.TabIndex = 4;
+            // 
+            // txtCreationName
+            // 
+            this.txtCreationName.Location = new System.Drawing.Point(77, 6);
+            this.txtCreationName.Name = "txtCreationName";
+            this.txtCreationName.Size = new System.Drawing.Size(100, 20);
+            this.txtCreationName.TabIndex = 3;
             // 
             // label3
             // 
@@ -174,48 +267,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Pleb Name";
             // 
-            // textBox1
+            // lstRace
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.lstRace.FormattingEnabled = true;
+            this.lstRace.Location = new System.Drawing.Point(12, 32);
+            this.lstRace.Name = "lstRace";
+            this.lstRace.Size = new System.Drawing.Size(165, 355);
+            this.lstRace.TabIndex = 1;
             // 
-            // lstClass
+            // butStart
             // 
-            this.lstClass.FormattingEnabled = true;
-            this.lstClass.Location = new System.Drawing.Point(194, 32);
-            this.lstClass.Name = "lstClass";
-            this.lstClass.Size = new System.Drawing.Size(165, 355);
-            this.lstClass.TabIndex = 4;
-            // 
-            // butGenerate
-            // 
-            this.butGenerate.Location = new System.Drawing.Point(194, 6);
-            this.butGenerate.Name = "butGenerate";
-            this.butGenerate.Size = new System.Drawing.Size(75, 23);
-            this.butGenerate.TabIndex = 5;
-            this.butGenerate.Text = "Generate Pleb";
-            this.butGenerate.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.butRoll);
-            this.groupBox1.Location = new System.Drawing.Point(365, 32);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 355);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Stat Generation";
-            // 
-            // butRoll
-            // 
-            this.butRoll.Location = new System.Drawing.Point(166, 317);
-            this.butRoll.Name = "butRoll";
-            this.butRoll.Size = new System.Drawing.Size(75, 23);
-            this.butRoll.TabIndex = 0;
-            this.butRoll.Text = "Roll";
-            this.butRoll.UseVisualStyleBackColor = true;
+            this.butStart.Location = new System.Drawing.Point(537, 407);
+            this.butStart.Name = "butStart";
+            this.butStart.Size = new System.Drawing.Size(75, 23);
+            this.butStart.TabIndex = 0;
+            this.butStart.Text = "Start";
+            this.butStart.UseVisualStyleBackColor = true;
+            this.butStart.Click += new System.EventHandler(this.butStart_Click);
             // 
             // Form1
             // 
@@ -232,6 +300,7 @@
             this.Controls.Add(this.butNew);
             this.Controls.Add(this.butPlay);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "PlebQuest 2";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -239,6 +308,7 @@
             this.pnlCharacterCreation.ResumeLayout(false);
             this.pnlCharacterCreation.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,10 +330,17 @@
         private System.Windows.Forms.Button butRoll;
         private System.Windows.Forms.Button butGenerate;
         private System.Windows.Forms.ListBox lstClass;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCreationName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lstRace;
         private System.Windows.Forms.Button butStart;
+        private System.Windows.Forms.Button butCancelCreation;
+        private System.Windows.Forms.ListView lstCreationStat;
+        private System.Windows.Forms.ColumnHeader colCreationStat;
+        private System.Windows.Forms.ColumnHeader colCreationStatValue;
+        private System.Windows.Forms.TextBox txtCreationTotalStats;
+        private System.Windows.Forms.Label label4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

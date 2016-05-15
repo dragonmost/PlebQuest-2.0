@@ -8,24 +8,54 @@ namespace PlebQuest
 {
     class Pleb
     {
+        public int ID { get; private set; }
         public string Name { get; private set; }
+        //gender ?
+        //age?
         private int level { get; set; }
-        private uint currentExp;
+        private int currentExp;
+
+        private Stats stats;
 
         private int alignment { get; set; }
 
-        public int Strength { get; set; }
-        public int Constitution { get; set; }
-        public int Dexterity { get; set; }
-        public int Intellect { get; set; }
-        public int Wisdom { get; set; }
-        public int Charisma { get; set; }
+        private bool isCheater;     
 
-        public Pleb()
+        public Pleb(int id, string name, Stats stats, bool isCheater)
         {
+            this.ID = id;
+            this.Name = name;
+            this.stats = stats;
+
+            this.level = 1;
+            this.currentExp = 0;
+            this.alignment = 0;
+
+            this.isCheater = isCheater;
         }
 
-        public uint CurrentExp
+        public Pleb(int id, string name, Stats stats, int level, int currentExp, int alignment, bool isCheater)
+        {
+            this.ID = id;
+            this.Name = name;
+            this.stats = stats;
+
+            this.level = level;
+            this.currentExp = currentExp;
+            this.alignment = alignment;
+
+            this.isCheater = isCheater;
+        }
+
+        public Stats Stats
+        {
+            get
+            {
+                return Stats; //+ Job.Stats + Race.Stats //+ equipment stats;
+            }
+        }
+
+        public int CurrentExp
         {
             get
             {
@@ -36,7 +66,8 @@ namespace PlebQuest
             {
                 if (value > 20 * level * 60)
                 {
-                    this.currentExp = 100;
+                    this.currentExp = 0;
+                    this.level++;
                 }
                 else
                     this.currentExp = value;
