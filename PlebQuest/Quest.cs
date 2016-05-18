@@ -10,13 +10,13 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public int ExpReward { get; private set; }
-        public int GoldReward { get; private set; }
+        public int ExpReward { get; set; }
+        public int GoldReward { get; set; }
 
-        public int RequiredLevel { get; private set; }
+        public int RequiredLevel { get; set; }
 
         public Region Region { get; set; }
     }

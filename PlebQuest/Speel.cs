@@ -10,10 +10,10 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public int RequiredLevel { get; private set; }
-        public Stats RequiredStats { get; private set; }
+        public int RequiredLevel { get; set; }
+        public Stats RequiredStats { get; set; }
 
         public int Damage;
         public int Heal;

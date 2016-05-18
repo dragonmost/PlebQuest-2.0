@@ -10,12 +10,12 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        public List<Quest> AvailableQuests { get; private set; }
-        public List<Item> SoldItems { get; private set; }
-        public List<Mob> AvailableMobs { get; private set; }
+        public List<Quest> AvailableQuests { get; set; }
+        public List<Item> SoldItems { get; set; }
+        public List<Mob> AvailableMobs { get; set; }
         //Picture
     }
 }

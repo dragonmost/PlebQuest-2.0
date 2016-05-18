@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using PlebServer;
 
@@ -50,11 +46,14 @@ namespace PlebQuest
             }
 
             this.txtCreationTotalStats.Text = total.ToString();
+
+            SHA256 tamere = SHA256.Create();
+            
         }
 
         private void butStart_Click(object sender, EventArgs e)
         {
-            pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
+            pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);            
         }
 
         private void butJoin_Click(object sender, EventArgs e)
@@ -68,7 +67,7 @@ namespace PlebQuest
 
             client = new Client("localhost");
 
-            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });
+            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });                        
         }
 
         private void butPlay_Click(object sender, EventArgs e)
@@ -100,6 +99,12 @@ namespace PlebQuest
             }
 
             this.txtCreationTotalStats.Text = total.ToString();
+
+            client = new Client("localhost");
+            Pleb pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
+            client.SendPleb(pleb);
+
+            
         }
 
         private Queue<Keys> keySequence = new Queue<Keys>();

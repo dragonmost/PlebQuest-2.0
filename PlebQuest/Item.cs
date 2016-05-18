@@ -10,9 +10,9 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public int GoldValue { get; private set; }
-        public int Weight { get; private set; }
+        public string Name { get; set; }
+        public int GoldValue { get; set; }
+        public int Weight { get; set; }
 
         public Item(string name, int goldValue, int weight)
         {

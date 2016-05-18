@@ -6,6 +6,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using PlebQuest;
 
 namespace PlebServer
 {
@@ -66,6 +69,26 @@ namespace PlebServer
 
         private void PlayerConnection(GameClient gameClient, string[] data)
         {
+            try
+            {
+                MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
+                connString.Server = "localhost";
+                connString.UserID = "root";
+                //connString.Password = "123";
+                connString.Database = "plebquest";
+
+                using (MySqlConnection conn = new MySqlConnection(connString.ToString()))
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {    //watch out for this SQL injection vulnerability below
+                    cmd.CommandText = "INSERT INTO items (id, gold_value, weight) VALUES('Goblin ear', 10, 1)";
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch(Exception ex)
+            { }
+
+
             string dataToSend = string.Empty;
             //DB request here
             if (data[1] == "dragonmost")
@@ -95,6 +118,15 @@ namespace PlebServer
             {
                 case Commands.PlayerConnection:
                     PlayerConnection(gameClient, parsedData);
+                    break;
+                case Commands.SendCharacter:
+                    string strPleb = data.Substring(Commands.SendCharacter.Length + 1);
+                    try
+                    {
+                        Pleb pleb = JsonConvert.DeserializeObject<Pleb>(strPleb);
+                    }
+                    catch(Exception ex)
+                    { }
                     break;
             }
         }

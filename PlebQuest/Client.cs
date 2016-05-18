@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 using PlebServer;
 
 namespace PlebQuest
@@ -50,6 +49,11 @@ namespace PlebQuest
             SendData(dataToSend);
         }
 
+        public void SendPleb(Pleb pleb)
+        {
+            Writer.WriteLine(Commands.SendCharacter + ";" + JsonConvert.SerializeObject(pleb));
+        }
+
         private async Task ReceiveData(TcpClient client)
         {
             StreamReader reader = new StreamReader(client.GetStream());
@@ -76,7 +80,7 @@ namespace PlebQuest
             switch (parsedData[0])
             {
                 case Commands.ConnectionAccepted:
-                    
+
                     break;
                 case Commands.ConnectionRefused:
                     this.ConnectionRefused();

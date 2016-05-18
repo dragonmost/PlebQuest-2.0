@@ -10,7 +10,7 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public Stats stats { get; private set; }
+        public string Name { get; set; }
+        public Stats stats { get; set; }
     }
 }

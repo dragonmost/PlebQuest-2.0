@@ -10,8 +10,8 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public Stats Stats { get; private set; }
+        public string Name { get; set; }
+        public Stats Stats { get; set; }
 
         public List<Speel> UsableSpeels { get; private set; }
     }

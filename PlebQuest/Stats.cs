@@ -1,35 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlebQuest
 {
-    [Serializable]
-    class Stats
+    public class Stats
     {
         private int ID;
 
-        public int Strength { get; private set; }
-        public int Constitution { get; private set; }
-        public int Dexterity { get; private set; }
-        public int Intellect { get; private set; }
-        public int Wisdom { get; private set; }
-        public int Charisma { get; private set; }
-
-        public Stats()
-        {
-            Random rng = new Random();
+        public int Strength { get; set; }
+        public int Constitution { get; set; }
+        public int Dexterity { get; set; }
+        public int Intellect { get; set; }
+        public int Wisdom { get; set; }
+        public int Charisma { get; set; }
             
-            this.Strength = rng.Next(1, 20);
-            this.Constitution = rng.Next(1, 20);
-            this.Dexterity = rng.Next(1, 20);
-            this.Intellect = rng.Next(1, 20);
-            this.Wisdom = rng.Next(1, 20);
-            this.Charisma = rng.Next(1, 20);
-        }
-
         public Stats(int str, int con, int dex, int intel, int wis, int cha)
         {
             this.Strength = str;
@@ -39,7 +22,19 @@ namespace PlebQuest
             this.Wisdom = wis;
             this.Charisma = cha;
         }
-        
+
+        public Stats()
+        {
+            Random rng = new Random();
+
+            this.Strength = rng.Next(1, 20);
+            this.Constitution = rng.Next(1, 20);
+            this.Dexterity = rng.Next(1, 20);
+            this.Intellect = rng.Next(1, 20);
+            this.Wisdom = rng.Next(1, 20);
+            this.Charisma = rng.Next(1, 20);
+        }
+
         public void Perfect()
         {
             this.Strength = 20;

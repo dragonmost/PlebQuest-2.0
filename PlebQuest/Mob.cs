@@ -10,10 +10,10 @@ namespace PlebQuest
     {
         private int ID;
 
-        public string Name { get; private set; }
-        public int Level { get; private set; }
-        public int BaseExp { get; private set; }
-        public int BaseGold { get; private set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int BaseExp { get; set; }
+        public int BaseGold { get; set; }
 
         public Stats Stats { get; private set; }
 
