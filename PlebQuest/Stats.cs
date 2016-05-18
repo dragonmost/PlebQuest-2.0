@@ -4,7 +4,7 @@ namespace PlebQuest
 {
     public class Stats
     {
-        private int ID;
+        public int ID { get; set; }
 
         public int Strength { get; set; }
         public int Constitution { get; set; }

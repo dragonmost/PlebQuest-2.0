@@ -8,7 +8,7 @@ namespace PlebQuest
 {
     class Region
     {
-        private int ID;
+        public int ID { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -16,6 +16,5 @@ namespace PlebQuest
         public List<Quest> AvailableQuests { get; set; }
         public List<Item> SoldItems { get; set; }
         public List<Mob> AvailableMobs { get; set; }
-        //Picture
     }
 }

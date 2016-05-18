@@ -8,16 +8,16 @@ namespace PlebQuest
 {
     class Speel
     {
-        private int ID;
+        public int ID { get; set; }
 
         public string Name { get; set; }
 
         public int RequiredLevel { get; set; }
         public Stats RequiredStats { get; set; }
 
-        public int Damage;
-        public int Heal;
-        public Buff Buff;
-        public Buff Debuff;
+        public int Damage { get; set; }
+        public int Heal { get; set; }
+        public Buff Buff { get; set; }
+        public Buff Debuff { get; set; }
     }
 }

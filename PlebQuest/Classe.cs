@@ -8,7 +8,7 @@ namespace PlebQuest
 {
     class Classe
     {
-        private int ID;
+        public int ID { get; set; }
 
         public string Name { get; set; }
         public Stats Stats { get; set; }

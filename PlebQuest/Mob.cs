@@ -8,26 +8,26 @@ namespace PlebQuest
 {
     class Mob
     {
-        private int ID;
+        public int ID { get; set; }
 
         public string Name { get; set; }
         public int Level { get; set; }
         public int BaseExp { get; set; }
         public int BaseGold { get; set; }
 
-        public Stats Stats { get; private set; }
+        public Stats Stats { get; set; }
 
-        private List<Item> drops;
+        public List<Item> Drops { get; set; }
 
-        private List<Buff> buffs { get; set; }
-        private List<Buff> debuffs { get; set; }
+        public List<Buff> Buffs { get; set; }
+        public List<Buff> Debuffs { get; set; }
 
         public Item Drop
         {
             get
             {
                 Random rng = new Random();
-                return drops[rng.Next(0, drops.Count)];
+                return Drops[rng.Next(0, Drops.Count)];
             }
         }
     }

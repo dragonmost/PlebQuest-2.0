@@ -9,21 +9,21 @@ namespace PlebQuest
 
         public string Name { get; set; }
         public bool Male { get;  set; }
-        public TimeSpan playedTime { get; set; }
+        public TimeSpan PlayedTime { get; set; }
         public int MaxHP { get;  set; }
-        public int CurrentHP { get; set; }
-        public int level { get; set; }
+        public int currentHP { get; set; }
+        public int Level { get; set; }
         public int currentExp { get; set; }
         public int Gold { get; set; }
 
-        public Stats stats { get; set; }
-        public List<Item> inventory { get; set; }
+        public Stats stats { private get; set; }
+        public List<Item> Inventory { get; set; }
         public List<Speel> SpeelBook { get; set; }
 
-        public Equipment equipment { get; set; }
+        public Equipment Equipment { get; set; }
 
-        public List<Buff> buffs { get; set; }
-        public List<Buff> debuffs { get; set; }
+        public List<Buff> Buffs { get; set; }
+        public List<Buff> Debuffs { get; set; }
 
         public int alignment { get; set; }
 
@@ -35,42 +35,42 @@ namespace PlebQuest
 
             this.Name = name;
             this.Male = male;
-            this.playedTime = new TimeSpan();
+            this.PlayedTime = new TimeSpan();
             //calculate HP
             //currentHP
-            this.level = 1;
+            this.Level = 1;
             this.currentExp = 0;
             this.Gold = 0;
 
             this.stats = stats;
-            this.inventory = new List<Item>();
+            this.Inventory = new List<Item>();
             this.SpeelBook = new List<Speel>();
 
-            this.equipment = new Equipment();
+            this.Equipment = new Equipment();
 
-            this.buffs = new List<Buff>();
-            this.debuffs = new List<Buff>();
+            this.Buffs = new List<Buff>();
+            this.Debuffs = new List<Buff>();
 
             this.alignment = 0;
 
             this.isCheater = isCheater;
         }
 
-        public Pleb(int id, string name, bool male, TimeSpan playedtime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater)
+        public Pleb(int id, string name, bool male, TimeSpan playedTime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater)
         {
             this.ID = id;
 
             this.Name = name;
             this.Male = male;
-            this.playedTime = playedTime;
+            this.PlayedTime = playedTime;
             //calculate HP
             //currentHP
-            this.level = level;
+            this.Level = level;
             this.currentExp = currentExp;
             this.Gold = gold;
 
             this.stats = stats;
-            this.inventory = inventory;            
+            this.Inventory = inventory;            
             
             this.alignment = alignment;
 
@@ -94,10 +94,10 @@ namespace PlebQuest
 
             set
             {
-                if (value > 20 * level * 60)
+                if (value > 20 * Level * 60)
                 {
                     this.currentExp = 0;
-                    this.level++;
+                    this.Level++;
                 }
                 else
                     this.currentExp = value;
