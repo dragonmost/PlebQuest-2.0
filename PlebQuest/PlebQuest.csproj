@@ -83,34 +83,34 @@
     <Compile Include="..\PlebServer\Config.cs">
       <Link>Config.cs</Link>
     </Compile>
-    <Compile Include="Buff.cs" />
+    <Compile Include="Models\Buff.cs" />
     <Compile Include="Cheat.cs" />
-    <Compile Include="Classe.cs" />
+    <Compile Include="Models\Classe.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="Equipment\Armor.cs" />
-    <Compile Include="Equipment\Boots.cs" />
-    <Compile Include="Equipment\Chest.cs" />
-    <Compile Include="Equipment\Equipment.cs" />
-    <Compile Include="Equipment\Head.cs" />
-    <Compile Include="Equipment\Pants.cs" />
-    <Compile Include="Equipment\Weapon.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="Models\Equipment\Armor.cs" />
+    <Compile Include="Models\Equipment\Boots.cs" />
+    <Compile Include="Models\Equipment\Chest.cs" />
+    <Compile Include="Models\Equipment\Equipment.cs" />
+    <Compile Include="Models\Equipment\Head.cs" />
+    <Compile Include="Models\Equipment\Pants.cs" />
+    <Compile Include="Models\Equipment\Weapon.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Main Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main Menu.Designer.cs">
       <DependentUpon>Main Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mob.cs" />
+    <Compile Include="Models\Mob.cs" />
     <Compile Include="NameGenerator.cs" />
-    <Compile Include="Pleb.cs" />
+    <Compile Include="Models\Pleb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quest.cs" />
-    <Compile Include="Race.cs" />
-    <Compile Include="Region.cs" />
-    <Compile Include="Speel.cs" />
-    <Compile Include="Stats.cs" />
+    <Compile Include="Models\Quest.cs" />
+    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\Speel.cs" />
+    <Compile Include="Models\Stats.cs" />
     <EmbeddedResource Include="Main Menu.resx">
       <DependentUpon>Main Menu.cs</DependentUpon>
     </EmbeddedResource>

@@ -50,44 +50,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\PlebQuest\Buff.cs">
-      <Link>Buff.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Buff.cs">
+      <Link>Models\Buff.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Classe.cs">
-      <Link>Classe.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Classe.cs">
+      <Link>Models\Classe.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Armor.cs">
-      <Link>Armor.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Armor.cs">
+      <Link>Models\Equipment\Armor.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Boots.cs">
-      <Link>Boots.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Boots.cs">
+      <Link>Models\Equipment\Boots.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Chest.cs">
-      <Link>Chest.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Chest.cs">
+      <Link>Models\Equipment\Chest.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Equipment.cs">
-      <Link>Equipment.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Equipment.cs">
+      <Link>Models\Equipment\Equipment.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Head.cs">
-      <Link>Head.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Head.cs">
+      <Link>Models\Equipment\Head.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Pants.cs">
-      <Link>Pants.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Pants.cs">
+      <Link>Models\Equipment\Pants.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Equipment\Weapon.cs">
-      <Link>Weapon.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Equipment\Weapon.cs">
+      <Link>Models\Equipment\Weapon.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Item.cs">
-      <Link>Item.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Item.cs">
+      <Link>Models\Item.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Pleb.cs">
-      <Link>Pleb.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Mob.cs">
+      <Link>Models\Mob.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Speel.cs">
-      <Link>Speel.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Pleb.cs">
+      <Link>Models\Pleb.cs</Link>
     </Compile>
-    <Compile Include="..\PlebQuest\Stats.cs">
-      <Link>Stats.cs</Link>
+    <Compile Include="..\PlebQuest\Models\Quest.cs">
+      <Link>Models\Quest.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Models\Race.cs">
+      <Link>Models\Race.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Models\Region.cs">
+      <Link>Models\Region.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Models\Speel.cs">
+      <Link>Models\Speel.cs</Link>
+    </Compile>
+    <Compile Include="..\PlebQuest\Models\Stats.cs">
+      <Link>Models\Stats.cs</Link>
     </Compile>
     <Compile Include="Commands.cs" />
     <Compile Include="Config.cs" />

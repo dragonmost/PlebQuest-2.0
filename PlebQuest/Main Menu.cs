@@ -48,7 +48,9 @@ namespace PlebQuest
             this.txtCreationTotalStats.Text = total.ToString();
 
             SHA256 tamere = SHA256.Create();
-            
+            string pw = "pasunpassword";
+            byte[] hash = tamere.ComputeHash(System.Text.Encoding.UTF8.GetBytes(pw));
+            string wp = System.Text.Encoding.UTF8.GetString(hash);
         }
 
         private void butStart_Click(object sender, EventArgs e)
