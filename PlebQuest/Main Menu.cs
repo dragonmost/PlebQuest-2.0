@@ -27,11 +27,13 @@ namespace PlebQuest
         private void butNew_Click(object sender, EventArgs e)
         {
             pnlCharacterCreation.Visible = true;
+            this.txtCreationName.Text = nameGenerator.BuildName();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             stats = new Stats();
+            stats.Randomize();
             PropertyInfo[] properties = stats.GetType().GetProperties();
             int total = 0;
 
@@ -46,12 +48,12 @@ namespace PlebQuest
                 total += (int)property.GetValue(stats);
             }
 
-            this.txtCreationTotalStats.Text = total.ToString();
+            this.txtCreationTotalStats.Text = total.ToString();            
         }
 
         private void butStart_Click(object sender, EventArgs e)
         {
-            pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);            
+            pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);            
         }
 
         private void butJoin_Click(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace PlebQuest
 
             client = new Client("localhost");
 
-            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });                        
+            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });            
         }
 
         private void butPlay_Click(object sender, EventArgs e)
@@ -76,6 +78,7 @@ namespace PlebQuest
         private void butCreate_Click(object sender, EventArgs e)
         {
             this.pnlCharacterCreation.Visible = true;
+            this.txtCreationName.Text = nameGenerator.BuildName();
         }
 
         private void butCancelCreation_Click(object sender, EventArgs e)
@@ -85,7 +88,7 @@ namespace PlebQuest
 
         private void butRoll_Click(object sender, EventArgs e)
         {
-            stats = new Stats();
+            stats.Randomize();
             int total = 0;
 
             foreach (PropertyInfo property in stats.GetType().GetProperties())
@@ -99,7 +102,7 @@ namespace PlebQuest
             this.txtCreationTotalStats.Text = total.ToString();
 
             client = new Client("localhost");
-            Pleb pleb = new Pleb(-1, this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
+            Pleb pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
             client.SendPleb(pleb);
 
             
