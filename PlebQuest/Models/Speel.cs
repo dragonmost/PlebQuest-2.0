@@ -10,7 +10,7 @@ namespace PlebQuest
     class Speel
     {
         [JsonProperty]
-        public int ID { get; private set; }
+        public string ID { get; private set; }
 
         [JsonProperty]
         public string Name { get; private set; }

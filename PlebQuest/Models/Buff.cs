@@ -5,7 +5,7 @@ namespace PlebQuest
     class Buff
     {
         [JsonProperty]
-        private int ID;
+        private string ID;
 
         [JsonProperty]
         public string Name { get; private set; }

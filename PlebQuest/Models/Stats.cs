@@ -6,7 +6,7 @@ namespace PlebQuest
     public class Stats
     {
         [JsonProperty]
-        private int ID;
+        private string ID;
 
         [JsonProperty]
         public int Strength { get; private set; }

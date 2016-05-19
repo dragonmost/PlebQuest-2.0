@@ -7,7 +7,7 @@ namespace PlebQuest
     class Pleb
     {
         [JsonProperty]
-        private int ID;
+        private string ID;
 
         [JsonProperty]
         public string Name { get; private set; }
@@ -45,10 +45,9 @@ namespace PlebQuest
         [JsonProperty]
         public bool isCheater { get; private set; }
 
-        public Pleb(int id, string name, bool male, Stats stats, bool isCheater = true)
+        //New Character
+        public Pleb(string name, bool male, Stats stats, bool isCheater = true)
         {
-            this.ID = id;
-
             this.Name = name;
             this.Male = male;
             this.playedTime = new TimeSpan();
@@ -71,7 +70,8 @@ namespace PlebQuest
             this.isCheater = isCheater;
         }
 
-        public Pleb(int id, string name, bool male, TimeSpan playedTime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater)
+        //Old Character
+        public Pleb(string id, string name, bool male, TimeSpan playedTime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater)
         {
             this.ID = id;
 
