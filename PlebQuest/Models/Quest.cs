@@ -3,19 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     class Quest
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public string Name { get; set; }
-        public string Description { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
+        [JsonProperty]
+        public string Description { get; private set; }
 
-        public int ExpReward { get; set; }
-        public int GoldReward { get; set; }
+        [JsonProperty]
+        public int ExpReward { get; private set; }
+        [JsonProperty]
+        public int GoldReward { get; private set; }
 
-        public Region Region { get; set; }
+        [JsonProperty]
+        public Region Region { get; private set; }
+
+        //default constructor
+        public Quest()
+        { }
     }
 }

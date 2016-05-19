@@ -1,17 +1,25 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     public class Stats
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public int Strength { get; set; }
-        public int Constitution { get; set; }
-        public int Dexterity { get; set; }
-        public int Intellect { get; set; }
-        public int Wisdom { get; set; }
-        public int Charisma { get; set; }
+        [JsonProperty]
+        public int Strength { get; private set; }
+        [JsonProperty]
+        public int Constitution { get; private set; }
+        [JsonProperty]
+        public int Dexterity { get; private set; }
+        [JsonProperty]
+        public int Intellect { get; private set; }
+        [JsonProperty]
+        public int Wisdom { get; private set; }
+        [JsonProperty]
+        public int Charisma { get; private set; }
             
         public Stats(int str, int con, int dex, int intel, int wis, int cha)
         {
@@ -23,7 +31,7 @@ namespace PlebQuest
             this.Charisma = cha;
         }
 
-        public Stats()
+        public void Randomize()
         {
             Random rng = new Random();
 
@@ -55,5 +63,9 @@ namespace PlebQuest
                 first.Wisdom + second.Wisdom,
                 first.Charisma + second.Charisma);
         }
+
+        //default constructor
+        public Stats()
+        { }
     }
 }

@@ -1,14 +1,25 @@
-﻿namespace PlebQuest
+﻿using Newtonsoft.Json;
+
+namespace PlebQuest
 {
     class Buff
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public string Name { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
 
-        public int NbTurn { get; set; }
+        [JsonProperty]
+        public int NbTurn { get; private set; }
 
-        public Stats StatChange { get; set; }
-        public int HPChange { get; set; }
+        [JsonProperty]
+        public Stats StatChange { get; private set; }
+        [JsonProperty]
+        public int HPChange { get; private set; }
+
+        //default constructor
+        public Buff()
+        { }
     }
 }

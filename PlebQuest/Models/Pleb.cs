@@ -1,33 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     class Pleb
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public string Name { get; set; }
-        public bool Male { get;  set; }
-        public TimeSpan PlayedTime { get; set; }
-        public int MaxHP { get;  set; }
-        public int currentHP { get; set; }
-        public int Level { get; set; }
-        public int currentExp { get; set; }
-        public int Gold { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
+        [JsonProperty]
+        public bool Male { get; private set; }
+        [JsonProperty]
+        public TimeSpan playedTime { get; private set; }
+        [JsonProperty]
+        public int MaxHP { get; private set; }
+        [JsonProperty]
+        public int CurrentHP { get; private set; }
+        [JsonProperty]
+        public int level { get; private set; }
+        [JsonProperty]
+        public int currentExp { get; private set; }
+        [JsonProperty]
+        public int Gold { get; private set; }
 
-        public Stats stats { private get; set; }
-        public List<Item> Inventory { get; set; }
-        public List<Speel> SpeelBook { get; set; }
+        [JsonProperty]
+        public Stats stats { get; private set; }
+        [JsonProperty]
+        public List<Item> inventory { get; private set; }
+        [JsonProperty]
+        public List<Speel> SpeelBook { get; private set; }
 
-        public Equipment Equipment { get; set; }
+        [JsonProperty]
+        public Equipment equipment { get; private set; }
 
-        public List<Buff> Buffs { get; set; }
-        public List<Buff> Debuffs { get; set; }
+        [JsonProperty]
+        public List<Buff> buffs { get; private set; }
 
-        public int alignment { get; set; }
+        [JsonProperty]
+        public int alignment { get; private set; }
 
-        public bool isCheater { get; set; }
+        [JsonProperty]
+        public bool isCheater { get; private set; }
 
         public Pleb(int id, string name, bool male, Stats stats, bool isCheater = true)
         {
@@ -35,21 +51,20 @@ namespace PlebQuest
 
             this.Name = name;
             this.Male = male;
-            this.PlayedTime = new TimeSpan();
+            this.playedTime = new TimeSpan();
             //calculate HP
             //currentHP
-            this.Level = 1;
+            this.level = 1;
             this.currentExp = 0;
             this.Gold = 0;
 
             this.stats = stats;
-            this.Inventory = new List<Item>();
+            this.inventory = new List<Item>();
             this.SpeelBook = new List<Speel>();
 
-            this.Equipment = new Equipment();
+            this.equipment = new Equipment();
 
-            this.Buffs = new List<Buff>();
-            this.Debuffs = new List<Buff>();
+            this.buffs = new List<Buff>();
 
             this.alignment = 0;
 
@@ -62,15 +77,15 @@ namespace PlebQuest
 
             this.Name = name;
             this.Male = male;
-            this.PlayedTime = playedTime;
+            this.playedTime = playedTime;
             //calculate HP
             //currentHP
-            this.Level = level;
+            this.level = level;
             this.currentExp = currentExp;
             this.Gold = gold;
 
             this.stats = stats;
-            this.Inventory = inventory;            
+            this.inventory = inventory;            
             
             this.alignment = alignment;
 
@@ -94,10 +109,10 @@ namespace PlebQuest
 
             set
             {
-                if (value > 20 * Level * 60)
+                if (value > 20 * level * 60)
                 {
                     this.currentExp = 0;
-                    this.Level++;
+                    this.level++;
                 }
                 else
                     this.currentExp = value;
@@ -120,6 +135,11 @@ namespace PlebQuest
                 else
                     this.alignment = value;
             }
+        }
+
+        public void Cheater()
+        {
+            this.isCheater = true;
         }
 
         //default constructor

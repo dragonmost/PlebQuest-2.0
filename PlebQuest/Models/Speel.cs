@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     class Speel
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        public int ID { get; private set; }
 
-        public string Name { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
 
-        public int RequiredLevel { get; set; }
-        public Stats RequiredStats { get; set; }
+        [JsonProperty]
+        public int RequiredLevel { get; private set; }
 
-        public int Damage { get; set; }
-        public int Heal { get; set; }
-        public Buff Buff { get; set; }
-        public Buff Debuff { get; set; }
+        [JsonProperty]
+        public Stats RequiredStats { get; private set; }
+
+        [JsonProperty]
+        public int Damage { get; private set; }
+        [JsonProperty]
+        public int Heal { get; private set; }
+        [JsonProperty]
+        public Buff Buff { get; private set; }
+        [JsonProperty]
+        public Buff Debuff { get; private set; }
+
+        //default constructor
+        public Speel()
+        { }
     }
 }

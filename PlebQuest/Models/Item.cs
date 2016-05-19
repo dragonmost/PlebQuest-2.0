@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     class Item
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public string Name { get; set; }
-        public int GoldValue { get; set; }
-        public int Weight { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
+        [JsonProperty]
+        public int GoldValue { get; private set; }
+        [JsonProperty]
+        public int Weight { get; private set; }
 
         public Item(string name, int goldValue, int weight)
         {
@@ -20,5 +25,9 @@ namespace PlebQuest
             this.GoldValue = goldValue;
             this.Weight = weight;
         }
+
+        //default constructor
+        public Item()
+        { }
     }
 }

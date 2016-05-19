@@ -3,32 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace PlebQuest
 {
     class Mob
     {
-        public int ID { get; set; }
+        [JsonProperty]
+        private int ID;
 
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public int BaseExp { get; set; }
-        public int BaseGold { get; set; }
+        [JsonProperty]
+        public string Name { get; private set; }
+        [JsonProperty]
+        public int Level { get; private set; }
+        [JsonProperty]
+        public int BaseExp { get; private set; }
+        [JsonProperty]
+        public int BaseGold { get; private set; }
 
-        public Stats Stats { get; set; }
+        [JsonProperty]
+        public Stats Stats { get; private set; }
 
-        public List<Item> Drops { get; set; }
+        [JsonProperty]
+        private List<Item> drops;
 
-        public List<Buff> Buffs { get; set; }
-        public List<Buff> Debuffs { get; set; }
+        [JsonProperty]
+        private List<Buff> buffs { get; set; }
+        [JsonProperty]
+        private List<Buff> debuffs { get; set; }
 
         public Item Drop
         {
             get
             {
                 Random rng = new Random();
-                return Drops[rng.Next(0, Drops.Count)];
+                return drops[rng.Next(0, drops.Count)];
             }
         }
+
+        //default constructor
+        public Mob()
+        { }
     }
 }
