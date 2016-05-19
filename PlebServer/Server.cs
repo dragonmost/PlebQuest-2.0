@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -80,7 +81,7 @@ namespace PlebServer
                 using (MySqlConnection conn = new MySqlConnection(connString.ToString()))
                 using (MySqlCommand cmd = conn.CreateCommand())
                 {    //watch out for this SQL injection vulnerability below
-                    cmd.CommandText = "INSERT INTO items (id, gold_value, weight) VALUES('Goblin ear', 10, 1)";
+                    cmd.CommandText = "INSERT INTO items (name, gold_value, weight) VALUES('Goblin ear', 10, 1)";
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -128,6 +129,16 @@ namespace PlebServer
                     catch(Exception ex)
                     { }
                     break;
+            }
+        }
+
+        public static String sha256_hash(String value)
+        {
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                return String.Join("", hash
+                  .ComputeHash(Encoding.UTF8.GetBytes(value))
+                  .Select(item => item.ToString("x2")));
             }
         }
     }

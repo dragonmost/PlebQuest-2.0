@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `available_quests` (
 --
 
 CREATE TABLE IF NOT EXISTS `boots` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   `required_stats_id` int(11) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 --
 
 CREATE TABLE IF NOT EXISTS `chests` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   `required_stats_id` int(11) NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
 --
 
 CREATE TABLE IF NOT EXISTS `equipments` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `head_id` int(11) DEFAULT NULL,
   `chest_id` int(11) DEFAULT NULL,
   `pants_id` int(11) DEFAULT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `equipments` (
 --
 
 CREATE TABLE IF NOT EXISTS `heads` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   `required_stats_id` int(11) NOT NULL,
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `heads` (
 --
 
 CREATE TABLE IF NOT EXISTS `inventories` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -197,8 +197,8 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
-  `id` int(11) NOT NULL,
-  `name` varchar(250) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) CHARACTER SET utf8 NOT NULL ,
   `gold_value` int(10) unsigned NOT NULL,
   `weight` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 --
 
 CREATE TABLE IF NOT EXISTS `mobs` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `hp` int(10) unsigned NOT NULL,
   `level` int(10) unsigned NOT NULL,
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `mobs` (
 --
 
 CREATE TABLE IF NOT EXISTS `mob_drops` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mob_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `mob_drops` (
 --
 
 CREATE TABLE IF NOT EXISTS `pants` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   `required_stats_id` int(11) NOT NULL,
@@ -278,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `quests` (
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `regions` (
 --
 
 CREATE TABLE IF NOT EXISTS `sold_items` (
-  `item_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   KEY `item_id_sold_idx` (`item_id`),
   KEY `region_id_sold_idx` (`region_id`)
@@ -318,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `speels` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `required_stats_id` int(11) NOT NULL,
   `required_lvl` int(11) NOT NULL,
@@ -337,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `speels` (
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `strength` int(11) NOT NULL,
   `intellect` int(11) NOT NULL,
   `constitution` int(11) NOT NULL,
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 CREATE TABLE IF NOT EXISTS `weapons` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `damage` int(11) NOT NULL,
   `stats_id` int(11) NOT NULL,
