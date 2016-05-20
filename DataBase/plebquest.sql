@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Ven 20 Mai 2016 à 04:02
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Host: 127.0.0.1
+-- Generation Time: May 21, 2016 at 01:36 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `plebquest`
+-- Database: `plebquest`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `available_mobs`
+-- Table structure for table `available_mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `available_mobs` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `available_mobs` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `available_quests`
+-- Table structure for table `available_quests`
 --
 
 CREATE TABLE IF NOT EXISTS `available_quests` (
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `available_quests` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `available_speels`
+-- Table structure for table `available_speels`
 --
 
 CREATE TABLE IF NOT EXISTS `available_speels` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `available_speels` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `boots`
+-- Table structure for table `boots`
 --
 
 CREATE TABLE IF NOT EXISTS `boots` (
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `boots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `boots`
+-- Triggers `boots`
 --
 DROP TRIGGER IF EXISTS `boots_BEFORE_INSERT`;
 DELIMITER //
@@ -92,7 +92,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `buffs`
+-- Table structure for table `buffs`
 --
 
 CREATE TABLE IF NOT EXISTS `buffs` (
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `buffs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `buffs`
+-- Triggers `buffs`
 --
 DROP TRIGGER IF EXISTS `buffs_BEFORE_INSERT`;
 DELIMITER //
@@ -120,7 +120,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `characters`
+-- Table structure for table `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `characters`
+-- Triggers `characters`
 --
 DROP TRIGGER IF EXISTS `characters_BEFORE_INSERT`;
 DELIMITER //
@@ -160,7 +160,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chests`
+-- Table structure for table `chests`
 --
 
 CREATE TABLE IF NOT EXISTS `chests` (
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `chests`
+-- Triggers `chests`
 --
 DROP TRIGGER IF EXISTS `chests_BEFORE_INSERT`;
 DELIMITER //
@@ -190,7 +190,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `classes`
+-- Table structure for table `classes`
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
@@ -203,81 +203,12 @@ CREATE TABLE IF NOT EXISTS `classes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `classes`
+-- Dumping data for table `classes`
 --
 
 INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
 ('12ef3381-1e22-11e6-8056-c86000bd4895', 'Ritualist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('12ef3b31-1e22-11e6-8056-c86000bd4895', 'Guardian', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b715b74-1e2b-11e6-8b61-002564e986a2', 'Ritualist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b715fc3-1e2b-11e6-8b61-002564e986a2', 'Guardian', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7160fb-1e2b-11e6-8b61-002564e986a2', 'Paladin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b716203-1e2b-11e6-8b61-002564e986a2', 'Voodoo Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b71630e-1e2b-11e6-8b61-002564e986a2', 'Monk', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b71646b-1e2b-11e6-8b61-002564e986a2', 'Illusioner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b716543-1e2b-11e6-8b61-002564e986a2', 'Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b71672b-1e2b-11e6-8b61-002564e986a2', 'Mason', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b71680a-1e2b-11e6-8b61-002564e986a2', 'Fighter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b716912-1e2b-11e6-8b61-002564e986a2', 'Thief', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7169f2-1e2b-11e6-8b61-002564e986a2', 'Runemaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b716fce-1e2b-11e6-8b61-002564e986a2', 'Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ad7c7-1e2b-11e6-8b61-002564e986a2', 'Mime', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ad94b-1e2b-11e6-8b61-002564e986a2', 'Lunatic', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ada32-1e2b-11e6-8b61-002564e986a2', 'Birdmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7adb0e-1e2b-11e6-8b61-002564e986a2', 'Vermineer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7adbea-1e2b-11e6-8b61-002564e986a2', 'Black Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7adcca-1e2b-11e6-8b61-002564e986a2', 'Dark Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7adda2-1e2b-11e6-8b61-002564e986a2', 'Onion Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ade77-1e2b-11e6-8b61-002564e986a2', 'Dragoon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7adf6d-1e2b-11e6-8b61-002564e986a2', 'Holy Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae04c-1e2b-11e6-8b61-002564e986a2', 'Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae124-1e2b-11e6-8b61-002564e986a2', 'Warlock', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae1f9-1e2b-11e6-8b61-002564e986a2', 'Wizard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae2ef-1e2b-11e6-8b61-002564e986a2', 'Priest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae3f3-1e2b-11e6-8b61-002564e986a2', 'White Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae4d3-1e2b-11e6-8b61-002564e986a2', 'Red Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae5a7-1e2b-11e6-8b61-002564e986a2', 'Blue Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae67c-1e2b-11e6-8b61-002564e986a2', 'Green Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae754-1e2b-11e6-8b61-002564e986a2', 'Black Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae82d-1e2b-11e6-8b61-002564e986a2', 'Rogue', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae901-1e2b-11e6-8b61-002564e986a2', 'Death Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7ae9d6-1e2b-11e6-8b61-002564e986a2', 'Shaman', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aeab2-1e2b-11e6-8b61-002564e986a2', 'Druid', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aeb9d-1e2b-11e6-8b61-002564e986a2', 'Arcanist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aec75-1e2b-11e6-8b61-002564e986a2', 'Assassin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aed4d-1e2b-11e6-8b61-002564e986a2', 'Artificer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aee25-1e2b-11e6-8b61-002564e986a2', 'BattleMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aeefa-1e2b-11e6-8b61-002564e986a2', 'WarMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7aefcf-1e2b-11e6-8b61-002564e986a2', 'Beastmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af0a0-1e2b-11e6-8b61-002564e986a2', 'Berserker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af18e-1e2b-11e6-8b61-002564e986a2', 'Blade Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af263-1e2b-11e6-8b61-002564e986a2', 'Blade Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af337-1e2b-11e6-8b61-002564e986a2', 'Blood Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af40c-1e2b-11e6-8b61-002564e986a2', 'Chronomancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af4e8-1e2b-11e6-8b61-002564e986a2', 'Necromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af5b9-1e2b-11e6-8b61-002564e986a2', 'Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af68e-1e2b-11e6-8b61-002564e986a2', 'Flame Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af7a8-1e2b-11e6-8b61-002564e986a2', 'Demonlord', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af88b-1e2b-11e6-8b61-002564e986a2', 'Demon Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7af960-1e2b-11e6-8b61-002564e986a2', 'Dragon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afa35-1e2b-11e6-8b61-002564e986a2', 'Lancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afb09-1e2b-11e6-8b61-002564e986a2', 'Gunner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afbe5-1e2b-11e6-8b61-002564e986a2', 'Mesmer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afcb6-1e2b-11e6-8b61-002564e986a2', 'Pirate', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afdd0-1e2b-11e6-8b61-002564e986a2', 'Ranger', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7afea9-1e2b-11e6-8b61-002564e986a2', 'Runepriest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7affb8-1e2b-11e6-8b61-002564e986a2', 'Sun Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b06c8-1e2b-11e6-8b61-002564e986a2', 'Reaper', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b07db-1e2b-11e6-8b61-002564e986a2', 'Windwalker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b08e3-1e2b-11e6-8b61-002564e986a2', 'Ninja', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b09d8-1e2b-11e6-8b61-002564e986a2', 'Samurai', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0afa-1e2b-11e6-8b61-002564e986a2', 'Time Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0bdd-1e2b-11e6-8b61-002564e986a2', 'Singer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0cc0-1e2b-11e6-8b61-002564e986a2', 'Bard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0da0-1e2b-11e6-8b61-002564e986a2', 'Astromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0e87-1e2b-11e6-8b61-002564e986a2', 'Gladiator', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b0f63-1e2b-11e6-8b61-002564e986a2', 'Archer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
-('2b7b103f-1e2b-11e6-8b61-002564e986a2', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f35921-1e21-11e6-8056-c86000bd4895', 'Paladin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f362c5-1e21-11e6-8056-c86000bd4895', 'Voodoo Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f369cb-1e21-11e6-8056-c86000bd4895', 'Monk', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
@@ -347,7 +278,7 @@ INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
 ('df43cc2a-1e21-11e6-8056-c86000bd4895', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895');
 
 --
--- Déclencheurs `classes`
+-- Triggers `classes`
 --
 DROP TRIGGER IF EXISTS `classes_BEFORE_INSERT`;
 DELIMITER //
@@ -361,7 +292,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipments`
+-- Table structure for table `equipments`
 --
 
 CREATE TABLE IF NOT EXISTS `equipments` (
@@ -378,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `equipments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `equipments`
+-- Triggers `equipments`
 --
 DROP TRIGGER IF EXISTS `equipments_BEFORE_INSERT`;
 DELIMITER //
@@ -392,7 +323,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `heads`
+-- Table structure for table `heads`
 --
 
 CREATE TABLE IF NOT EXISTS `heads` (
@@ -408,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `heads`
+-- Triggers `heads`
 --
 DROP TRIGGER IF EXISTS `heads_BEFORE_INSERT`;
 DELIMITER //
@@ -422,7 +353,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inventories`
+-- Table structure for table `inventories`
 --
 
 CREATE TABLE IF NOT EXISTS `inventories` (
@@ -435,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `inventories`
+-- Triggers `inventories`
 --
 DROP TRIGGER IF EXISTS `inventories_BEFORE_INSERT`;
 DELIMITER //
@@ -449,7 +380,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `items`
+-- Table structure for table `items`
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
@@ -461,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `items`
+-- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`id`, `name`, `gold_value`, `weight`) VALUES
@@ -469,7 +400,7 @@ INSERT INTO `items` (`id`, `name`, `gold_value`, `weight`) VALUES
 ('2bb96553-1e2b-11e6-8b61-002564e986a2', 'Goblin ear', 10, 1);
 
 --
--- Déclencheurs `items`
+-- Triggers `items`
 --
 DROP TRIGGER IF EXISTS `items_BEFORE_INSERT`;
 DELIMITER //
@@ -483,7 +414,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mobs`
+-- Table structure for table `mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `mobs` (
@@ -499,7 +430,7 @@ CREATE TABLE IF NOT EXISTS `mobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `mobs`
+-- Triggers `mobs`
 --
 DROP TRIGGER IF EXISTS `mobs_BEFORE_INSERT`;
 DELIMITER //
@@ -513,7 +444,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mob_drops`
+-- Table structure for table `mob_drops`
 --
 
 CREATE TABLE IF NOT EXISTS `mob_drops` (
@@ -526,7 +457,7 @@ CREATE TABLE IF NOT EXISTS `mob_drops` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pants`
+-- Table structure for table `pants`
 --
 
 CREATE TABLE IF NOT EXISTS `pants` (
@@ -542,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `pants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `pants`
+-- Triggers `pants`
 --
 DROP TRIGGER IF EXISTS `pants_BEFORE_INSERT`;
 DELIMITER //
@@ -556,7 +487,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `quests`
+-- Table structure for table `quests`
 --
 
 CREATE TABLE IF NOT EXISTS `quests` (
@@ -570,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `quests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `quests`
+-- Triggers `quests`
 --
 DROP TRIGGER IF EXISTS `quests_BEFORE_INSERT`;
 DELIMITER //
@@ -584,7 +515,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `races`
+-- Table structure for table `races`
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
@@ -597,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `races` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `races`
+-- Dumping data for table `races`
 --
 
 INSERT INTO `races` (`id`, `name`, `stats_id`, `description`) VALUES
@@ -610,11 +541,12 @@ INSERT INTO `races` (`id`, `name`, `stats_id`, `description`) VALUES
 ('12aaf32e-1e2d-11e6-8b61-002564e986a2', 'Kender', '32b5ab10-1e1f-11e6-8056-c86000bd4895', '"As klepto as a Kender," is a common saying among any who have spent time among Kender, and indeed this reputation is well deserved. Kender make legendary thieves, and nothing that isn''t tied down, locked inside a chest, and the chest sat on by an ogre, is safe from the sticky fingers of a Kender. Kender features are more elfin than other shortfolk, suggesting that they have a slightly different genetic heritage. Kender wear their brown or blonde hair tied into intricate topknots. Some would arg'),
 ('24db0df2-1e2d-11e6-8b61-002564e986a2', 'Tabaxi', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'The tabaxi (or cat-men, as they are known to most humans) are a race of intelligent feline humanoids which inhabit the far reaches of tropical jungles, avoiding both humans and sapient non humans. They live in small prides of 2-8 members, each pride roaming a large territory and rarely having anything to do with other prides. The cat-men are tall and lithe and move with the smooth easy grace of cats. Their fine fur is tawny and striped with black, in a pattern similar to that of a tiger. They we'),
 ('5ba3501a-1e2e-11e6-8b61-002564e986a2', 'Half Giants', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Half-Giants are big, strong, sturdy, and stupid, and ugly. Since they are ostracized by society, they rarely receive a good education of any standard except in warfare. Half-Giants, being hunted by most fanatical monster-hunters, are born into danger and bigotry, and must fight to survive even at a young age. Their parents usually hate them since most Half-Giants are the product of rape. The term gentle giant rarely applies to Half-Giants because of their short temper and their great anger. They'),
-('60cea0e5-1e2d-11e6-8b61-002564e986a2', 'Aryan', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'the Nordic race was descended from Proto-Aryans who he believed had prehistorically dwelt on the North German Plain and who had ultimately originated from the lost continent of Atlantis.[1] The Nazis declared that the Nordics (now referred to as the Germanic peoples), were the true Aryans (ethnically the closest descendants of the Proto-Indo-Europeans) because they were much less racially mixed with peoples who were "non-native" to the European continent, than other Indo-European peoples, such a'),
+('60cea0e5-1e2d-11e6-8b61-002564e986a2', 'Aryan', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'the Nordic race was descended from Proto-Aryans who he believed had prehistorically dwelt on the North German Plain and who had ultimately originated from the lost continent of Atlantis. The Nazis declared that the Nordics (now referred to as the Germanic peoples), were the true Aryans (ethnically the closest descendants of the Proto-Indo-Europeans) because they were much less racially mixed with peoples who were "non-native" to the European continent, than other Indo-European peoples, such a'),
 ('849d39db-1e2d-11e6-8b61-002564e986a2', 'Githyanki', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Githyanki are an ancient race descended from humans. They are strongly humanoid in appearance, and are approximately of human height but tend to be much more gaunt and long of limb. They have rough, yellow skin and gleaming black eyes that instantly betray their in- humanness. Lime many demihuman races, their ears have sharp points and are serrated at the back. Githyanki are exceptionally wise and intelligent, but slightly less physical than humans. They tend to make excellent spellcasters, alth'),
 ('94af799c-1e2d-11e6-8b61-002564e986a2', 'Dunadan', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'The Dunadan are an ancient race, much akin to humans, but commonly larger in stature and with darker complexion. They are heartier and longer lived than humans, but because of their longer lives, few worldly experiences are new to them.'),
 ('a09d1fc9-1e2c-11e6-8b61-002564e986a2', 'Kitsune', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'The Kitsune, a race of magical, humanoid foxes, are a paradoxal race. Some are so shy as to never show their face, while others are so social they are almost rude. However, like elves, kitsune are lovers of fine arts and admirers of those that can create it. Preferring entertaining over combat themselves, they are often at the local tavern, the social ones anyway, letting their spectacular illusionary magicks both dazzle and entertain the crowd around them. Another paradoxical fact of this race '),
 ('ab0ac352-1e2d-11e6-8b61-002564e986a2', 'Kobold', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Kobolds are dog-people who stand just over one meter tall on average. Their bodies are covered with mangy fur of brown, black, or grey color. Kobolds have short ears on top of their head that can pivot in almost any direction, giving them excellent directional hearing sense. Kobold society is considered barbaric to many, with cannibalism and cruelty the norm. Kobolds rarely live past the age of thirty under the best of conditions, and the continual infighting and bickering among kobolds usually '),
+('b5e064ee-1ec1-11e6-8056-c86000bd4895', 'Snow Elf', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Occasionally referred to as Ice Elves are an endangered race of Mer. It is commonly believed that centuries of underground living twisted the race into the blind, merciless Farmer'),
 ('b779a233-1e2c-11e6-8b61-002564e986a2', 'Gnome', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Gnomes are tiny, stout humanoids who resemble short dwarves with round faces, however, unlike dwarves, gnome females do not have beards. Gnomes have a passion for mechanical devices, and will spend long hours constructing progressively more complicated gadgets. Gnomes speak very quickly, and they possess the ability to talk, listen, and gesticulate wildly all at the same time. Gnomes are moderately strong, and will make tolerable fighters, however they they tend to make better clerics and spellc'),
 ('bb7f9b89-1e2e-11e6-8b61-002564e986a2', 'Merfolk', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'The merfolk are of both genders. In their appearance please include a valid description of their tails. It can just be ‘the fin is .....(colour)’. And also when you do that include when they can transform into people. Some may only do it at dawn, others at noon, others once a week, others at will.... It’s up to you. They do not have ranks. Their powers are- swimming, control over water.'),
 ('c5c340bb-1e2d-11e6-8b61-002564e986a2', 'Wood Elf', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Wood elves are the rustic cousins of high elves. They prefer to make their homes in deciduous forests where the autumn leaves match the auburn, gold, and brown hues of their hair. A wood elf regards the forest as a spiritual place, and much of their philosophy touches on the balance they observe in nature. Wood elves make excellent rangers and rogues, but they lack the resilience to fight effectively, and generally prefer to disappear into the forest, striking their enemy from afar. Wood elves a'),
@@ -625,7 +557,7 @@ INSERT INTO `races` (`id`, `name`, `stats_id`, `description`) VALUES
 ('f0250b2a-1e2a-11e6-8b61-002564e986a2', 'Draconian', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 'Draconians are a bipedal race of beings spawned from shapeshifted dragons and humans. The union was not perfect, so the resulting race is exceedingly intelligent, but physically very weak. Draconians make excellent spellcasters, but lack the resiliance to become proper fighters. Their heavy claws and lumbering gaits hamper any attempts at thievery.');
 
 --
--- Déclencheurs `races`
+-- Triggers `races`
 --
 DROP TRIGGER IF EXISTS `races_BEFORE_INSERT`;
 DELIMITER //
@@ -639,7 +571,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `regions`
+-- Table structure for table `regions`
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
@@ -650,7 +582,7 @@ CREATE TABLE IF NOT EXISTS `regions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `regions`
+-- Triggers `regions`
 --
 DROP TRIGGER IF EXISTS `regions_BEFORE_INSERT`;
 DELIMITER //
@@ -664,7 +596,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sold_items`
+-- Table structure for table `sold_items`
 --
 
 CREATE TABLE IF NOT EXISTS `sold_items` (
@@ -677,7 +609,18 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `speels`
+-- Table structure for table `speelbook`
+--
+
+CREATE TABLE IF NOT EXISTS `speelbook` (
+  `character_id` int(11) NOT NULL,
+  `speel_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `speels`
 --
 
 CREATE TABLE IF NOT EXISTS `speels` (
@@ -696,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `speels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `speels`
+-- Triggers `speels`
 --
 DROP TRIGGER IF EXISTS `speels_BEFORE_INSERT`;
 DELIMITER //
@@ -710,7 +653,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `stats`
+-- Table structure for table `stats`
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
@@ -725,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `stats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `stats`
+-- Dumping data for table `stats`
 --
 
 INSERT INTO `stats` (`id`, `strength`, `intellect`, `constitution`, `dexterity`, `wisdom`, `charisma`) VALUES
@@ -733,7 +676,7 @@ INSERT INTO `stats` (`id`, `strength`, `intellect`, `constitution`, `dexterity`,
 ('32b5ab10-1e1f-11e6-8056-c86000bd4895', 0, 0, 0, 0, 0, 0);
 
 --
--- Déclencheurs `stats`
+-- Triggers `stats`
 --
 DROP TRIGGER IF EXISTS `stats_BEFORE_INSERT`;
 DELIMITER //
@@ -747,7 +690,18 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `subclasses`
+--
+
+CREATE TABLE IF NOT EXISTS `subclasses` (
+  `character_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -760,7 +714,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `users`
+-- Triggers `users`
 --
 DROP TRIGGER IF EXISTS `users_BEFORE_INSERT`;
 DELIMITER //
@@ -774,7 +728,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `weapons`
+-- Table structure for table `weapons`
 --
 
 CREATE TABLE IF NOT EXISTS `weapons` (
@@ -790,7 +744,7 @@ CREATE TABLE IF NOT EXISTS `weapons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `weapons`
+-- Triggers `weapons`
 --
 DROP TRIGGER IF EXISTS `weapons_BEFORE_INSERT`;
 DELIMITER //
@@ -802,45 +756,45 @@ END
 DELIMITER ;
 
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `available_mobs`
+-- Constraints for table `available_mobs`
 --
 ALTER TABLE `available_mobs`
   ADD CONSTRAINT `mob_id_available` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available_mobs` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `available_quests`
+-- Constraints for table `available_quests`
 --
 ALTER TABLE `available_quests`
   ADD CONSTRAINT `quest_id_available` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `available_speels`
+-- Constraints for table `available_speels`
 --
 ALTER TABLE `available_speels`
   ADD CONSTRAINT `class_id_available` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `speel_id_available` FOREIGN KEY (`speel_id`) REFERENCES `speels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `boots`
+-- Constraints for table `boots`
 --
 ALTER TABLE `boots`
   ADD CONSTRAINT `required_stats_id_boots` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_boots` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `buffs`
+-- Constraints for table `buffs`
 --
 ALTER TABLE `buffs`
   ADD CONSTRAINT `stats_id_buffs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `characters`
+-- Constraints for table `characters`
 --
 ALTER TABLE `characters`
   ADD CONSTRAINT ` equipement_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -848,20 +802,20 @@ ALTER TABLE `characters`
   ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `chests`
+-- Constraints for table `chests`
 --
 ALTER TABLE `chests`
   ADD CONSTRAINT `required_stats_id_chest` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_chest` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `classes`
+-- Constraints for table `classes`
 --
 ALTER TABLE `classes`
   ADD CONSTRAINT `stats_id_classes` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `equipments`
+-- Constraints for table `equipments`
 --
 ALTER TABLE `equipments`
   ADD CONSTRAINT `boots_id_equipments` FOREIGN KEY (`boots_id`) REFERENCES `boots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -870,66 +824,66 @@ ALTER TABLE `equipments`
   ADD CONSTRAINT `pants_id_equipments` FOREIGN KEY (`pants_id`) REFERENCES `pants` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `heads`
+-- Constraints for table `heads`
 --
 ALTER TABLE `heads`
   ADD CONSTRAINT `required_stats_id_heads` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_heads` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `inventories`
+-- Constraints for table `inventories`
 --
 ALTER TABLE `inventories`
   ADD CONSTRAINT `character_id_inventories` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `item_id_inventories` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `mobs`
+-- Constraints for table `mobs`
 --
 ALTER TABLE `mobs`
   ADD CONSTRAINT `stats_id_mobs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `mob_drops`
+-- Constraints for table `mob_drops`
 --
 ALTER TABLE `mob_drops`
   ADD CONSTRAINT `item_id_mob_drops` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `mob_id_mob_drops` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `pants`
+-- Constraints for table `pants`
 --
 ALTER TABLE `pants`
   ADD CONSTRAINT `required_stats_id_pants` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_pants` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `races`
+-- Constraints for table `races`
 --
 ALTER TABLE `races`
   ADD CONSTRAINT `stats_id_races` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `sold_items`
+-- Constraints for table `sold_items`
 --
 ALTER TABLE `sold_items`
   ADD CONSTRAINT `item_id_sold` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_sold` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `speels`
+-- Constraints for table `speels`
 --
 ALTER TABLE `speels`
   ADD CONSTRAINT `required_stats_id` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `charater_id_users` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `weapons`
+-- Constraints for table `weapons`
 --
 ALTER TABLE `weapons`
   ADD CONSTRAINT `required_stats_id_weapons` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
