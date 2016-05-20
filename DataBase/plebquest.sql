@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 19 Mai 2016 à 03:32
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Host: 127.0.0.1
+-- Generation Time: May 20, 2016 at 03:13 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `plebquest`
+-- Database: `plebquest`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `available_mobs`
+-- Table structure for table `available_mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `available_mobs` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `available_mobs` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `available_quests`
+-- Table structure for table `available_quests`
 --
 
 CREATE TABLE IF NOT EXISTS `available_quests` (
@@ -49,7 +49,20 @@ CREATE TABLE IF NOT EXISTS `available_quests` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `boots`
+-- Table structure for table `available_speels`
+--
+
+CREATE TABLE IF NOT EXISTS `available_speels` (
+  `class_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `speel_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  KEY `class_id_available_idx` (`class_id`),
+  KEY `speel_id_available_idx` (`speel_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `boots`
 --
 
 CREATE TABLE IF NOT EXISTS `boots` (
@@ -65,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `boots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `boots`
+-- Triggers `boots`
 --
 DROP TRIGGER IF EXISTS `boots_BEFORE_INSERT`;
 DELIMITER //
@@ -79,7 +92,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `buffs`
+-- Table structure for table `buffs`
 --
 
 CREATE TABLE IF NOT EXISTS `buffs` (
@@ -92,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `buffs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `buffs`
+-- Triggers `buffs`
 --
 DROP TRIGGER IF EXISTS `buffs_BEFORE_INSERT`;
 DELIMITER //
@@ -106,7 +119,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `characters`
+-- Table structure for table `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -131,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `characters`
+-- Triggers `characters`
 --
 DROP TRIGGER IF EXISTS `characters_BEFORE_INSERT`;
 DELIMITER //
@@ -145,7 +158,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chests`
+-- Table structure for table `chests`
 --
 
 CREATE TABLE IF NOT EXISTS `chests` (
@@ -161,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `chests`
+-- Triggers `chests`
 --
 DROP TRIGGER IF EXISTS `chests_BEFORE_INSERT`;
 DELIMITER //
@@ -175,19 +188,95 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `classes`
+-- Table structure for table `classes`
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `stats_id_classes_idx` (`stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `classes`
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
+('12ef3381-1e22-11e6-8056-c86000bd4895', 'Ritualist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('12ef3b31-1e22-11e6-8056-c86000bd4895', 'Guardian', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f35921-1e21-11e6-8056-c86000bd4895', 'Paladin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f362c5-1e21-11e6-8056-c86000bd4895', 'Voodoo Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f369cb-1e21-11e6-8056-c86000bd4895', 'Monk', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3b6c9-1e21-11e6-8056-c86000bd4895', 'Illusioner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3bc27-1e21-11e6-8056-c86000bd4895', 'Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3c043-1e21-11e6-8056-c86000bd4895', 'Mason', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3c4ac-1e21-11e6-8056-c86000bd4895', 'Fighter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3c99a-1e21-11e6-8056-c86000bd4895', 'Thief', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3cf91-1e21-11e6-8056-c86000bd4895', 'Runemaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3d358-1e21-11e6-8056-c86000bd4895', 'Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3d6ce-1e21-11e6-8056-c86000bd4895', 'Mime', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3da09-1e21-11e6-8056-c86000bd4895', 'Lunatic', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3dd48-1e21-11e6-8056-c86000bd4895', 'Birdmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3e077-1e21-11e6-8056-c86000bd4895', 'Vermineer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3e3a7-1e21-11e6-8056-c86000bd4895', 'Black Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3e6d7-1e21-11e6-8056-c86000bd4895', 'Dark Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3ea0f-1e21-11e6-8056-c86000bd4895', 'Onion Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3ed42-1e21-11e6-8056-c86000bd4895', 'Dragoon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3f068-1e21-11e6-8056-c86000bd4895', 'Holy Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3f3af-1e21-11e6-8056-c86000bd4895', 'Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3f6e8-1e21-11e6-8056-c86000bd4895', 'Warlock', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3fa0f-1e21-11e6-8056-c86000bd4895', 'Wizard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f3fd96-1e21-11e6-8056-c86000bd4895', 'Priest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f400c3-1e21-11e6-8056-c86000bd4895', 'White Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f403f2-1e21-11e6-8056-c86000bd4895', 'Red Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f4071c-1e21-11e6-8056-c86000bd4895', 'Blue Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f40a80-1e21-11e6-8056-c86000bd4895', 'Green Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f40da7-1e21-11e6-8056-c86000bd4895', 'Black Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f410d7-1e21-11e6-8056-c86000bd4895', 'Rogue', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f41415-1e21-11e6-8056-c86000bd4895', 'Death Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f41751-1e21-11e6-8056-c86000bd4895', 'Shaman', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f41a75-1e21-11e6-8056-c86000bd4895', 'Druid', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f41da4-1e21-11e6-8056-c86000bd4895', 'Arcanist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f420c8-1e21-11e6-8056-c86000bd4895', 'Assassin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f423fb-1e21-11e6-8056-c86000bd4895', 'Artificer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f4271f-1e21-11e6-8056-c86000bd4895', 'BattleMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f42a6c-1e21-11e6-8056-c86000bd4895', 'WarMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f42d92-1e21-11e6-8056-c86000bd4895', 'Beastmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f430bf-1e21-11e6-8056-c86000bd4895', 'Berserker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f433e6-1e21-11e6-8056-c86000bd4895', 'Blade Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f43727-1e21-11e6-8056-c86000bd4895', 'Blade Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f43d43-1e21-11e6-8056-c86000bd4895', 'Blood Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f4426a-1e21-11e6-8056-c86000bd4895', 'Chronomancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f44747-1e21-11e6-8056-c86000bd4895', 'Necromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f44c24-1e21-11e6-8056-c86000bd4895', 'Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f450fc-1e21-11e6-8056-c86000bd4895', 'Flame Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f455d9-1e21-11e6-8056-c86000bd4895', 'Demonlord', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f45941-1e21-11e6-8056-c86000bd4895', 'Demon Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f45c76-1e21-11e6-8056-c86000bd4895', 'Dragon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f46353-1e21-11e6-8056-c86000bd4895', 'Lancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f4687a-1e21-11e6-8056-c86000bd4895', 'Gunner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f46d5d-1e21-11e6-8056-c86000bd4895', 'Mesmer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f47203-1e21-11e6-8056-c86000bd4895', 'Pirate', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f47b97-1e21-11e6-8056-c86000bd4895', 'Ranger', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f4814d-1e21-11e6-8056-c86000bd4895', 'Runepriest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f485f0-1e21-11e6-8056-c86000bd4895', 'Sun Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f48b22-1e21-11e6-8056-c86000bd4895', 'Reaper', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('38f490b2-1e21-11e6-8056-c86000bd4895', 'Windwalker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a72c67-1e21-11e6-8056-c86000bd4895', 'Ninja', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a73642-1e21-11e6-8056-c86000bd4895', 'Samurai', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a73cbc-1e21-11e6-8056-c86000bd4895', 'Time Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a744dd-1e21-11e6-8056-c86000bd4895', 'Singer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a74c49-1e21-11e6-8056-c86000bd4895', 'Bard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a75306-1e21-11e6-8056-c86000bd4895', 'Astromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a75a4c-1e21-11e6-8056-c86000bd4895', 'Gladiator', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('a6a76005-1e21-11e6-8056-c86000bd4895', 'Archer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('df43cc2a-1e21-11e6-8056-c86000bd4895', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895');
+
+--
+-- Triggers `classes`
 --
 DROP TRIGGER IF EXISTS `classes_BEFORE_INSERT`;
 DELIMITER //
@@ -201,7 +290,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `equipments`
+-- Table structure for table `equipments`
 --
 
 CREATE TABLE IF NOT EXISTS `equipments` (
@@ -218,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `equipments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `equipments`
+-- Triggers `equipments`
 --
 DROP TRIGGER IF EXISTS `equipments_BEFORE_INSERT`;
 DELIMITER //
@@ -232,7 +321,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `heads`
+-- Table structure for table `heads`
 --
 
 CREATE TABLE IF NOT EXISTS `heads` (
@@ -248,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `heads`
+-- Triggers `heads`
 --
 DROP TRIGGER IF EXISTS `heads_BEFORE_INSERT`;
 DELIMITER //
@@ -262,7 +351,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inventories`
+-- Table structure for table `inventories`
 --
 
 CREATE TABLE IF NOT EXISTS `inventories` (
@@ -275,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `inventories`
+-- Triggers `inventories`
 --
 DROP TRIGGER IF EXISTS `inventories_BEFORE_INSERT`;
 DELIMITER //
@@ -289,7 +378,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `items`
+-- Table structure for table `items`
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
@@ -301,7 +390,14 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `items`
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `name`, `gold_value`, `weight`) VALUES
+('0fe7f238-1e24-11e6-8056-c86000bd4895', 'Goblin ear', 10, 1);
+
+--
+-- Triggers `items`
 --
 DROP TRIGGER IF EXISTS `items_BEFORE_INSERT`;
 DELIMITER //
@@ -315,7 +411,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mobs`
+-- Table structure for table `mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `mobs` (
@@ -331,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `mobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `mobs`
+-- Triggers `mobs`
 --
 DROP TRIGGER IF EXISTS `mobs_BEFORE_INSERT`;
 DELIMITER //
@@ -345,7 +441,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mob_drops`
+-- Table structure for table `mob_drops`
 --
 
 CREATE TABLE IF NOT EXISTS `mob_drops` (
@@ -358,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `mob_drops` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pants`
+-- Table structure for table `pants`
 --
 
 CREATE TABLE IF NOT EXISTS `pants` (
@@ -374,7 +470,7 @@ CREATE TABLE IF NOT EXISTS `pants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `pants`
+-- Triggers `pants`
 --
 DROP TRIGGER IF EXISTS `pants_BEFORE_INSERT`;
 DELIMITER //
@@ -388,7 +484,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `quests`
+-- Table structure for table `quests`
 --
 
 CREATE TABLE IF NOT EXISTS `quests` (
@@ -402,7 +498,7 @@ CREATE TABLE IF NOT EXISTS `quests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `quests`
+-- Triggers `quests`
 --
 DROP TRIGGER IF EXISTS `quests_BEFORE_INSERT`;
 DELIMITER //
@@ -416,7 +512,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `races`
+-- Table structure for table `races`
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
@@ -428,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `races` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `races`
+-- Triggers `races`
 --
 DROP TRIGGER IF EXISTS `races_BEFORE_INSERT`;
 DELIMITER //
@@ -442,7 +538,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `regions`
+-- Table structure for table `regions`
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
@@ -453,7 +549,7 @@ CREATE TABLE IF NOT EXISTS `regions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `regions`
+-- Triggers `regions`
 --
 DROP TRIGGER IF EXISTS `regions_BEFORE_INSERT`;
 DELIMITER //
@@ -467,7 +563,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sold_items`
+-- Table structure for table `sold_items`
 --
 
 CREATE TABLE IF NOT EXISTS `sold_items` (
@@ -480,7 +576,7 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `speels`
+-- Table structure for table `speels`
 --
 
 CREATE TABLE IF NOT EXISTS `speels` (
@@ -497,7 +593,7 @@ CREATE TABLE IF NOT EXISTS `speels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `speels`
+-- Triggers `speels`
 --
 DROP TRIGGER IF EXISTS `speels_BEFORE_INSERT`;
 DELIMITER //
@@ -511,7 +607,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `stats`
+-- Table structure for table `stats`
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
@@ -526,7 +622,14 @@ CREATE TABLE IF NOT EXISTS `stats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `stats`
+-- Dumping data for table `stats`
+--
+
+INSERT INTO `stats` (`id`, `strength`, `intellect`, `constitution`, `dexterity`, `wisdom`, `charisma`) VALUES
+('32b5ab10-1e1f-11e6-8056-c86000bd4895', 0, 0, 0, 0, 0, 0);
+
+--
+-- Triggers `stats`
 --
 DROP TRIGGER IF EXISTS `stats_BEFORE_INSERT`;
 DELIMITER //
@@ -540,7 +643,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -553,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `users`
+-- Triggers `users`
 --
 DROP TRIGGER IF EXISTS `users_BEFORE_INSERT`;
 DELIMITER //
@@ -567,7 +670,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `weapons`
+-- Table structure for table `weapons`
 --
 
 CREATE TABLE IF NOT EXISTS `weapons` (
@@ -583,7 +686,7 @@ CREATE TABLE IF NOT EXISTS `weapons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Déclencheurs `weapons`
+-- Triggers `weapons`
 --
 DROP TRIGGER IF EXISTS `weapons_BEFORE_INSERT`;
 DELIMITER //
@@ -595,38 +698,45 @@ END
 DELIMITER ;
 
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `available_mobs`
+-- Constraints for table `available_mobs`
 --
 ALTER TABLE `available_mobs`
   ADD CONSTRAINT `mob_id_available` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available_mobs` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `available_quests`
+-- Constraints for table `available_quests`
 --
 ALTER TABLE `available_quests`
   ADD CONSTRAINT `quest_id_available` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `boots`
+-- Constraints for table `available_speels`
+--
+ALTER TABLE `available_speels`
+  ADD CONSTRAINT `class_id_available` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `speel_id_available` FOREIGN KEY (`speel_id`) REFERENCES `speels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `boots`
 --
 ALTER TABLE `boots`
   ADD CONSTRAINT `required_stats_id_boots` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_boots` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `buffs`
+-- Constraints for table `buffs`
 --
 ALTER TABLE `buffs`
   ADD CONSTRAINT `stats_id_buffs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `characters`
+-- Constraints for table `characters`
 --
 ALTER TABLE `characters`
   ADD CONSTRAINT ` equipement_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -634,20 +744,20 @@ ALTER TABLE `characters`
   ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `chests`
+-- Constraints for table `chests`
 --
 ALTER TABLE `chests`
   ADD CONSTRAINT `required_stats_id_chest` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_chest` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `classes`
+-- Constraints for table `classes`
 --
 ALTER TABLE `classes`
   ADD CONSTRAINT `stats_id_classes` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `equipments`
+-- Constraints for table `equipments`
 --
 ALTER TABLE `equipments`
   ADD CONSTRAINT `boots_id_equipments` FOREIGN KEY (`boots_id`) REFERENCES `boots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -656,66 +766,66 @@ ALTER TABLE `equipments`
   ADD CONSTRAINT `pants_id_equipments` FOREIGN KEY (`pants_id`) REFERENCES `pants` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `heads`
+-- Constraints for table `heads`
 --
 ALTER TABLE `heads`
   ADD CONSTRAINT `required_stats_id_heads` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_heads` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `inventories`
+-- Constraints for table `inventories`
 --
 ALTER TABLE `inventories`
   ADD CONSTRAINT `character_id_inventories` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `item_id_inventories` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `mobs`
+-- Constraints for table `mobs`
 --
 ALTER TABLE `mobs`
   ADD CONSTRAINT `stats_id_mobs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `mob_drops`
+-- Constraints for table `mob_drops`
 --
 ALTER TABLE `mob_drops`
   ADD CONSTRAINT `item_id_mob_drops` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `mob_id_mob_drops` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `pants`
+-- Constraints for table `pants`
 --
 ALTER TABLE `pants`
   ADD CONSTRAINT `required_stats_id_pants` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_pants` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `races`
+-- Constraints for table `races`
 --
 ALTER TABLE `races`
   ADD CONSTRAINT `stats_id_races` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `sold_items`
+-- Constraints for table `sold_items`
 --
 ALTER TABLE `sold_items`
   ADD CONSTRAINT `item_id_sold` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_sold` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `speels`
+-- Constraints for table `speels`
 --
 ALTER TABLE `speels`
   ADD CONSTRAINT `required_stats_id` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `charater_id_users` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `weapons`
+-- Constraints for table `weapons`
 --
 ALTER TABLE `weapons`
   ADD CONSTRAINT `required_stats_id_weapons` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
