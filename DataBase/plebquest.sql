@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 20 Mai 2016 à 03:26
+-- Généré le :  Ven 20 Mai 2016 à 03:35
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -209,6 +209,75 @@ CREATE TABLE IF NOT EXISTS `classes` (
 INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
 ('12ef3381-1e22-11e6-8056-c86000bd4895', 'Ritualist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('12ef3b31-1e22-11e6-8056-c86000bd4895', 'Guardian', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b715b74-1e2b-11e6-8b61-002564e986a2', 'Ritualist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b715fc3-1e2b-11e6-8b61-002564e986a2', 'Guardian', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7160fb-1e2b-11e6-8b61-002564e986a2', 'Paladin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b716203-1e2b-11e6-8b61-002564e986a2', 'Voodoo Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b71630e-1e2b-11e6-8b61-002564e986a2', 'Monk', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b71646b-1e2b-11e6-8b61-002564e986a2', 'Illusioner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b716543-1e2b-11e6-8b61-002564e986a2', 'Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b71672b-1e2b-11e6-8b61-002564e986a2', 'Mason', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b71680a-1e2b-11e6-8b61-002564e986a2', 'Fighter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b716912-1e2b-11e6-8b61-002564e986a2', 'Thief', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7169f2-1e2b-11e6-8b61-002564e986a2', 'Runemaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b716fce-1e2b-11e6-8b61-002564e986a2', 'Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ad7c7-1e2b-11e6-8b61-002564e986a2', 'Mime', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ad94b-1e2b-11e6-8b61-002564e986a2', 'Lunatic', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ada32-1e2b-11e6-8b61-002564e986a2', 'Birdmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7adb0e-1e2b-11e6-8b61-002564e986a2', 'Vermineer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7adbea-1e2b-11e6-8b61-002564e986a2', 'Black Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7adcca-1e2b-11e6-8b61-002564e986a2', 'Dark Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7adda2-1e2b-11e6-8b61-002564e986a2', 'Onion Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ade77-1e2b-11e6-8b61-002564e986a2', 'Dragoon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7adf6d-1e2b-11e6-8b61-002564e986a2', 'Holy Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae04c-1e2b-11e6-8b61-002564e986a2', 'Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae124-1e2b-11e6-8b61-002564e986a2', 'Warlock', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae1f9-1e2b-11e6-8b61-002564e986a2', 'Wizard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae2ef-1e2b-11e6-8b61-002564e986a2', 'Priest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae3f3-1e2b-11e6-8b61-002564e986a2', 'White Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae4d3-1e2b-11e6-8b61-002564e986a2', 'Red Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae5a7-1e2b-11e6-8b61-002564e986a2', 'Blue Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae67c-1e2b-11e6-8b61-002564e986a2', 'Green Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae754-1e2b-11e6-8b61-002564e986a2', 'Black Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae82d-1e2b-11e6-8b61-002564e986a2', 'Rogue', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae901-1e2b-11e6-8b61-002564e986a2', 'Death Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7ae9d6-1e2b-11e6-8b61-002564e986a2', 'Shaman', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aeab2-1e2b-11e6-8b61-002564e986a2', 'Druid', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aeb9d-1e2b-11e6-8b61-002564e986a2', 'Arcanist', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aec75-1e2b-11e6-8b61-002564e986a2', 'Assassin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aed4d-1e2b-11e6-8b61-002564e986a2', 'Artificer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aee25-1e2b-11e6-8b61-002564e986a2', 'BattleMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aeefa-1e2b-11e6-8b61-002564e986a2', 'WarMage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7aefcf-1e2b-11e6-8b61-002564e986a2', 'Beastmaster', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af0a0-1e2b-11e6-8b61-002564e986a2', 'Berserker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af18e-1e2b-11e6-8b61-002564e986a2', 'Blade Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af263-1e2b-11e6-8b61-002564e986a2', 'Blade Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af337-1e2b-11e6-8b61-002564e986a2', 'Blood Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af40c-1e2b-11e6-8b61-002564e986a2', 'Chronomancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af4e8-1e2b-11e6-8b61-002564e986a2', 'Necromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af5b9-1e2b-11e6-8b61-002564e986a2', 'Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af68e-1e2b-11e6-8b61-002564e986a2', 'Flame Dancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af7a8-1e2b-11e6-8b61-002564e986a2', 'Demonlord', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af88b-1e2b-11e6-8b61-002564e986a2', 'Demon Hunter', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7af960-1e2b-11e6-8b61-002564e986a2', 'Dragon Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afa35-1e2b-11e6-8b61-002564e986a2', 'Lancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afb09-1e2b-11e6-8b61-002564e986a2', 'Gunner', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afbe5-1e2b-11e6-8b61-002564e986a2', 'Mesmer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afcb6-1e2b-11e6-8b61-002564e986a2', 'Pirate', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afdd0-1e2b-11e6-8b61-002564e986a2', 'Ranger', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7afea9-1e2b-11e6-8b61-002564e986a2', 'Runepriest', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7affb8-1e2b-11e6-8b61-002564e986a2', 'Sun Knight', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b06c8-1e2b-11e6-8b61-002564e986a2', 'Reaper', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b07db-1e2b-11e6-8b61-002564e986a2', 'Windwalker', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b08e3-1e2b-11e6-8b61-002564e986a2', 'Ninja', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b09d8-1e2b-11e6-8b61-002564e986a2', 'Samurai', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0afa-1e2b-11e6-8b61-002564e986a2', 'Time Mage', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0bdd-1e2b-11e6-8b61-002564e986a2', 'Singer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0cc0-1e2b-11e6-8b61-002564e986a2', 'Bard', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0da0-1e2b-11e6-8b61-002564e986a2', 'Astromancer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0e87-1e2b-11e6-8b61-002564e986a2', 'Gladiator', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b0f63-1e2b-11e6-8b61-002564e986a2', 'Archer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
+('2b7b103f-1e2b-11e6-8b61-002564e986a2', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f35921-1e21-11e6-8056-c86000bd4895', 'Paladin', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f362c5-1e21-11e6-8056-c86000bd4895', 'Voodoo Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('38f369cb-1e21-11e6-8056-c86000bd4895', 'Monk', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
@@ -396,7 +465,8 @@ CREATE TABLE IF NOT EXISTS `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `gold_value`, `weight`) VALUES
-('0fe7f238-1e24-11e6-8056-c86000bd4895', 'Goblin ear', 10, 1);
+('0fe7f238-1e24-11e6-8056-c86000bd4895', 'Goblin ear', 10, 1),
+('2bb96553-1e2b-11e6-8b61-002564e986a2', 'Goblin ear', 10, 1);
 
 --
 -- Déclencheurs `items`
@@ -521,9 +591,23 @@ CREATE TABLE IF NOT EXISTS `races` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `stats_id_races_idx` (`stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `races`
+--
+
+INSERT INTO `races` (`id`, `name`, `stats_id`, `description`) VALUES
+('0adfd3f2-1e2b-11e6-8b61-002564e986a2', 'Half-Giant', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('0adfdff6-1e2b-11e6-8b61-002564e986a2', 'Dwarf', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('0adfe9b7-1e2b-11e6-8b61-002564e986a2', 'Elf', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('0ae791e5-1e2b-11e6-8b61-002564e986a2', 'Human', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('0ae79bc0-1e2b-11e6-8b61-002564e986a2', 'Orc', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('d3031fbb-1e2a-11e6-8b61-002564e986a2', 'Apeman', '32b5ab10-1e1f-11e6-8056-c86000bd4895', ''),
+('f0250b2a-1e2a-11e6-8b61-002564e986a2', 'Draconian', '32b5ab10-1e1f-11e6-8056-c86000bd4895', '');
 
 --
 -- Déclencheurs `races`
@@ -630,6 +714,7 @@ CREATE TABLE IF NOT EXISTS `stats` (
 --
 
 INSERT INTO `stats` (`id`, `strength`, `intellect`, `constitution`, `dexterity`, `wisdom`, `charisma`) VALUES
+('2c21bb81-1e2b-11e6-8b61-002564e986a2', 0, 0, 0, 0, 0, 0),
 ('32b5ab10-1e1f-11e6-8056-c86000bd4895', 0, 0, 0, 0, 0, 0);
 
 --
