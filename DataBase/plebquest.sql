@@ -276,7 +276,6 @@ INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
 ('a6a75a4c-1e21-11e6-8056-c86000bd4895', 'Gladiator', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('a6a76005-1e21-11e6-8056-c86000bd4895', 'Archer', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895'),
 ('df43cc2a-1e21-11e6-8056-c86000bd4895', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895');
-
 --
 -- Triggers `classes`
 --
