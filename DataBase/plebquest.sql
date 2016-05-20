@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 20, 2016 at 03:13 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Client :  127.0.0.1
+-- Généré le :  Ven 20 Mai 2016 à 03:26
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `plebquest`
+-- Base de données :  `plebquest`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `available_mobs`
+-- Structure de la table `available_mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `available_mobs` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `available_mobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `available_quests`
+-- Structure de la table `available_quests`
 --
 
 CREATE TABLE IF NOT EXISTS `available_quests` (
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `available_quests` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `available_speels`
+-- Structure de la table `available_speels`
 --
 
 CREATE TABLE IF NOT EXISTS `available_speels` (
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `available_speels` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `boots`
+-- Structure de la table `boots`
 --
 
 CREATE TABLE IF NOT EXISTS `boots` (
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `boots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `boots`
+-- Déclencheurs `boots`
 --
 DROP TRIGGER IF EXISTS `boots_BEFORE_INSERT`;
 DELIMITER //
@@ -92,7 +92,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buffs`
+-- Structure de la table `buffs`
 --
 
 CREATE TABLE IF NOT EXISTS `buffs` (
@@ -100,12 +100,13 @@ CREATE TABLE IF NOT EXISTS `buffs` (
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `stats_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `hp_change` int(11) NOT NULL,
+  `mana_change` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `stats_id_buffs_idx` (`stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `buffs`
+-- Déclencheurs `buffs`
 --
 DROP TRIGGER IF EXISTS `buffs_BEFORE_INSERT`;
 DELIMITER //
@@ -119,7 +120,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `characters`
+-- Structure de la table `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -137,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `class_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `race_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `equipment_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `current_mana` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `class_id_idx` (`class_id`),
   KEY `race_id_idx` (`race_id`),
@@ -144,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `characters`
+-- Déclencheurs `characters`
 --
 DROP TRIGGER IF EXISTS `characters_BEFORE_INSERT`;
 DELIMITER //
@@ -158,7 +160,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chests`
+-- Structure de la table `chests`
 --
 
 CREATE TABLE IF NOT EXISTS `chests` (
@@ -174,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `chests`
+-- Déclencheurs `chests`
 --
 DROP TRIGGER IF EXISTS `chests_BEFORE_INSERT`;
 DELIMITER //
@@ -188,7 +190,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classes`
+-- Structure de la table `classes`
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
@@ -201,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `classes`
+-- Contenu de la table `classes`
 --
 
 INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
@@ -276,7 +278,7 @@ INSERT INTO `classes` (`id`, `name`, `description`, `stats_id`) VALUES
 ('df43cc2a-1e21-11e6-8056-c86000bd4895', 'Witch Doctor', 'Placeholder Baker', '32b5ab10-1e1f-11e6-8056-c86000bd4895');
 
 --
--- Triggers `classes`
+-- Déclencheurs `classes`
 --
 DROP TRIGGER IF EXISTS `classes_BEFORE_INSERT`;
 DELIMITER //
@@ -290,7 +292,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equipments`
+-- Structure de la table `equipments`
 --
 
 CREATE TABLE IF NOT EXISTS `equipments` (
@@ -307,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `equipments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `equipments`
+-- Déclencheurs `equipments`
 --
 DROP TRIGGER IF EXISTS `equipments_BEFORE_INSERT`;
 DELIMITER //
@@ -321,7 +323,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `heads`
+-- Structure de la table `heads`
 --
 
 CREATE TABLE IF NOT EXISTS `heads` (
@@ -337,7 +339,7 @@ CREATE TABLE IF NOT EXISTS `heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `heads`
+-- Déclencheurs `heads`
 --
 DROP TRIGGER IF EXISTS `heads_BEFORE_INSERT`;
 DELIMITER //
@@ -351,7 +353,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inventories`
+-- Structure de la table `inventories`
 --
 
 CREATE TABLE IF NOT EXISTS `inventories` (
@@ -364,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `inventories`
+-- Déclencheurs `inventories`
 --
 DROP TRIGGER IF EXISTS `inventories_BEFORE_INSERT`;
 DELIMITER //
@@ -378,7 +380,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Structure de la table `items`
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
@@ -390,14 +392,14 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `items`
+-- Contenu de la table `items`
 --
 
 INSERT INTO `items` (`id`, `name`, `gold_value`, `weight`) VALUES
 ('0fe7f238-1e24-11e6-8056-c86000bd4895', 'Goblin ear', 10, 1);
 
 --
--- Triggers `items`
+-- Déclencheurs `items`
 --
 DROP TRIGGER IF EXISTS `items_BEFORE_INSERT`;
 DELIMITER //
@@ -411,7 +413,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mobs`
+-- Structure de la table `mobs`
 --
 
 CREATE TABLE IF NOT EXISTS `mobs` (
@@ -427,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `mobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `mobs`
+-- Déclencheurs `mobs`
 --
 DROP TRIGGER IF EXISTS `mobs_BEFORE_INSERT`;
 DELIMITER //
@@ -441,7 +443,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mob_drops`
+-- Structure de la table `mob_drops`
 --
 
 CREATE TABLE IF NOT EXISTS `mob_drops` (
@@ -454,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `mob_drops` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pants`
+-- Structure de la table `pants`
 --
 
 CREATE TABLE IF NOT EXISTS `pants` (
@@ -470,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `pants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `pants`
+-- Déclencheurs `pants`
 --
 DROP TRIGGER IF EXISTS `pants_BEFORE_INSERT`;
 DELIMITER //
@@ -484,7 +486,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quests`
+-- Structure de la table `quests`
 --
 
 CREATE TABLE IF NOT EXISTS `quests` (
@@ -498,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `quests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `quests`
+-- Déclencheurs `quests`
 --
 DROP TRIGGER IF EXISTS `quests_BEFORE_INSERT`;
 DELIMITER //
@@ -512,7 +514,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `races`
+-- Structure de la table `races`
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
@@ -524,7 +526,7 @@ CREATE TABLE IF NOT EXISTS `races` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `races`
+-- Déclencheurs `races`
 --
 DROP TRIGGER IF EXISTS `races_BEFORE_INSERT`;
 DELIMITER //
@@ -538,7 +540,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regions`
+-- Structure de la table `regions`
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
@@ -549,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `regions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `regions`
+-- Déclencheurs `regions`
 --
 DROP TRIGGER IF EXISTS `regions_BEFORE_INSERT`;
 DELIMITER //
@@ -563,7 +565,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sold_items`
+-- Structure de la table `sold_items`
 --
 
 CREATE TABLE IF NOT EXISTS `sold_items` (
@@ -576,7 +578,7 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `speels`
+-- Structure de la table `speels`
 --
 
 CREATE TABLE IF NOT EXISTS `speels` (
@@ -588,12 +590,14 @@ CREATE TABLE IF NOT EXISTS `speels` (
   `damage` int(11) NOT NULL,
   `buff_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `debuff_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mana_usage` int(11) NOT NULL,
+  `mana_drain` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `required_stats_id_idx` (`required_stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `speels`
+-- Déclencheurs `speels`
 --
 DROP TRIGGER IF EXISTS `speels_BEFORE_INSERT`;
 DELIMITER //
@@ -607,7 +611,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stats`
+-- Structure de la table `stats`
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
@@ -622,14 +626,14 @@ CREATE TABLE IF NOT EXISTS `stats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `stats`
+-- Contenu de la table `stats`
 --
 
 INSERT INTO `stats` (`id`, `strength`, `intellect`, `constitution`, `dexterity`, `wisdom`, `charisma`) VALUES
 ('32b5ab10-1e1f-11e6-8056-c86000bd4895', 0, 0, 0, 0, 0, 0);
 
 --
--- Triggers `stats`
+-- Déclencheurs `stats`
 --
 DROP TRIGGER IF EXISTS `stats_BEFORE_INSERT`;
 DELIMITER //
@@ -643,7 +647,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -656,7 +660,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `users`
+-- Déclencheurs `users`
 --
 DROP TRIGGER IF EXISTS `users_BEFORE_INSERT`;
 DELIMITER //
@@ -670,7 +674,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weapons`
+-- Structure de la table `weapons`
 --
 
 CREATE TABLE IF NOT EXISTS `weapons` (
@@ -686,7 +690,7 @@ CREATE TABLE IF NOT EXISTS `weapons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Triggers `weapons`
+-- Déclencheurs `weapons`
 --
 DROP TRIGGER IF EXISTS `weapons_BEFORE_INSERT`;
 DELIMITER //
@@ -698,45 +702,45 @@ END
 DELIMITER ;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `available_mobs`
+-- Contraintes pour la table `available_mobs`
 --
 ALTER TABLE `available_mobs`
   ADD CONSTRAINT `mob_id_available` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available_mobs` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `available_quests`
+-- Contraintes pour la table `available_quests`
 --
 ALTER TABLE `available_quests`
   ADD CONSTRAINT `quest_id_available` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_available` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `available_speels`
+-- Contraintes pour la table `available_speels`
 --
 ALTER TABLE `available_speels`
   ADD CONSTRAINT `class_id_available` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `speel_id_available` FOREIGN KEY (`speel_id`) REFERENCES `speels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `boots`
+-- Contraintes pour la table `boots`
 --
 ALTER TABLE `boots`
   ADD CONSTRAINT `required_stats_id_boots` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_boots` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `buffs`
+-- Contraintes pour la table `buffs`
 --
 ALTER TABLE `buffs`
   ADD CONSTRAINT `stats_id_buffs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `characters`
+-- Contraintes pour la table `characters`
 --
 ALTER TABLE `characters`
   ADD CONSTRAINT ` equipement_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -744,20 +748,20 @@ ALTER TABLE `characters`
   ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `chests`
+-- Contraintes pour la table `chests`
 --
 ALTER TABLE `chests`
   ADD CONSTRAINT `required_stats_id_chest` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_chest` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `classes`
+-- Contraintes pour la table `classes`
 --
 ALTER TABLE `classes`
   ADD CONSTRAINT `stats_id_classes` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `equipments`
+-- Contraintes pour la table `equipments`
 --
 ALTER TABLE `equipments`
   ADD CONSTRAINT `boots_id_equipments` FOREIGN KEY (`boots_id`) REFERENCES `boots` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -766,66 +770,66 @@ ALTER TABLE `equipments`
   ADD CONSTRAINT `pants_id_equipments` FOREIGN KEY (`pants_id`) REFERENCES `pants` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `heads`
+-- Contraintes pour la table `heads`
 --
 ALTER TABLE `heads`
   ADD CONSTRAINT `required_stats_id_heads` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_heads` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `inventories`
+-- Contraintes pour la table `inventories`
 --
 ALTER TABLE `inventories`
   ADD CONSTRAINT `character_id_inventories` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `item_id_inventories` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `mobs`
+-- Contraintes pour la table `mobs`
 --
 ALTER TABLE `mobs`
   ADD CONSTRAINT `stats_id_mobs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `mob_drops`
+-- Contraintes pour la table `mob_drops`
 --
 ALTER TABLE `mob_drops`
   ADD CONSTRAINT `item_id_mob_drops` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `mob_id_mob_drops` FOREIGN KEY (`mob_id`) REFERENCES `mobs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `pants`
+-- Contraintes pour la table `pants`
 --
 ALTER TABLE `pants`
   ADD CONSTRAINT `required_stats_id_pants` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `stats_id_pants` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `races`
+-- Contraintes pour la table `races`
 --
 ALTER TABLE `races`
   ADD CONSTRAINT `stats_id_races` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `sold_items`
+-- Contraintes pour la table `sold_items`
 --
 ALTER TABLE `sold_items`
   ADD CONSTRAINT `item_id_sold` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `region_id_sold` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `speels`
+-- Contraintes pour la table `speels`
 --
 ALTER TABLE `speels`
   ADD CONSTRAINT `required_stats_id` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `users`
+-- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `charater_id_users` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `weapons`
+-- Contraintes pour la table `weapons`
 --
 ALTER TABLE `weapons`
   ADD CONSTRAINT `required_stats_id_weapons` FOREIGN KEY (`required_stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
