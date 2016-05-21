@@ -152,39 +152,6 @@ namespace PlebQuest
             return classes.ToArray();
         }
 
-        public Race[] GetRacesOffline()
-        {
-            List<Race> races = new List<Race>();
-            try
-            {
-                MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
-                connString.Server = "localhost";
-                connString.UserID = "root";
-                //connString.Password = "123";
-                connString.Database = "plebquest";
-
-                using (MySqlConnection conn = new MySqlConnection(connString.ToString()))
-                using (MySqlCommand cmd = conn.CreateCommand())
-                {    //watch out for this SQL injection vulnerability below
-                    cmd.CommandText = "SELECT * FROM `races` ORDER BY name ASC";
-                    conn.Open();
-                    MySqlDataReader reader;
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Debug.WriteLine(reader.GetString("name"));
-                        races.Add(Race.Create(reader));
-                    }
-                    reader.Close();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogService.SilentLog(ex);
-            }
-
-            return races.ToArray();
-        }
+        
     }
 }
