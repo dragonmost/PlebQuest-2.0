@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PlebServer;
@@ -12,7 +10,6 @@ namespace PlebQuest
 {
     public partial class Form1 : Form
     {
-        Client client;
         NameGenerator nameGenerator;
 
         Stats stats;
@@ -67,9 +64,7 @@ namespace PlebQuest
                 return;
             }
 
-            client = new Client("localhost");
-
-            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });
+            Client.Instance.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });
         }
 
         private void butPlay_Click(object sender, EventArgs e)
@@ -102,10 +97,6 @@ namespace PlebQuest
             }
 
             this.txtCreationTotalStats.Text = total.ToString();
-
-            client = new Client("localhost");
-            Pleb pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
-            client.SendPleb(pleb);
         }
 
         private Queue<Keys> keySequence = new Queue<Keys>();
@@ -157,11 +148,8 @@ namespace PlebQuest
         {
             Task.Run(() =>
             {
-                if (this.client == null)
-                    this.client = new Client("localhost");
-
-                this.races = this.client.GetRacesOffline();
-                this.classes = this.client.GetClassesOffline();
+                //this.races = Client.Instance.GetRacesOffline();
+                this.classes = Client.Instance.GetClassesOffline();
 
                 this.Invoke(new MethodInvoker(() => 
                 {

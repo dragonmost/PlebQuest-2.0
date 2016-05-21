@@ -17,11 +17,13 @@ namespace PlebQuest
 {
     class Client
     {
+        private static Client instance;
+
         string IP;
         TcpClient client;           // le client connecter au serveur
         StreamWriter Writer;        // envoi les informations au serveur
 
-        public Client(string IP)
+        private Client(string IP)
         {
             this.IP = IP;
             try
@@ -37,7 +39,17 @@ namespace PlebQuest
                 Debug.Write(ex);
                 LogService.SilentLog(ex);
             }
+        }
 
+        public static Client Instance
+        {
+            get
+            {
+                if (instance == null)
+                    return new Client("localhost");
+
+                return instance;
+            }
         }
 
         public void SendData(string data)
