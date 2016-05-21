@@ -728,7 +728,7 @@ DELIMITER //
 CREATE TRIGGER `users_BEFORE_INSERT` BEFORE INSERT ON `users`
  FOR EACH ROW BEGIN
  if CHAR_LENGTH(NEW.username) > 5 then
-		SIGNAL SQLSTATE 'your error message';
+		SIGNAL SQLSTATE '45000';
   end if;
 	set NEW.id = UUID();
 END
