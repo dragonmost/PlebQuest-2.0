@@ -70,26 +70,8 @@ namespace PlebServer
 
         private void PlayerConnection(GameClient gameClient, string[] data)
         {
-            try
-            {
-                MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
-                connString.Server = "localhost";
-                connString.UserID = "root";
-                //connString.Password = "123";
-                connString.Database = "plebquest";
-
-                using (MySqlConnection conn = new MySqlConnection(connString.ToString()))
-                using (MySqlCommand cmd = conn.CreateCommand())
-                {    //watch out for this SQL injection vulnerability below
-                    cmd.CommandText = "INSERT INTO items (name, gold_value, weight) VALUES('Goblin ear', 10, 1)";
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch(Exception ex)
-            { }
-
-
+            DataBase.DbExecute("INSERT INTO items(name, gold_value, weight) VALUES('Goblin ear', 10, 1)");
+            
             string dataToSend = string.Empty;
             //DB request here
             if (data[1] == "dragonmost")
