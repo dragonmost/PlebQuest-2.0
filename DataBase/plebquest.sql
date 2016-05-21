@@ -707,7 +707,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `character_id` varchar(45) COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `charater_id_users_idx` (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
