@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlCharacterCreation = new System.Windows.Forms.Panel();
+            this.butCreationMale = new System.Windows.Forms.RadioButton();
+            this.butCreationFemale = new System.Windows.Forms.RadioButton();
             this.butCancelCreation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCreationTotalStats = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.lstCreationRace = new System.Windows.Forms.ListBox();
             this.butCreationStart = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.butCreationFemale = new System.Windows.Forms.RadioButton();
-            this.butCreationMale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCharacterCreation.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -162,6 +162,30 @@
             this.pnlCharacterCreation.Size = new System.Drawing.Size(624, 442);
             this.pnlCharacterCreation.TabIndex = 11;
             this.pnlCharacterCreation.Visible = false;
+            // 
+            // butCreationMale
+            // 
+            this.butCreationMale.Appearance = System.Windows.Forms.Appearance.Button;
+            this.butCreationMale.AutoSize = true;
+            this.butCreationMale.Checked = true;
+            this.butCreationMale.Location = new System.Drawing.Point(295, 4);
+            this.butCreationMale.Name = "butCreationMale";
+            this.butCreationMale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationMale.TabIndex = 9;
+            this.butCreationMale.TabStop = true;
+            this.butCreationMale.Text = "\t♂";
+            this.butCreationMale.UseVisualStyleBackColor = true;
+            // 
+            // butCreationFemale
+            // 
+            this.butCreationFemale.Appearance = System.Windows.Forms.Appearance.Button;
+            this.butCreationFemale.AutoSize = true;
+            this.butCreationFemale.Location = new System.Drawing.Point(330, 4);
+            this.butCreationFemale.Name = "butCreationFemale";
+            this.butCreationFemale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationFemale.TabIndex = 8;
+            this.butCreationFemale.Text = "♀";
+            this.butCreationFemale.UseVisualStyleBackColor = true;
             // 
             // butCancelCreation
             // 
@@ -292,30 +316,6 @@
             this.butCreationStart.Text = "Start";
             this.butCreationStart.UseVisualStyleBackColor = true;
             this.butCreationStart.Click += new System.EventHandler(this.butStart_Click);
-            // 
-            // butCreationFemale
-            // 
-            this.butCreationFemale.Appearance = System.Windows.Forms.Appearance.Button;
-            this.butCreationFemale.AutoSize = true;
-            this.butCreationFemale.Location = new System.Drawing.Point(330, 4);
-            this.butCreationFemale.Name = "butCreationFemale";
-            this.butCreationFemale.Size = new System.Drawing.Size(29, 23);
-            this.butCreationFemale.TabIndex = 8;
-            this.butCreationFemale.Text = "♀";
-            this.butCreationFemale.UseVisualStyleBackColor = true;
-            // 
-            // butCreationMale
-            // 
-            this.butCreationMale.Appearance = System.Windows.Forms.Appearance.Button;
-            this.butCreationMale.AutoSize = true;
-            this.butCreationMale.Checked = true;
-            this.butCreationMale.Location = new System.Drawing.Point(295, 4);
-            this.butCreationMale.Name = "butCreationMale";
-            this.butCreationMale.Size = new System.Drawing.Size(29, 23);
-            this.butCreationMale.TabIndex = 9;
-            this.butCreationMale.TabStop = true;
-            this.butCreationMale.Text = "\t♂";
-            this.butCreationMale.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

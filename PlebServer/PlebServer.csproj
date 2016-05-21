@@ -101,8 +101,12 @@
     <Compile Include="..\PlebQuest\Models\Stats.cs">
       <Link>Models\Stats.cs</Link>
     </Compile>
+    <Compile Include="..\PlebQuest\Models\User.cs">
+      <Link>Models\User.cs</Link>
+    </Compile>
     <Compile Include="Commands.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="GameClient.cs" />
     <Compile Include="LogService.cs" />
     <Compile Include="Program.cs" />

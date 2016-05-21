@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PlebServer;
 
@@ -17,6 +18,8 @@ namespace PlebQuest
         Stats stats;
         Pleb pleb;
 
+        Race[] races;
+        Classe[] classes;
 
         public Form1()
         {
@@ -26,8 +29,7 @@ namespace PlebQuest
 
         private void butNew_Click(object sender, EventArgs e)
         {
-            pnlCharacterCreation.Visible = true;
-            this.txtCreationName.Text = nameGenerator.BuildName();
+            this.LoadCreationScreen();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -48,17 +50,17 @@ namespace PlebQuest
                 total += (int)property.GetValue(stats);
             }
 
-            this.txtCreationTotalStats.Text = total.ToString();            
+            this.txtCreationTotalStats.Text = total.ToString();
         }
 
         private void butStart_Click(object sender, EventArgs e)
         {
-            pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);            
+            pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
         }
 
         private void butJoin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.txtMenuUsername.Text) 
+            if (string.IsNullOrWhiteSpace(this.txtMenuUsername.Text)
                 || string.IsNullOrWhiteSpace(this.txtMenuPassword.Text))
             {
                 MessageBox.Show("Username and Password can't be empty");
@@ -67,7 +69,7 @@ namespace PlebQuest
 
             client = new Client("localhost");
 
-            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });            
+            client.SendData(new string[] { Commands.PlayerConnection, txtMenuUsername.Text, txtMenuPassword.Text });
         }
 
         private void butPlay_Click(object sender, EventArgs e)
@@ -77,8 +79,8 @@ namespace PlebQuest
 
         private void butCreate_Click(object sender, EventArgs e)
         {
-            this.pnlCharacterCreation.Visible = true;
-            this.txtCreationName.Text = nameGenerator.BuildName();
+            frmAccountCreation frm = new frmAccountCreation();
+            frm.ShowDialog();
         }
 
         private void butCancelCreation_Click(object sender, EventArgs e)
@@ -104,8 +106,6 @@ namespace PlebQuest
             client = new Client("localhost");
             Pleb pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
             client.SendPleb(pleb);
-
-            
         }
 
         private Queue<Keys> keySequence = new Queue<Keys>();
@@ -118,7 +118,7 @@ namespace PlebQuest
             if (keySequence.Count > Cheat.Konami.Count)
                 keySequence.Dequeue();
 
-            if(keySequence.SequenceEqual(Cheat.Konami))
+            if (keySequence.SequenceEqual(Cheat.Konami))
             {
                 stats = new Stats();
                 stats.Perfect();
@@ -133,8 +133,8 @@ namespace PlebQuest
                 }
                 this.txtCreationTotalStats.Text = total.ToString();
                 this.cheated = true;
-            }    
-            
+            }
+
         }
 
         private void txtCreationTotalStats_Leave(object sender, EventArgs e)
@@ -151,6 +151,30 @@ namespace PlebQuest
         {
             this.butCreationStart.Enabled = string.IsNullOrWhiteSpace(this.txtCreationName.Text)
                 && this.lstCreationRace.SelectedIndex != -1 && this.lstCreationClass.SelectedIndex != -1;
+        }
+
+        private void LoadCreationScreen()
+        {
+            Task.Run(() =>
+            {
+                if (this.client == null)
+                    this.client = new Client("localhost");
+
+                this.races = this.client.GetRacesOffline();
+                this.classes = this.client.GetClassesOffline();
+
+                this.Invoke(new MethodInvoker(() => 
+                {
+                    if (this.races != null)
+                        this.lstCreationRace.Items.AddRange(this.races.Select(x => x.Name).ToArray());
+
+                    if (this.classes != null)
+                        this.lstCreationClass.Items.AddRange(this.classes.Select(x => x.Name).ToArray());
+                }));                
+            });
+
+            this.pnlCharacterCreation.Visible = true;
+            this.txtCreationName.Text = nameGenerator.BuildName();
         }
     }
 }
