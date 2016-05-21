@@ -129,41 +129,9 @@ namespace PlebQuest
             return DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + username + "'" + "," + "'" + password + "'" + ")");
         }
 
-        public Classe[] GetClassesOffline()
+        public T[] GetDBOject<T>(string tableName)
         {
-            List<Classe> classes = new List<Classe>();
-            try
-            {              
-                MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
-                connString.Server = "localhost";
-                connString.UserID = "root";
-                //connString.Password = "123";
-                connString.Database = "plebquest";
-
-                using (MySqlConnection conn = new MySqlConnection(connString.ToString()))
-                using (MySqlCommand cmd = conn.CreateCommand())
-                {    //watch out for this SQL injection vulnerability below
-                    cmd.CommandText = "SELECT * FROM `classes` ORDER BY name ASC";
-                    conn.Open();
-                    MySqlDataReader reader;
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Debug.WriteLine(reader.GetString("name"));
-                        classes.Add(Classe.Create(reader));
-                    }
-                    reader.Close();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogService.SilentLog(ex);
-            }
-
-            return classes.ToArray();
-        }
-
-        
+            return DataBase.GetDBObject<T>(tableName);
+        }  
     }
 }

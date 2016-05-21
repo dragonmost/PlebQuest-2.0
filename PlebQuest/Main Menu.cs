@@ -148,8 +148,8 @@ namespace PlebQuest
         {
             Task.Run(() =>
             {
-                //this.races = Client.Instance.GetRacesOffline();
-                this.classes = Client.Instance.GetClassesOffline();
+                this.races = Client.Instance.GetDBOject<Race>("races");
+                this.classes = Client.Instance.GetDBOject<Classe>("Classes");
 
                 this.Invoke(new MethodInvoker(() => 
                 {
