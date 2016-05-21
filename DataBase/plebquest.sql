@@ -637,6 +637,14 @@ CREATE TABLE IF NOT EXISTS `speels` (
   KEY `required_stats_id_idx` (`required_stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+--
+-- Dumping data for table speels
+--
+
+INSERT INTO speels (id, name, required_stats_id, required_lvl, heal, damage, buff_id, debuff_id, mana_usage, mana_drain) VALUES
+('a103bd60-1eef-11e6-8056-c86000bd4895', 'Right in the Speels', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 1, 1, 0, NULL, NULL, 1, 0);
+
 --
 -- Triggers `speels`
 --
@@ -719,6 +727,9 @@ DROP TRIGGER IF EXISTS `users_BEFORE_INSERT`;
 DELIMITER //
 CREATE TRIGGER `users_BEFORE_INSERT` BEFORE INSERT ON `users`
  FOR EACH ROW BEGIN
+ if CHAR_LENGTH(NEW.username) > 5 then
+		SIGNAL SQLSTATE 'your error message';
+  end if;
 	set NEW.id = UUID();
 END
 //
