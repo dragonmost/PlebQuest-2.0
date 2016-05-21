@@ -705,7 +705,7 @@ CREATE TABLE IF NOT EXISTS `subclasses` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(150) COLLATE utf8_unicode_ci UNIQUE NOT NULL,
   `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `character_id` varchar(45) COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
