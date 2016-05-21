@@ -114,7 +114,7 @@ namespace PlebQuest
 
         public bool CreateAccount(string username, string password)
         {
-            return DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + username + password + ")");
+            return DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + username + "'" + "," + "'" + password + "'" + ")");
         }
 
         public Classe[] GetClassesOffline()

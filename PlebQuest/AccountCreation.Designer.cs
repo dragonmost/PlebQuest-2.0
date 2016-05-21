@@ -29,66 +29,66 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccountCreation));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.Label();
-            this.txtRetype = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtRetype = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblRetype = new System.Windows.Forms.Label();
             this.butCreate = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(90, 149);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(90, 175);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(90, 201);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.UseSystemPasswordChar = true;
-            // 
             // txtUsername
             // 
-            this.txtUsername.AutoSize = true;
-            this.txtUsername.Location = new System.Drawing.Point(22, 149);
+            this.txtUsername.Location = new System.Drawing.Point(90, 149);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(55, 13);
-            this.txtUsername.TabIndex = 3;
-            this.txtUsername.Text = "Username";
+            this.txtUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.AutoSize = true;
-            this.txtPassword.Location = new System.Drawing.Point(22, 175);
+            this.txtPassword.Location = new System.Drawing.Point(90, 175);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(53, 13);
-            this.txtPassword.TabIndex = 4;
-            this.txtPassword.Text = "Password";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtRetype
             // 
-            this.txtRetype.AutoSize = true;
-            this.txtRetype.Location = new System.Drawing.Point(22, 201);
+            this.txtRetype.Location = new System.Drawing.Point(90, 201);
             this.txtRetype.Name = "txtRetype";
-            this.txtRetype.Size = new System.Drawing.Size(48, 13);
-            this.txtRetype.TabIndex = 5;
-            this.txtRetype.Text = "Re-Type";
+            this.txtRetype.Size = new System.Drawing.Size(100, 20);
+            this.txtRetype.TabIndex = 2;
+            this.txtRetype.UseSystemPasswordChar = true;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(22, 149);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(55, 13);
+            this.lblUsername.TabIndex = 3;
+            this.lblUsername.Text = "Username";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(22, 175);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.TabIndex = 4;
+            this.lblPassword.Text = "Password";
+            // 
+            // lblRetype
+            // 
+            this.lblRetype.AutoSize = true;
+            this.lblRetype.Location = new System.Drawing.Point(22, 201);
+            this.lblRetype.Name = "lblRetype";
+            this.lblRetype.Size = new System.Drawing.Size(48, 13);
+            this.lblRetype.TabIndex = 5;
+            this.lblRetype.Text = "Re-Type";
             // 
             // butCreate
             // 
@@ -117,12 +117,12 @@
             this.ClientSize = new System.Drawing.Size(217, 262);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.butCreate);
+            this.Controls.Add(this.lblRetype);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtRetype);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Name = "frmAccountCreation";
             this.Text = "Create Account";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -133,12 +133,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label txtUsername;
-        private System.Windows.Forms.Label txtPassword;
-        private System.Windows.Forms.Label txtRetype;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtRetype;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblRetype;
         private System.Windows.Forms.Button butCreate;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
