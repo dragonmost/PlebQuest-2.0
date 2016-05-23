@@ -287,6 +287,7 @@
             this.txtCreationName.Size = new System.Drawing.Size(100, 20);
             this.txtCreationName.TabIndex = 3;
             this.txtCreationName.TextChanged += new System.EventHandler(this.SetControlState);
+            this.txtCreationName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreationName_KeyPress);
             // 
             // label3
             // 

@@ -73,7 +73,7 @@ namespace PlebServer
 
         }
 
-        public static T[] GetDBObject<T>(string tableName)
+        public static T[] GetDBObjects<T>(string tableName)
         {
             List<T> objects = new List<T>();
             try
@@ -101,6 +101,31 @@ namespace PlebServer
             }
 
             return objects.ToArray();
+        }
+
+        public static Pleb GetPleb(string username, string password)
+        {
+            try
+            {
+                MySqlDataReader reader = DbRead("SELECT * FROM `characters` " + 
+                    "WHERE name='" + username + "' AND '" + password + "'");
+
+                Pleb pleb = (Pleb)Activator.CreateInstance(typeof(Pleb));
+                return pleb;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                LogService.SilentLog(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return null;
         }
     }
 }

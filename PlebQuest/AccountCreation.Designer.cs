@@ -46,6 +46,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // txtPassword
             // 
@@ -54,6 +55,7 @@
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // txtRetype
             // 
@@ -62,6 +64,7 @@
             this.txtRetype.Size = new System.Drawing.Size(100, 20);
             this.txtRetype.TabIndex = 2;
             this.txtRetype.UseSystemPasswordChar = true;
+            this.txtRetype.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // lblUsername
             // 

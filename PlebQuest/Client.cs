@@ -52,7 +52,7 @@ namespace PlebQuest
             }
         }
 
-        public void SendData(string data)
+        private void SendData(string data)
         {
             Writer.WriteLineAsync(data);
         }
@@ -63,6 +63,7 @@ namespace PlebQuest
 
             foreach (string str in data)
             {
+                str.Replace(';', ',');  //temp security
                 dataToSend += str + ";";
             }
 
@@ -129,9 +130,9 @@ namespace PlebQuest
             return DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + username + "'" + "," + "'" + password + "'" + ")");
         }
 
-        public T[] GetDBOject<T>(string tableName)
+        public T[] GetDBOjects<T>(string tableName)
         {
-            return DataBase.GetDBObject<T>(tableName);
+            return DataBase.GetDBObjects<T>(tableName);
         }  
     }
 }

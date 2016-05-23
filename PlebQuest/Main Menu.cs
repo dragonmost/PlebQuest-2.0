@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PlebServer;
@@ -140,7 +141,7 @@ namespace PlebQuest
 
         private void SetControlState(object sender, EventArgs e)
         {
-            this.butCreationStart.Enabled = string.IsNullOrWhiteSpace(this.txtCreationName.Text)
+            this.butCreationStart.Enabled = !string.IsNullOrWhiteSpace(this.txtCreationName.Text)
                 && this.lstCreationRace.SelectedIndex != -1 && this.lstCreationClass.SelectedIndex != -1;
         }
 
@@ -148,8 +149,8 @@ namespace PlebQuest
         {
             Task.Run(() =>
             {
-                this.races = Client.Instance.GetDBOject<Race>("races");
-                this.classes = Client.Instance.GetDBOject<Classe>("Classes");
+                this.races = Client.Instance.GetDBOjects<Race>("races");
+                this.classes = Client.Instance.GetDBOjects<Classe>("Classes");
 
                 this.Invoke(new MethodInvoker(() => 
                 {
@@ -163,6 +164,16 @@ namespace PlebQuest
 
             this.pnlCharacterCreation.Visible = true;
             this.txtCreationName.Text = nameGenerator.BuildName();
+        }
+
+        private void txtCreationName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //shortcuts dont work
+            var regex = new Regex(@"[^a-zA-Z0-9-\s\b]");
+            if (regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
