@@ -39,8 +39,7 @@ namespace PlebQuest
                 return;
             }
 
-            Client client = new Client("localhost");
-            if(!client.CreateAccount(this.txtUsername.Text, this.txtPassword.Text))
+            if(!Client.Instance.CreateAccount(this.txtUsername.Text, this.txtPassword.Text))
             {
                 MessageBox.Show("User already exists!");
                 return;

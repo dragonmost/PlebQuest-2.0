@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace PlebServer
 {
@@ -17,6 +18,7 @@ namespace PlebServer
         const string DATABASE = "plebquest";
         const string PASSWORD = "root";
 
+        private static MySqlConnection conn;
 
         static MySqlConnection DbConnect()
         {
@@ -53,15 +55,15 @@ namespace PlebServer
         {
             try
             {
-                using (MySqlConnection conn = DbConnect())
-                using (MySqlCommand cmd = conn.CreateCommand())
-                {    //watch out for this SQL injection vulnerability below
+                conn = DbConnect();
+                MySqlCommand cmd = conn.CreateCommand();
+                    //watch out for this SQL injection vulnerability below
                     cmd.CommandText = query;
                     conn.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
-                    conn.Close();
+                    //conn.Close();
                     return reader;
-                }
+                
             }
             catch (Exception ex)
             {
@@ -71,30 +73,34 @@ namespace PlebServer
 
         }
 
-
-
-        public Race[] GetRacesOffline()
+        public static T[] GetDBObject<T>(string tableName)
         {
-            List<Race> races = new List<Race>();
+            List<T> objects = new List<T>();
             try
             {
-                MySqlDataReader reader = DbRead("SELECT * FROM `races` ORDER BY name ASC");
+                MySqlDataReader reader = DbRead("SELECT * FROM `" + tableName + "` ORDER BY name ASC");
                 while (reader.Read())
                 {
                     Debug.WriteLine(reader.GetString("name"));
-                    races.Add(Race.Create(reader));
+
+                    MethodInfo method = typeof(T).GetMethod("Create");
+                    object obj = method.Invoke(null, new object[]{ reader});
+
+                    objects.Add((T)obj);
                 }
                 reader.Close();
-
-
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex);
                 LogService.SilentLog(ex);
             }
+            finally
+            {
+                conn.Close();
+            }
 
-            return races.ToArray();
+            return objects.ToArray();
         }
-
     }
 }
