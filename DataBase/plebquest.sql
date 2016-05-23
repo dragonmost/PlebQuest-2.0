@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 23 Mai 2016 à 19:01
+-- Généré le :  Lun 23 Mai 2016 à 19:11
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -139,10 +139,12 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `race_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `equipment_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `current_mana` int(10) unsigned NOT NULL,
+  `region_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `class_id_idx` (`class_id`),
   KEY `race_id_idx` (`race_id`),
-  KEY ` equipement_id_idx` (`equipment_id`)
+  KEY ` equipement_id_idx` (`equipment_id`),
+  KEY `region_id_character_idx` (`region_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -821,6 +823,7 @@ ALTER TABLE `buffs`
 -- Contraintes pour la table `characters`
 --
 ALTER TABLE `characters`
+  ADD CONSTRAINT `region_id_character` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT ` equipement_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `class_id` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
