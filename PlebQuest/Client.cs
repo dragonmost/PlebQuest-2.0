@@ -23,6 +23,7 @@ namespace PlebQuest
         TcpClient client;           // le client connecter au serveur
         StreamWriter Writer;        // envoi les informations au serveur
 
+
         private Client(string IP)
         {
             this.IP = IP;
@@ -46,7 +47,7 @@ namespace PlebQuest
             get
             {
                 if (instance == null)
-                    return new Client("localhost");
+                    return new Client(Config.IP);
 
                 return instance;
             }
@@ -95,14 +96,20 @@ namespace PlebQuest
             }
         }
 
+        public void SendDataWithResponse(string[] data)
+        {
+            this.SendData(data);
+        }
+
         private void ProcessData(string data)
         {
             string[] parsedData = data.Split(';');
 
             switch (parsedData[0])
             {
-                case Commands.ConnectionAccepted:
 
+                case Commands.ConnectionAccepted:
+                    Pleb pleb = JsonConvert.DeserializeObject<Pleb>(parsedData[1]);
                     break;
                 case Commands.ConnectionRefused:
                     this.ConnectionRefused();
@@ -113,21 +120,6 @@ namespace PlebQuest
         private void ConnectionRefused()
         {
             MessageBox.Show("Invalid Username and Password");
-        }
-
-        private String sha256_hash(String value)
-        {
-            using (SHA256 hash = SHA256Managed.Create())
-            {
-                return String.Join("", hash
-                  .ComputeHash(Encoding.UTF8.GetBytes(value))
-                  .Select(item => item.ToString("x2")));
-            }
-        }
-
-        public bool CreateAccount(string username, string password)
-        {
-            return DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + username + "'" + "," + "'" + password + "'" + ")");
         }
 
         public T[] GetDBOjects<T>(string tableName)

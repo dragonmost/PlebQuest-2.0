@@ -70,20 +70,22 @@ namespace PlebServer
 
         private void PlayerConnection(GameClient gameClient, string[] data)
         {
-            DataBase.DbExecute("INSERT INTO items(name, gold_value, weight) VALUES('Goblin ear', 10, 1)");
+            //DataBase.DbExecute("INSERT INTO items(name, gold_value, weight) VALUES('Goblin ear', 10, 1)");
+            Pleb pleb = DataBase.GetPleb(data[1], data[2]);
             
             string dataToSend = string.Empty;
             //DB request here
-            if (data[1] == "dragonmost")
+            if (pleb != null)
             {
                 Console.WriteLine(data[1] + " as joined the Quest!");
-                dataToSend = Commands.ConnectionAccepted + ";";//send character
+                string plebData = JsonConvert.SerializeObject(pleb);
+                dataToSend = Commands.ConnectionAccepted + ";" + plebData;//send character
             }
             else
             {
                 this.lstClient.Remove(gameClient);
                 Console.WriteLine(gameClient.RemoteEndPoint.ToString() + ": used invalid credentials");
-                dataToSend = Commands.ConnectionRefused + ";";
+                dataToSend = Commands.ConnectionRefused;
             }
 
             using (StreamWriter streamWriter = new StreamWriter(gameClient.client.GetStream()))
@@ -99,6 +101,13 @@ namespace PlebServer
 
             switch (parsedData[0])
             {
+                case Commands.CreateUser:
+                    using (StreamWriter sw = new StreamWriter(gameClient.client.GetStream()))
+                    {
+                        bool created = DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + parsedData[1] + "'" + "," + "'" + parsedData[2] + "'" + ")");
+                        sw.WriteLine(created.ToString());
+                    }
+                    break;
                 case Commands.PlayerConnection:
                     PlayerConnection(gameClient, parsedData);
                     break;

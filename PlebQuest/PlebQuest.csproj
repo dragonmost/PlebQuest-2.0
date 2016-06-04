@@ -123,6 +123,7 @@
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\Speel.cs" />
     <Compile Include="Models\Stats.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="AccountCreation.resx">
       <DependentUpon>AccountCreation.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,4 +1,26 @@
-page statistics
-achievements
-titles
-dungeons
+Remove client access to server DB
+Ingame Account creation (how to receive response from server ?)
+
+Stats page
+Achievements
+Titles
+Dungeons
+Arena mode
+
+
+Oracle
+Geomancer
+Cleric
+Sorcerer
+Canoneer
+Chief
+-Mason
+Blood Artist
+Escape Artist
+sky pirate
+
+
+Vampire
+Jew
+Junker
+Fairy

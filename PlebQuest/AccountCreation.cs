@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PlebServer;
 
 namespace PlebQuest
 {
@@ -40,7 +41,9 @@ namespace PlebQuest
                 return;
             }
 
-            if(!Client.Instance.CreateAccount(this.txtUsername.Text, this.txtPassword.Text))
+            Client.Instance.SendData(new string[] 
+            { Commands.CreateUser, this.txtUsername.Text, Utils.sha256_hash(this.txtPassword.Text) });
+            if (false)
             {
                 MessageBox.Show("User already exists!");
                 return;

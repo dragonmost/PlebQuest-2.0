@@ -8,6 +8,7 @@ namespace PlebServer
 {
     public static class Config
     {
+        public static string IP = "localhost";
         public static int Port => 4269;
     }
 }
