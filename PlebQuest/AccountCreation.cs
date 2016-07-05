@@ -41,15 +41,23 @@ namespace PlebQuest
                 return;
             }
 
-            Client.Instance.SendData(new string[] 
-            { Commands.CreateUser, this.txtUsername.Text, Utils.sha256_hash(this.txtPassword.Text) });
-            if (false)
+            Client.Instance.SendDataWithResponse(new string[] 
+            { Commands.CreateUser, this.txtUsername.Text, Utils.sha256_hash(this.txtPassword.Text) }, 
+            new Action(()=>
             {
-                MessageBox.Show("User already exists!");
-                return;
-            }
+                string data = Client.Instance.ResponseData;
+                string[] parsedData = data.Split(';');
+                Form creationForm = this;
 
-            this.Dispose();
+                if (!bool.Parse(parsedData[1]))
+                {
+                    MessageBox.Show("User already exists!");
+                    return;
+                }
+
+                this.Dispose();
+            }));
+            
         }
 
         private void txtBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -45,7 +45,7 @@ namespace PlebQuest
             }
 
             string[] data = new string[] { Commands.PlayerConnection, txtMenuUsername.Text, Utils.sha256_hash(txtMenuPassword.Text) };
-            Client.Instance.SendDataWithResponse(data);
+            //Client.Instance.SendDataWithResponse(data);
         }
 
         private void butPlay_Click(object sender, EventArgs e)

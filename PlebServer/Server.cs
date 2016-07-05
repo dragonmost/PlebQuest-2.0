@@ -102,11 +102,7 @@ namespace PlebServer
             switch (parsedData[0])
             {
                 case Commands.CreateUser:
-                    using (StreamWriter sw = new StreamWriter(gameClient.client.GetStream()))
-                    {
-                        bool created = DataBase.DbExecute("INSERT INTO users(username,password) VALUES(" + "'" + parsedData[1] + "'" + "," + "'" + parsedData[2] + "'" + ")");
-                        sw.WriteLine(created.ToString());
-                    }
+                    this.UserCreation(gameClient, parsedData[1], parsedData[2]);
                     break;
                 case Commands.PlayerConnection:
                     PlayerConnection(gameClient, parsedData);
@@ -120,6 +116,18 @@ namespace PlebServer
                     catch(Exception ex)
                     { }
                     break;
+            }
+        }
+
+        private void UserCreation(GameClient client, string username, string pw)
+        {
+            using (StreamWriter sw = new StreamWriter(client.client.GetStream()))
+            {
+                bool created = DataBase.DbExecute(
+                    "INSERT INTO users(username,password) VALUES("
+                    + "'" + username + "'" + "," + "'" + pw + "'" + ")");
+                                
+                sw.WriteLine(Commands.UserCreationResponse + ";" + created.ToString());
             }
         }
 

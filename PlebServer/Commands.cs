@@ -14,6 +14,7 @@ namespace PlebServer
         public const string ConnectionAccepted = "ConnectionAccepted";
         public const string ConnectionRefused = "ConnectionRefused";
         public const string SendCharacter = "SendCharacter";
+        public const string UserCreationResponse = "UserCreationResponse";
 
         //Response
         public const string UserNotExist = "-1";

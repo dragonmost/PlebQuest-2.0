@@ -19,10 +19,12 @@ namespace PlebQuest
     {
         private static Client instance;
 
-        string IP;
-        TcpClient client;           // le client connecter au serveur
-        StreamWriter Writer;        // envoi les informations au serveur
+        private string IP;
+        private TcpClient client;           // le client connecter au serveur
+        private StreamWriter Writer;        // envoi les informations au serveur
 
+        private Action responseAction;
+        public string ResponseData { get; private set; }
 
         private Client(string IP)
         {
@@ -47,7 +49,7 @@ namespace PlebQuest
             get
             {
                 if (instance == null)
-                    return new Client(Config.IP);
+                    instance = new Client(Config.IP);
 
                 return instance;
             }
@@ -85,7 +87,17 @@ namespace PlebQuest
                 while (true)
                 {
                     string strData = await reader.ReadLineAsync();
-                    ProcessData(strData);
+
+                    if (responseAction == null)
+                        ProcessData(strData);
+                    else
+                    {
+                        ResponseData = strData;
+
+                        this.responseAction.Invoke();
+
+                        responseAction = null;
+                    }
                 }
             }
             catch (Exception ex)
@@ -96,9 +108,10 @@ namespace PlebQuest
             }
         }
 
-        public void SendDataWithResponse(string[] data)
+        public void SendDataWithResponse(string[] data, Action action)
         {
             this.SendData(data);
+            this.responseAction = action;
         }
 
         private void ProcessData(string data)
@@ -115,6 +128,11 @@ namespace PlebQuest
                     this.ConnectionRefused();
                     break;
             }
+        }
+
+        private void ProcessResponse(string data)
+        {
+
         }
 
         private void ConnectionRefused()
