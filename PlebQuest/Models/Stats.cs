@@ -31,6 +31,17 @@ namespace PlebQuest
             this.Charisma = cha;
         }
 
+        public Stats(string ID, int str, int con, int dex, int intel, int wis, int cha)
+        {
+            this.ID = ID;
+            this.Strength = str;
+            this.Constitution = con;
+            this.Dexterity = dex;
+            this.Intellect = intel;
+            this.Wisdom = wis;
+            this.Charisma = cha;
+        }
+
         public void Randomize()
         {
             Random rng = new Random();

@@ -57,13 +57,13 @@ namespace PlebServer
             {
                 conn = DbConnect();
                 MySqlCommand cmd = conn.CreateCommand();
-                    //watch out for this SQL injection vulnerability below
-                    cmd.CommandText = query;
-                    conn.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    //conn.Close();
-                    return reader;
-                
+                //watch out for this SQL injection vulnerability below
+                cmd.CommandText = query;
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                //conn.Close();
+                return reader;
+
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace PlebServer
                     //Debug.WriteLine(reader.GetString("name"));
 
                     MethodInfo method = typeof(T).GetMethod("Create");
-                    object obj = method.Invoke(null, new object[]{ reader});
+                    object obj = method.Invoke(null, new object[] { reader });
 
                     objects.Add((T)obj);
                 }
@@ -107,13 +107,31 @@ namespace PlebServer
         {
             try
             {
-                MySqlDataReader reader = DbRead("SELECT * FROM `characters` " + 
-                    "WHERE name='" + username + "' AND '" + password + "'");
+                MySqlDataReader reader = DbRead(@"
+               SELECT characters.id,characters.name,characters.gender,characters.current_hp,characters.age,characters.level,characters.current_exp,characters.alignement,characters.is_cheater,
+                characters.gold,characters.current_mana,stats.id AS stats_id, stats.strength,stats.intellect,stats.constitution,stats.dexterity,stats.wisdom,stats.charisma,
+                classes.id As class_id, classes.name As class_name,classes.description As class_description,races.id AS race_id,races.name As race_name,
+                races.description As race_description,regions.id As region_id,regions.name AS region_name,regions.description AS region_description
+               FROM characters 
+               INNER JOIN users ON characters.id = users.character_id 
+               INNER JOIN stats ON characters.stats_id = stats.id
+               INNER JOIN classes ON characters.class_id = classes.id
+               INNER JOIN races ON characters.race_id = races.id
+               INNER JOIN regions ON characters.region_id = regions.id
+               WHERE username = '" + username+"' AND password = '"+password+"'");
 
-                Pleb pleb = (Pleb)Activator.CreateInstance(typeof(Pleb));
-                return pleb;
 
+                
+
+                Pleb pleb = null;
+                while (reader.Read())
+                {
+                    pleb = Pleb.Create(reader);
+                    //string test = reader.GetString("name");
+                    //pleb.Name = reader.GetString(0);
+                }
                 reader.Close();
+                return pleb;                
             }
             catch (Exception ex)
             {

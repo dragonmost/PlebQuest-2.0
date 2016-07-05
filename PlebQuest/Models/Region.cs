@@ -25,7 +25,14 @@ namespace PlebQuest
         public List<Mob> AvailableMobs { get; private set; }
 
         //default constructor
-        public Region()
-        { }
+        public Region(string ID,string Name,string Description)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            this.AvailableQuests = new List<Quest>();
+            this.AvailableMobs = new List<Mob>();
+            this.SoldItems = new List<Item>();
+        }
     }
 }
