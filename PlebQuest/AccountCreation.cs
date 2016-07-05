@@ -47,7 +47,6 @@ namespace PlebQuest
             {
                 string data = Client.Instance.ResponseData;
                 string[] parsedData = data.Split(';');
-                Form creationForm = this;
 
                 if (!bool.Parse(parsedData[1]))
                 {

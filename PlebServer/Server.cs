@@ -46,7 +46,7 @@ namespace PlebServer
                 {
                     streamWriter.AutoFlush = true;
                     //PlayerConnection(streamWriter);
-                }*/                
+                }*/
             }
         }
 
@@ -72,7 +72,7 @@ namespace PlebServer
         {
             //DataBase.DbExecute("INSERT INTO items(name, gold_value, weight) VALUES('Goblin ear', 10, 1)");
             Pleb pleb = DataBase.GetPleb(data[1], data[2]);
-            
+
             string dataToSend = string.Empty;
             //DB request here
             if (pleb != null)
@@ -113,7 +113,7 @@ namespace PlebServer
                     {
                         Pleb pleb = JsonConvert.DeserializeObject<Pleb>(strPleb);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     { }
                     break;
             }
@@ -121,14 +121,11 @@ namespace PlebServer
 
         private void UserCreation(GameClient client, string username, string pw)
         {
-            using (StreamWriter sw = new StreamWriter(client.client.GetStream()))
-            {
-                bool created = DataBase.DbExecute(
-                    "INSERT INTO users(username,password) VALUES("
-                    + "'" + username + "'" + "," + "'" + pw + "'" + ")");
-                                
-                sw.WriteLine(Commands.UserCreationResponse + ";" + created.ToString());
-            }
+            bool created = DataBase.DbExecute(
+                "INSERT INTO users(username,password) VALUES("
+                + "'" + username + "'" + "," + "'" + pw + "'" + ")");
+
+            client.Writer.WriteLine(Commands.UserCreationResponse + ";" + created.ToString());
         }
 
         public static String sha256_hash(String value)

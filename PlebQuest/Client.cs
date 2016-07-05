@@ -89,12 +89,14 @@ namespace PlebQuest
                     string strData = await reader.ReadLineAsync();
 
                     if (responseAction == null)
-                        ProcessData(strData);
+                    {
+                        ProcessData(strData);                        
+                    }
                     else
                     {
                         ResponseData = strData;
 
-                        this.responseAction.Invoke();
+                        responseAction.Invoke();
 
                         responseAction = null;
                     }
@@ -143,6 +145,6 @@ namespace PlebQuest
         public T[] GetDBOjects<T>(string tableName)
         {
             return DataBase.GetDBObjects<T>(tableName);
-        }  
+        }
     }
 }

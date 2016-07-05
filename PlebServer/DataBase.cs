@@ -44,7 +44,7 @@ namespace PlebServer
             }
             catch (Exception ex)
             {
-                LogService.SilentLog(ex);
+                //LogService.SilentLog(ex);
                 return false;
             }
 
@@ -67,7 +67,7 @@ namespace PlebServer
             }
             catch (Exception ex)
             {
-                LogService.SilentLog(ex);
+                //LogService.SilentLog(ex);
                 return null;
             }
 
