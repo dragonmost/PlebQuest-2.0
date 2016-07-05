@@ -81,7 +81,7 @@ namespace PlebServer
                 MySqlDataReader reader = DbRead("SELECT * FROM `" + tableName + "` ORDER BY name ASC");
                 while (reader.Read())
                 {
-                    Debug.WriteLine(reader.GetString("name"));
+                    //Debug.WriteLine(reader.GetString("name"));
 
                     MethodInfo method = typeof(T).GetMethod("Create");
                     object obj = method.Invoke(null, new object[]{ reader});

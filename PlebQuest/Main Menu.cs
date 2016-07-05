@@ -13,16 +13,12 @@ namespace PlebQuest
     {
         NameGenerator nameGenerator;
 
-        Stats stats;
-        Pleb pleb;
-
-        Race[] races;
-        Classe[] classes;
+        private Game game;
+        private GameCreation gameCreation;
 
         public Form1()
         {
             InitializeComponent();
-            nameGenerator = new NameGenerator();
         }
 
         private void butNew_Click(object sender, EventArgs e)
@@ -32,28 +28,11 @@ namespace PlebQuest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            stats = new Stats();
-            stats.Randomize();
-            PropertyInfo[] properties = stats.GetType().GetProperties();
-            int total = 0;
-
-            foreach (PropertyInfo property in properties)
-            {
-                ListViewItem item = new ListViewItem(property.Name);
-                item.Name = property.Name;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem());
-                item.SubItems[1].Text = property.GetValue(stats).ToString();
-                lstCreationStat.Items.Add(item);
-
-                total += (int)property.GetValue(stats);
-            }
-
-            this.txtCreationTotalStats.Text = total.ToString();
         }
 
         private void butStart_Click(object sender, EventArgs e)
         {
-            pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
+            //pleb = new Pleb(this.txtCreationName.Text, butCreationMale.Checked, stats, this.cheated);
         }
 
         private void butJoin_Click(object sender, EventArgs e)
@@ -87,18 +66,9 @@ namespace PlebQuest
 
         private void butRoll_Click(object sender, EventArgs e)
         {
-            stats.Randomize();
-            int total = 0;
+            gameCreation.Randomize();
 
-            foreach (PropertyInfo property in stats.GetType().GetProperties())
-            {
-                ListViewItem item = lstCreationStat.Items.Find(property.Name, true).First();
-                item.SubItems[1].Text = property.GetValue(stats).ToString();
-
-                total += (int)property.GetValue(stats);
-            }
-
-            this.txtCreationTotalStats.Text = total.ToString();
+            this.txtCreationTotalStats.Text = gameCreation.TotalStats.ToString();
         }
 
         private Queue<Keys> keySequence = new Queue<Keys>();
@@ -113,18 +83,9 @@ namespace PlebQuest
 
             if (keySequence.SequenceEqual(Cheat.Konami))
             {
-                stats = new Stats();
-                stats.Perfect();
-                int total = 0;
+                gameCreation.MakePerfect();
 
-                foreach (PropertyInfo property in stats.GetType().GetProperties())
-                {
-                    ListViewItem item = lstCreationStat.Items.Find(property.Name, true).First();
-                    item.SubItems[1].Text = property.GetValue(stats).ToString();
-
-                    total += (int)property.GetValue(stats);
-                }
-                this.txtCreationTotalStats.Text = total.ToString();
+                this.txtCreationTotalStats.Text = gameCreation.TotalStats.ToString();
                 this.cheated = true;
             }
 
@@ -148,23 +109,41 @@ namespace PlebQuest
 
         private void LoadCreationScreen()
         {
+            this.nameGenerator = new NameGenerator();
+            this.gameCreation = new GameCreation();
+            Stats stats = gameCreation.Stats;
+
+            PropertyInfo[] properties = stats.GetType().GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+                ListViewItem item = new ListViewItem(property.Name);
+                item.Name = property.Name;
+                item.SubItems.Add(new ListViewItem.ListViewSubItem());
+                item.SubItems[1].Text = property.GetValue(stats).ToString();
+                lstCreationStat.Items.Add(item);
+            }
+
+            this.txtCreationTotalStats.Text = gameCreation.TotalStats.ToString();
+
             Task.Run(() =>
             {
-                this.races = Client.Instance.GetDBOjects<Race>("races");
-                this.classes = Client.Instance.GetDBOjects<Classe>("Classes");
+                Race[] races = gameCreation.Races;
+                Classe[] classes = gameCreation.Classes;
 
                 this.Invoke(new MethodInvoker(() => 
                 {
-                    if (this.races != null)
-                        this.lstCreationRace.Items.AddRange(this.races.Select(x => x.Name).ToArray());
+                    if (races != null)
+                        this.lstCreationRace.Items.AddRange(races.Select(x => x.Name).ToArray());
 
-                    if (this.classes != null)
-                        this.lstCreationClass.Items.AddRange(this.classes.Select(x => x.Name).ToArray());
+                    if (classes != null)
+                        this.lstCreationClass.Items.AddRange(classes.Select(x => x.Name).ToArray());
                 }));                
             });
 
-            this.pnlCharacterCreation.Visible = true;
             this.txtCreationName.Text = nameGenerator.BuildName();
+
+            this.pnlCharacterCreation.Visible = true;
         }
 
         private void txtCreationName_KeyPress(object sender, KeyPressEventArgs e)

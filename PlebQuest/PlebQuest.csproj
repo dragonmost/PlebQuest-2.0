@@ -95,6 +95,8 @@
     <Compile Include="AccountCreation.Designer.cs">
       <DependentUpon>AccountCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
+    <Compile Include="GameCreation.cs" />
     <Compile Include="Models\Buff.cs" />
     <Compile Include="Cheat.cs" />
     <Compile Include="Models\Classe.cs" />
