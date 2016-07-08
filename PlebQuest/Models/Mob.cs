@@ -32,6 +32,8 @@ namespace PlebQuest
         [JsonProperty]
         private List<Buff> debuffs { get; set; }
 
+        public int HP { get; set; }
+
         public Item Drop
         {
             get

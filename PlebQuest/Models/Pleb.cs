@@ -23,7 +23,7 @@ namespace PlebQuest
         [JsonProperty]
         public int Level { get; private set; }
         [JsonProperty]
-        public int CurrentExp { get; private set; }
+        private int currentExp;
         [JsonProperty]
         public int Gold { get; private set; }
 
@@ -49,6 +49,8 @@ namespace PlebQuest
         [JsonProperty]
         public Region Region { get; private set; }
 
+        public Action OnLevelUp;
+
         //New Character
         public Pleb(string name, bool isMale, Stats stats, bool isCheater = true)
         {
@@ -58,7 +60,7 @@ namespace PlebQuest
             //calculate HP
             //currentHP
             this.Level = 1;
-            this.CurrentExp = 0;
+            this.currentExp = 0;
             this.Gold = 0;
 
             this.Stats = stats;
@@ -85,7 +87,7 @@ namespace PlebQuest
             //calculate HP
             //currentHP
             this.Level = level;
-            this.CurrentExp = currentExp;
+            this.currentExp = currentExp;
             this.Gold = gold;
 
             this.Stats = stats;
@@ -107,7 +109,7 @@ namespace PlebQuest
                 IsMale = data.GetInt32("gender") == 1,
                 PlayedTime = data.GetTimeSpan("age"),
                 Level = data.GetInt32("level"),
-                CurrentExp = data.GetInt32("current_exp"),
+                currentExp = data.GetInt32("current_exp"),
                 Gold = data.GetInt32("gold"),
                 Alignment = data.GetInt32("alignement"),
                 IsCheater = data.GetInt32("is_cheater") == 1,
@@ -133,23 +135,31 @@ namespace PlebQuest
             }
         }
 
-        public int currentExp
+        //exp getter setter are aweful
+        public int CurrentExp
         {
             get
             {
-                return this.CurrentExp;
+                return this.currentExp;
             }
 
             set
             {
                 if (value > 20 * Level * 60)
                 {
-                    this.CurrentExp = 0;
+                    this.currentExp = 0;
                     this.Level++;
+
+                    OnLevelUp?.Invoke();
                 }
                 else
-                    this.CurrentExp = value;
+                    this.currentExp = value;
             }
+        }
+
+        public void EarnExp(int expAmount)
+        {
+            CurrentExp += expAmount;
         }
 
         public int alignment

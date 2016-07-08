@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using PlebServer;
 
@@ -20,10 +14,10 @@ namespace PlebQuest
         private static Client instance;
 
         private string IP;
-        private TcpClient client;           // le client connecter au serveur
-        private StreamWriter Writer;        // envoi les informations au serveur
+        private TcpClient client;   
+        private StreamWriter Writer;
 
-        private Action responseAction;
+        private Action responseAction;      //only works if there are 1 action at a time.
         public string ResponseData { get; private set; }
 
         private Client(string IP)
@@ -52,6 +46,14 @@ namespace PlebQuest
                     instance = new Client(Config.IP);
 
                 return instance;
+            }
+        }
+
+        public bool Connected
+        {
+            get
+            {
+                return this.client.Connected;
             }
         }
 
