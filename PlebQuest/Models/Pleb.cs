@@ -77,7 +77,7 @@ namespace PlebQuest
         }
 
         //Old Character
-        public Pleb(string id, string name, bool isMale, TimeSpan playedTime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater,Region region)
+        public Pleb(string id, string name, bool isMale, TimeSpan playedTime, int level, int currentExp, int gold, Stats stats, List<Item> inventory, int alignment, bool isCheater, Region region)
         {
             this.ID = id;
 
@@ -91,8 +91,8 @@ namespace PlebQuest
             this.Gold = gold;
 
             this.Stats = stats;
-            this.Inventory = inventory;            
-            
+            this.Inventory = inventory;
+
             this.Alignment = alignment;
 
             this.IsCheater = isCheater;
@@ -118,13 +118,13 @@ namespace PlebQuest
                 /*
                 * TODO : doit faire le calcul pour max Hp
                 */
-                Region = new Region(data.GetString("region_id"), data.GetString("region_name"), data.GetString("region_description")),                
+                Region = new Region(data.GetString("region_id"), data.GetString("region_name"), data.GetString("region_description")),
                 Inventory = new List<Item>(),
                 SpeelBook = new List<Speel>(),
                 Equipment = new Equipment(),
                 Buffs = new List<Buff>(),
                 Stats = new Stats(data.GetString("stats_id"), data.GetInt32("strength"), data.GetInt32("constitution"), data.GetInt32("dexterity"), data.GetInt32("intellect"), data.GetInt32("wisdom"), data.GetInt32("charisma"))
-        };
+            };
         }
 
         public Stats stats
@@ -162,22 +162,15 @@ namespace PlebQuest
             CurrentExp += expAmount;
         }
 
-        public int alignment
+        public int EarnAlignment(int pts)
         {
-            get
-            {
-                return this.alignment;
-            }
-
-            set
-            {
-                if (value > 100)
-                    this.Alignment = 100;
-                else if (value < -100)
-                    this.Alignment = -100;
-                else
-                    this.Alignment = value;
-            }
+            return this.Alignment;
+            if (pts > 100)
+                this.Alignment = 100;
+            else if (pts < -100)
+                this.Alignment = -100;
+            else
+                this.Alignment = pts;
         }
 
         public void Cheater()
