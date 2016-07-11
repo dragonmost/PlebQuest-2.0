@@ -162,15 +162,14 @@ namespace PlebQuest
             CurrentExp += expAmount;
         }
 
-        public int EarnAlignment(int pts)
+        public void EarnAlignment(int pts)
         {
-            return this.Alignment;
-            if (pts > 100)
+            this.Alignment += pts;
+
+            if (Alignment > 100)
                 this.Alignment = 100;
-            else if (pts < -100)
+            else if (Alignment < -100)
                 this.Alignment = -100;
-            else
-                this.Alignment = pts;
         }
 
         public void Cheater()
