@@ -19,6 +19,9 @@ namespace PlebQuest
         public Form1()
         {
             InitializeComponent();
+            this.pnlCharacterCreation.Visible = false;
+            //this.pnlGame.Visible = false;
+            this.CreateGamePanel();
         }
 
         private void butNew_Click(object sender, EventArgs e)
@@ -154,6 +157,62 @@ namespace PlebQuest
             {
                 e.Handled = true;
             }
+        }
+
+        private void CreateGamePanel()
+        {
+            ListViewItem itemRace = new ListViewItem("Race");
+            itemRace.Name = "Race";
+            itemRace.SubItems.Add(new ListViewItem.ListViewSubItem()); itemRace.SubItems[1].Text = "Dwarf";
+
+            ListViewItem itemClass = new ListViewItem("Class");
+            itemClass.Name = "Class";
+            itemClass.SubItems.Add(new ListViewItem.ListViewSubItem()); itemClass.SubItems[1].Text = "Warrior";
+
+            lstPlebSheet.Items.AddRange(new ListViewItem[] { itemRace, itemClass} );
+
+            PropertyInfo[] properties = Type.GetType("PlebQuest.Stats").GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                ListViewItem item = new ListViewItem(property.Name);
+                item.Name = property.Name;
+                item.SubItems.Add(new ListViewItem.ListViewSubItem());
+                lstPlebSheet.Items.Add(item);
+            }
+
+            ListViewItem itemAlignment = new ListViewItem("Alignment"); //could displayed near expBar
+            itemAlignment.Name = "Alignment";
+            itemAlignment.SubItems.Add(new ListViewItem.ListViewSubItem()); itemAlignment.SubItems[1].Text = "50";
+            lstPlebSheet.Items.Add(itemAlignment);
+
+            //when should I update names etc.
+            this.grpPlebSheet.Text = "Dragonmost ♂";
+            this.grpLevel.Text = "Level: " + "3";
+            this.pgbHP.Value = 75;
+            this.pgbExp.Value = 25;
+            this.pgbHP.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        public void RefreshStats(Stats stats)
+        {
+            PropertyInfo[] properties = stats.GetType().GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                ListViewItem item = this.lstPlebSheet.Items[property.Name];
+                item.SubItems[1].Text = property.GetValue(stats).ToString();
+            }
+        }
+
+        public void RefreshAlignment(int aligment)
+        {
+            ListViewItem item = this.lstPlebSheet.Items["Alignment"];
+            item.SubItems[1].Text = aligment.ToString();
+        }
+
+        public void RefreshHP(int CurrentHP, int MaxHP)
+        {
+            this.pgbHP.Maximum = MaxHP;
+            this.pgbHP.Value = CurrentHP;
         }
     }
 }
