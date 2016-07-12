@@ -56,9 +56,26 @@
             this.lstCreationRace = new System.Windows.Forms.ListBox();
             this.butCreationStart = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pnlGame = new System.Windows.Forms.Panel();
+            this.grpPlebSheet = new System.Windows.Forms.GroupBox();
+            this.lstPlebSheet = new System.Windows.Forms.ListView();
+            this.colTrait = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grpHP = new System.Windows.Forms.GroupBox();
+            this.pgbHP = new System.Windows.Forms.ProgressBar();
+            this.grpLevel = new System.Windows.Forms.GroupBox();
+            this.pgbExp = new System.Windows.Forms.ProgressBar();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCharacterCreation.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pnlGame.SuspendLayout();
+            this.grpPlebSheet.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.grpHP.SuspendLayout();
+            this.grpLevel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -318,11 +335,116 @@
             this.butCreationStart.UseVisualStyleBackColor = true;
             this.butCreationStart.Click += new System.EventHandler(this.butStart_Click);
             // 
+            // pnlGame
+            // 
+            this.pnlGame.Controls.Add(this.groupBox4);
+            this.pnlGame.Controls.Add(this.grpLevel);
+            this.pnlGame.Controls.Add(this.grpHP);
+            this.pnlGame.Controls.Add(this.grpPlebSheet);
+            this.pnlGame.Controls.Add(this.menuStrip1);
+            this.pnlGame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlGame.Location = new System.Drawing.Point(0, 0);
+            this.pnlGame.Name = "pnlGame";
+            this.pnlGame.Size = new System.Drawing.Size(624, 442);
+            this.pnlGame.TabIndex = 12;
+            // 
+            // grpPlebSheet
+            // 
+            this.grpPlebSheet.Controls.Add(this.lstPlebSheet);
+            this.grpPlebSheet.Location = new System.Drawing.Point(3, 25);
+            this.grpPlebSheet.Name = "grpPlebSheet";
+            this.grpPlebSheet.Size = new System.Drawing.Size(199, 213);
+            this.grpPlebSheet.TabIndex = 0;
+            this.grpPlebSheet.TabStop = false;
+            this.grpPlebSheet.Text = "Character sheet";
+            // 
+            // lstPlebSheet
+            // 
+            this.lstPlebSheet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colTrait,
+            this.colValue});
+            this.lstPlebSheet.Location = new System.Drawing.Point(6, 19);
+            this.lstPlebSheet.Name = "lstPlebSheet";
+            this.lstPlebSheet.Size = new System.Drawing.Size(187, 185);
+            this.lstPlebSheet.TabIndex = 1;
+            this.lstPlebSheet.UseCompatibleStateImageBehavior = false;
+            this.lstPlebSheet.View = System.Windows.Forms.View.Details;
+            // 
+            // colTrait
+            // 
+            this.colTrait.Text = "Stats";
+            this.colTrait.Width = 80;
+            // 
+            // colValue
+            // 
+            this.colValue.Text = "Value";
+            this.colValue.Width = 102;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // grpHP
+            // 
+            this.grpHP.Controls.Add(this.pgbHP);
+            this.grpHP.Location = new System.Drawing.Point(3, 235);
+            this.grpHP.Name = "grpHP";
+            this.grpHP.Size = new System.Drawing.Size(200, 40);
+            this.grpHP.TabIndex = 2;
+            this.grpHP.TabStop = false;
+            this.grpHP.Text = "Health Point";
+            // 
+            // pgbHP
+            // 
+            this.pgbHP.Location = new System.Drawing.Point(9, 19);
+            this.pgbHP.Name = "pgbHP";
+            this.pgbHP.Size = new System.Drawing.Size(184, 12);
+            this.pgbHP.TabIndex = 0;
+            // 
+            // grpLevel
+            // 
+            this.grpLevel.Controls.Add(this.pgbExp);
+            this.grpLevel.Location = new System.Drawing.Point(3, 281);
+            this.grpLevel.Name = "grpLevel";
+            this.grpLevel.Size = new System.Drawing.Size(200, 40);
+            this.grpLevel.TabIndex = 3;
+            this.grpLevel.TabStop = false;
+            this.grpLevel.Text = "Level:";
+            // 
+            // pgbExp
+            // 
+            this.pgbExp.Location = new System.Drawing.Point(9, 19);
+            this.pgbExp.Name = "pgbExp";
+            this.pgbExp.Size = new System.Drawing.Size(184, 12);
+            this.pgbExp.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(3, 327);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 112);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "groupBox4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlCharacterCreation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -334,6 +456,7 @@
             this.Controls.Add(this.butMenuPlay);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "PlebQuest 2";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -342,6 +465,13 @@
             this.pnlCharacterCreation.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnlGame.ResumeLayout(false);
+            this.pnlGame.PerformLayout();
+            this.grpPlebSheet.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.grpHP.ResumeLayout(false);
+            this.grpLevel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,6 +506,18 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.RadioButton butCreationMale;
         private System.Windows.Forms.RadioButton butCreationFemale;
+        private System.Windows.Forms.Panel pnlGame;
+        private System.Windows.Forms.GroupBox grpPlebSheet;
+        private System.Windows.Forms.ListView lstPlebSheet;
+        private System.Windows.Forms.ColumnHeader colTrait;
+        private System.Windows.Forms.ColumnHeader colValue;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpLevel;
+        private System.Windows.Forms.ProgressBar pgbExp;
+        private System.Windows.Forms.GroupBox grpHP;
+        private System.Windows.Forms.ProgressBar pgbHP;
     }
 }
 
