@@ -30,6 +30,18 @@ namespace PlebQuest
         [JsonProperty]
         public Buff Debuff { get; private set; }
 
+        public Speel(string id, string name, int requiredLevel,Stats requiredStats,int damage,int heal, Buff buff, Buff debuff)
+        {
+            this.ID = id;
+            this.Name = name;
+            this.RequiredLevel = requiredLevel;
+            this.RequiredStats = requiredStats;
+            this.Damage = damage;
+            this.Heal = heal;
+            this.Buff = buff;
+            this.Debuff = debuff;
+        }
+
         //default constructor
         public Speel()
         { }

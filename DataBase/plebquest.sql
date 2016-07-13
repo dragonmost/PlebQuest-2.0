@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 12 Juillet 2016 à 03:07
+-- Généré le :  Mer 13 Juillet 2016 à 03:38
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -99,6 +99,43 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `buffs`
+--
+
+CREATE TABLE IF NOT EXISTS `buffs` (
+  `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `stats_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `hp_change` int(11) NOT NULL,
+  `mana_change` int(11) NOT NULL,
+  `nb_turn` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `stats_id_buffs_idx` (`stats_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `buffs`
+--
+
+INSERT INTO `buffs` (`id`, `name`, `stats_id`, `hp_change`, `mana_change`, `nb_turn`) VALUES
+('b5d8be68-4888-11e6-b679-002564e986a2', 'test', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 3, 0, 10),
+('c0324595-4888-11e6-b679-002564e986a2', 'bad test', '2c21bb81-1e2b-11e6-8b61-002564e986a2', -5, -20, 12);
+
+--
+-- Déclencheurs `buffs`
+--
+DROP TRIGGER IF EXISTS `buffs_BEFORE_INSERT`;
+DELIMITER //
+CREATE TRIGGER `buffs_BEFORE_INSERT` BEFORE INSERT ON `buffs`
+ FOR EACH ROW BEGIN
+	set NEW.id = UUID();
+END
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `characters`
 --
 
@@ -117,8 +154,9 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `class_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `race_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `equipment_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `current_mana` int(10) unsigned NOT NULL,
+  `current_mp` int(11) unsigned NOT NULL,
   `region_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `current_quest_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `class_id_idx` (`class_id`),
   KEY `race_id_idx` (`race_id`),
@@ -130,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `characters` (
 -- Contenu de la table `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `current_hp`, `gender`, `age`, `level`, `current_exp`, `stats_id`, `alignement`, `is_cheater`, `gold`, `class_id`, `race_id`, `equipment_id`, `current_mana`, `region_id`) VALUES
-('ebbb0cb8-301d-11e6-9352-002564e986a2', 'roger', 100, 0, '00:00:45', 1, 0, '2c21bb81-1e2b-11e6-8b61-002564e986a2', 0, 0, 0, '38f362c5-1e21-11e6-8056-c86000bd4895', '0adfe9b7-1e2b-11e6-8b61-002564e986a2', '85410e59-301d-11e6-9352-002564e986a2', 100, 'ae6e7aa3-301d-11e6-9352-002564e986a2');
+INSERT INTO `characters` (`id`, `name`, `current_hp`, `gender`, `age`, `level`, `current_exp`, `stats_id`, `alignement`, `is_cheater`, `gold`, `class_id`, `race_id`, `equipment_id`, `current_mp`, `region_id`, `current_quest_id`) VALUES
+('ebbb0cb8-301d-11e6-9352-002564e986a2', 'roger', 100, 0, '00:00:45', 1, 0, '2c21bb81-1e2b-11e6-8b61-002564e986a2', 0, 0, 0, '38f362c5-1e21-11e6-8056-c86000bd4895', '0adfe9b7-1e2b-11e6-8b61-002564e986a2', '85410e59-301d-11e6-9352-002564e986a2', 100, 'ae6e7aa3-301d-11e6-9352-002564e986a2', NULL);
 
 --
 -- Déclencheurs `characters`
@@ -287,10 +325,10 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `current_quests`
+-- Structure de la table `completed_quests`
 --
 
-CREATE TABLE IF NOT EXISTS `current_quests` (
+CREATE TABLE IF NOT EXISTS `completed_quests` (
   `quest_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   KEY `quest_id_current_idx` (`quest_id`),
@@ -382,6 +420,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `item_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `qty` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `item_id_inventories_idx` (`item_id`),
   KEY `character_id_inventories_idx` (`character_id`)
@@ -649,9 +688,19 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `speelbook` (
-  `character_id` int(11) NOT NULL,
-  `speel_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `speel_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `speelbook`
+--
+
+INSERT INTO `speelbook` (`character_id`, `speel_id`, `id`) VALUES
+('0', '0', 1),
+('ebbb0cb8-301d-11e6-9352-002564e986a2', 'a103bd60-1eef-11e6-8056-c86000bd4895', 2);
 
 -- --------------------------------------------------------
 
@@ -679,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `speels` (
 --
 
 INSERT INTO `speels` (`id`, `name`, `required_stats_id`, `required_lvl`, `heal`, `damage`, `buff_id`, `debuff_id`, `mana_usage`, `mana_drain`) VALUES
-('a103bd60-1eef-11e6-8056-c86000bd4895', 'Right in the Speels', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 1, 1, 0, NULL, NULL, 1, 0);
+('a103bd60-1eef-11e6-8056-c86000bd4895', 'Right in the Speels', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 1, 1, 0, 'b5d8be68-4888-11e6-b679-002564e986a2', 'c0324595-4888-11e6-b679-002564e986a2', 1, 0);
 
 --
 -- Déclencheurs `speels`
@@ -864,9 +913,9 @@ ALTER TABLE `classes`
   ADD CONSTRAINT `stats_id_classes` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `current_quests`
+-- Contraintes pour la table `completed_quests`
 --
-ALTER TABLE `current_quests`
+ALTER TABLE `completed_quests`
   ADD CONSTRAINT `character_id_current` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `quest_id_current` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
