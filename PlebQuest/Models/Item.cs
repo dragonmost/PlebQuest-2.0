@@ -19,8 +19,9 @@ namespace PlebQuest
         [JsonProperty]
         public int Weight { get; private set; }
 
-        public Item(string name, int goldValue, int weight)
+        public Item(string id, string name, int goldValue, int weight)
         {
+            this.ID = id;
             this.Name = name;
             this.GoldValue = goldValue;
             this.Weight = weight;

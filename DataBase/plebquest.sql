@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 23 Mai 2016 à 19:11
+-- Généré le :  Mer 13 Juillet 2016 à 03:38
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -78,6 +78,13 @@ CREATE TABLE IF NOT EXISTS `boots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Contenu de la table `boots`
+--
+
+INSERT INTO `boots` (`id`, `name`, `stats_id`, `required_stats_id`, `required_lvl`, `gold_value`) VALUES
+('58bb841f-301d-11e6-9352-002564e986a2', 'boots', '2c21bb81-1e2b-11e6-8b61-002564e986a2', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 1, 0);
+
+--
 -- Déclencheurs `boots`
 --
 DROP TRIGGER IF EXISTS `boots_BEFORE_INSERT`;
@@ -101,9 +108,18 @@ CREATE TABLE IF NOT EXISTS `buffs` (
   `stats_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `hp_change` int(11) NOT NULL,
   `mana_change` int(11) NOT NULL,
+  `nb_turn` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `stats_id_buffs_idx` (`stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `buffs`
+--
+
+INSERT INTO `buffs` (`id`, `name`, `stats_id`, `hp_change`, `mana_change`, `nb_turn`) VALUES
+('b5d8be68-4888-11e6-b679-002564e986a2', 'test', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 3, 0, 10),
+('c0324595-4888-11e6-b679-002564e986a2', 'bad test', '2c21bb81-1e2b-11e6-8b61-002564e986a2', -5, -20, 12);
 
 --
 -- Déclencheurs `buffs`
@@ -138,14 +154,22 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `class_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `race_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `equipment_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `current_mana` int(10) unsigned NOT NULL,
+  `current_mp` int(11) unsigned NOT NULL,
   `region_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `current_quest_id` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `class_id_idx` (`class_id`),
   KEY `race_id_idx` (`race_id`),
   KEY ` equipement_id_idx` (`equipment_id`),
   KEY `region_id_character_idx` (`region_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `characters`
+--
+
+INSERT INTO `characters` (`id`, `name`, `current_hp`, `gender`, `age`, `level`, `current_exp`, `stats_id`, `alignement`, `is_cheater`, `gold`, `class_id`, `race_id`, `equipment_id`, `current_mp`, `region_id`, `current_quest_id`) VALUES
+('ebbb0cb8-301d-11e6-9352-002564e986a2', 'roger', 100, 0, '00:00:45', 1, 0, '2c21bb81-1e2b-11e6-8b61-002564e986a2', 0, 0, 0, '38f362c5-1e21-11e6-8056-c86000bd4895', '0adfe9b7-1e2b-11e6-8b61-002564e986a2', '85410e59-301d-11e6-9352-002564e986a2', 100, 'ae6e7aa3-301d-11e6-9352-002564e986a2', NULL);
 
 --
 -- Déclencheurs `characters`
@@ -176,6 +200,13 @@ CREATE TABLE IF NOT EXISTS `chests` (
   KEY `stats_id_idx` (`stats_id`),
   KEY `required_stats_id_idx` (`required_stats_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `chests`
+--
+
+INSERT INTO `chests` (`id`, `name`, `stats_id`, `required_stats_id`, `required_lvl`, `gold_value`) VALUES
+('617ba35c-301d-11e6-9352-002564e986a2', 'chest', '2c21bb81-1e2b-11e6-8b61-002564e986a2', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 1, 1);
 
 --
 -- Déclencheurs `chests`
@@ -294,10 +325,10 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `current_quests`
+-- Structure de la table `completed_quests`
 --
 
-CREATE TABLE IF NOT EXISTS `current_quests` (
+CREATE TABLE IF NOT EXISTS `completed_quests` (
   `quest_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   KEY `quest_id_current_idx` (`quest_id`),
@@ -322,6 +353,13 @@ CREATE TABLE IF NOT EXISTS `equipments` (
   KEY `pants_id_equipments_idx` (`pants_id`),
   KEY `boots_id_equipments_idx` (`boots_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `equipments`
+--
+
+INSERT INTO `equipments` (`id`, `head_id`, `chest_id`, `pants_id`, `boots_id`) VALUES
+('85410e59-301d-11e6-9352-002564e986a2', '48f583d8-301d-11e6-9352-002564e986a2', '617ba35c-301d-11e6-9352-002564e986a2', '6c413404-301d-11e6-9352-002564e986a2', '58bb841f-301d-11e6-9352-002564e986a2');
 
 --
 -- Déclencheurs `equipments`
@@ -354,6 +392,13 @@ CREATE TABLE IF NOT EXISTS `heads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Contenu de la table `heads`
+--
+
+INSERT INTO `heads` (`id`, `name`, `stats_id`, `required_stats_id`, `required_lvl`, `gold_value`) VALUES
+('48f583d8-301d-11e6-9352-002564e986a2', 'head', '2c21bb81-1e2b-11e6-8b61-002564e986a2', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 1, 0);
+
+--
 -- Déclencheurs `heads`
 --
 DROP TRIGGER IF EXISTS `heads_BEFORE_INSERT`;
@@ -375,6 +420,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   `id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `item_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `qty` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `item_id_inventories_idx` (`item_id`),
   KEY `character_id_inventories_idx` (`character_id`)
@@ -488,6 +534,13 @@ CREATE TABLE IF NOT EXISTS `pants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Contenu de la table `pants`
+--
+
+INSERT INTO `pants` (`id`, `name`, `stats_id`, `required_stats_id`, `required_lvl`, `gold_value`) VALUES
+('6c413404-301d-11e6-9352-002564e986a2', 'pants', '2c21bb81-1e2b-11e6-8b61-002564e986a2', '2c21bb81-1e2b-11e6-8b61-002564e986a2', 1, 1);
+
+--
 -- Déclencheurs `pants`
 --
 DROP TRIGGER IF EXISTS `pants_BEFORE_INSERT`;
@@ -597,6 +650,13 @@ CREATE TABLE IF NOT EXISTS `regions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Contenu de la table `regions`
+--
+
+INSERT INTO `regions` (`id`, `name`, `description`) VALUES
+('ae6e7aa3-301d-11e6-9352-002564e986a2', 'Phalaphel', 'Les falafels ou tamiya sont une spécialité culinaire levantine très répandue au Proche-Orient constituée de boulettes de pois chiches, de fèves, ou des deux, mélangées à diverses épices, et frites dans l''huile.');
+
+--
 -- Déclencheurs `regions`
 --
 DROP TRIGGER IF EXISTS `regions_BEFORE_INSERT`;
@@ -628,9 +688,19 @@ CREATE TABLE IF NOT EXISTS `sold_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `speelbook` (
-  `character_id` int(11) NOT NULL,
-  `speel_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `character_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `speel_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `speelbook`
+--
+
+INSERT INTO `speelbook` (`character_id`, `speel_id`, `id`) VALUES
+('0', '0', 1),
+('ebbb0cb8-301d-11e6-9352-002564e986a2', 'a103bd60-1eef-11e6-8056-c86000bd4895', 2);
 
 -- --------------------------------------------------------
 
@@ -658,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `speels` (
 --
 
 INSERT INTO `speels` (`id`, `name`, `required_stats_id`, `required_lvl`, `heal`, `damage`, `buff_id`, `debuff_id`, `mana_usage`, `mana_drain`) VALUES
-('a103bd60-1eef-11e6-8056-c86000bd4895', 'Right in the Speels', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 1, 1, 0, NULL, NULL, 1, 0);
+('a103bd60-1eef-11e6-8056-c86000bd4895', 'Right in the Speels', '32b5ab10-1e1f-11e6-8056-c86000bd4895', 1, 1, 0, 'b5d8be68-4888-11e6-b679-002564e986a2', 'c0324595-4888-11e6-b679-002564e986a2', 1, 0);
 
 --
 -- Déclencheurs `speels`
@@ -735,6 +805,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   KEY `charater_id_users_idx` (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `character_id`) VALUES
+('f2f6f7f7-301d-11e6-9352-002564e986a2', 'test', 'test', 'ebbb0cb8-301d-11e6-9352-002564e986a2');
 
 --
 -- Déclencheurs `users`
@@ -814,19 +891,13 @@ ALTER TABLE `boots`
   ADD CONSTRAINT `stats_id_boots` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `buffs`
---
-ALTER TABLE `buffs`
-  ADD CONSTRAINT `stats_id_buffs` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Contraintes pour la table `characters`
 --
 ALTER TABLE `characters`
-  ADD CONSTRAINT `region_id_character` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT ` equipement_id` FOREIGN KEY (`equipment_id`) REFERENCES `equipments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `class_id` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `race_id` FOREIGN KEY (`race_id`) REFERENCES `races` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `region_id_character` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `chests`
@@ -842,11 +913,11 @@ ALTER TABLE `classes`
   ADD CONSTRAINT `stats_id_classes` FOREIGN KEY (`stats_id`) REFERENCES `stats` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `current_quests`
+-- Contraintes pour la table `completed_quests`
 --
-ALTER TABLE `current_quests`
-  ADD CONSTRAINT `quest_id_current` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `character_id_current` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `completed_quests`
+  ADD CONSTRAINT `character_id_current` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `quest_id_current` FOREIGN KEY (`quest_id`) REFERENCES `quests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `equipments`
