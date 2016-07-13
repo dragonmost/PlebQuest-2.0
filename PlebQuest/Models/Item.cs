@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace PlebQuest
 {
-    class Item
+    public class Item
     {
         [JsonProperty]
         private string ID;
@@ -18,6 +18,9 @@ namespace PlebQuest
         public int GoldValue { get; private set; }
         [JsonProperty]
         public int Weight { get; private set; }
+
+        [JsonProperty]
+        public int Quantity { get; private set; }
 
         public Item(string name, int goldValue, int weight)
         {

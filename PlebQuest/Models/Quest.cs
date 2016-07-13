@@ -7,13 +7,13 @@ using Newtonsoft.Json;
 
 namespace PlebQuest
 {
-    class Quest
+    public class Quest
     {
         [JsonProperty]
         private string ID;
 
         [JsonProperty]
-        public string Name { get; private set; }
+        public string Name { get;  set; }
         [JsonProperty]
         public string Description { get; private set; }
 

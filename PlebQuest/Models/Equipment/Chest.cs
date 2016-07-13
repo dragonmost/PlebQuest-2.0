@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlebQuest
 {
-    class Chest : Armor
+    public class Chest : Armor
     {
     }
 }

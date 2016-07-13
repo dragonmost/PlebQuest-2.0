@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 namespace PlebQuest
 {
-    class Pleb
+    public class Pleb
     {
         [JsonProperty]
         private string ID;
@@ -26,6 +26,18 @@ namespace PlebQuest
         private int currentExp;
         [JsonProperty]
         public int Gold { get; private set; }
+
+        [JsonProperty]
+        public Race Race { get; private set; }
+        [JsonProperty]
+        public Classe Classe { get; private set; }
+        //[JsonProperty]
+        //public List<Classe> SubClasses { get; private set; }
+
+        [JsonProperty]
+        public Quest CurrentQuest { get; private set; }
+        [JsonProperty]
+        public List<Quest> CompletedQuest { get; private set; }
 
         [JsonProperty]
         public Stats Stats { get; private set; }
@@ -51,6 +63,7 @@ namespace PlebQuest
 
         public Action OnLevelUp;
 
+        /*  Trop fcking BS pour ajouter race pi classe
         //New Character
         public Pleb(string name, bool isMale, Stats stats, bool isCheater = true)
         {
@@ -98,7 +111,7 @@ namespace PlebQuest
             this.IsCheater = isCheater;
 
             this.Region = region;
-        }
+        }*/
 
         public static Pleb Create(MySqlDataReader data)
         {

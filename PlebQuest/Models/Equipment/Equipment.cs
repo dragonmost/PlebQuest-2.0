@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlebQuest
 {
-    class Equipment
+    public class Equipment
     {
         private int ID;
 

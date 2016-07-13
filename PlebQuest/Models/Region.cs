@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace PlebQuest
 {
-    class Region
+    public class Region
     {
         [JsonProperty]
         private string ID;
