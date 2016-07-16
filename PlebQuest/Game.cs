@@ -9,7 +9,7 @@ namespace PlebQuest
 {
     class Game
     {
-        private Form host;
+        private MainMenu host;
 
         private Pleb pleb;
 
@@ -21,7 +21,7 @@ namespace PlebQuest
 
         private ActionState currentPlayerState = ActionState.Idle;
 
-        public Game(Form host, Pleb pleb)
+        public Game(MainMenu host, Pleb pleb)
         {
             this.host = host;
             this.pleb = pleb;
@@ -98,6 +98,9 @@ namespace PlebQuest
         private void LevelUp()
         {
             SetClockInterval();
+            this.host.RefreshHP(this.pleb.CurrentHP, this.pleb.MaxHP);
+            this.host.RefreshSpeels(this.pleb.SpeelBook);
+            this.host.RefreshStats(this.pleb.stats);
         }
 
         private void SetClockInterval()

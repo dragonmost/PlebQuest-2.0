@@ -1,6 +1,6 @@
 ﻿namespace PlebQuest
 {
-    partial class Form1
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.butMenuPlay = new System.Windows.Forms.Button();
             this.butMenuNew = new System.Windows.Forms.Button();
@@ -406,6 +406,7 @@
             this.pgbMP.Location = new System.Drawing.Point(9, 19);
             this.pgbMP.Name = "pgbMP";
             this.pgbMP.Size = new System.Drawing.Size(184, 12);
+            this.pgbMP.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pgbMP.TabIndex = 0;
             // 
             // gpbQuest
@@ -511,6 +512,7 @@
             this.pgbEncumbrance.Location = new System.Drawing.Point(5, 237);
             this.pgbEncumbrance.Name = "pgbEncumbrance";
             this.pgbEncumbrance.Size = new System.Drawing.Size(190, 12);
+            this.pgbEncumbrance.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pgbEncumbrance.TabIndex = 14;
             // 
             // pgbAction
@@ -518,6 +520,7 @@
             this.pgbAction.Location = new System.Drawing.Point(3, 508);
             this.pgbAction.Name = "pgbAction";
             this.pgbAction.Size = new System.Drawing.Size(776, 27);
+            this.pgbAction.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pgbAction.TabIndex = 6;
             // 
             // grpEquipment
@@ -601,6 +604,7 @@
             this.pgbExp.Location = new System.Drawing.Point(9, 19);
             this.pgbExp.Name = "pgbExp";
             this.pgbExp.Size = new System.Drawing.Size(184, 12);
+            this.pgbExp.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pgbExp.TabIndex = 0;
             // 
             // grpHP
@@ -618,6 +622,7 @@
             this.pgbHP.Location = new System.Drawing.Point(9, 19);
             this.pgbHP.Name = "pgbHP";
             this.pgbHP.Size = new System.Drawing.Size(184, 12);
+            this.pgbHP.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pgbHP.TabIndex = 0;
             // 
             // grpPlebSheet

@@ -133,7 +133,7 @@ namespace PlebQuest
 
                 while (reader.Read())
                 {
-                    LstInventory.Add(new Item(reader.GetString("id"), reader.GetString("name"), reader.GetInt32("gold_value"), reader.GetInt32("weight")));
+                    //LstInventory.Add(new Item(reader.GetString("id"), reader.GetString("name"), reader.GetInt32("gold_value"), reader.GetInt32("weight")));
                 }
                 reader.Close();
             }

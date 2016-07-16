@@ -9,13 +9,13 @@ using PlebServer;
 
 namespace PlebQuest
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
         NameGenerator nameGenerator;
 
         private GameCreation gameCreation;
 
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
             this.pnlCharacterCreation.Visible = false;
@@ -171,7 +171,12 @@ namespace PlebQuest
             this.pgbMP.Value = 95;
             this.pgbExp.Value = 25;
             this.pgbEncumbrance.Value = 10;
-            this.pgbHP.ForeColor = System.Drawing.Color.Yellow;
+            this.pgbAction.Value = 50;
+            //in control properties
+            this.pgbAction.ForeColor = System.Drawing.Color.MediumPurple;
+            this.pgbExp.ForeColor = System.Drawing.Color.GreenYellow;
+            this.pgbHP.ForeColor = System.Drawing.Color.Red;
+            this.pgbEncumbrance.ForeColor = System.Drawing.Color.Orange;
         }
 
         private void CreateCharaterListView()
