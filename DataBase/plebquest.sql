@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 13 Juillet 2016 à 03:38
+-- Généré le :  Dim 09 Octobre 2016 à 03:57
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -19,6 +19,46 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `plebquest`
 --
+
+DELIMITER $$
+--
+-- Procédures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPleb`(_username varchar(150),_password varchar(150))
+BEGIN
+SELECT characters.id,characters.name,characters.gender,characters.current_hp,characters.age,characters.level,characters.current_exp,characters.alignement,characters.is_cheater,
+                characters.gold,characters.current_mp,stats.id AS stats_id, stats.strength,stats.intellect,stats.constitution,stats.dexterity,stats.wisdom,stats.charisma,
+                classes.id As class_id, classes.name As class_name,classes.description As class_description,races.id AS race_id,races.name As race_name,
+                races.description As race_description,regions.id As region_id,regions.name AS region_name,regions.description AS region_description
+               FROM characters 
+               INNER JOIN users ON characters.id = users.character_id 
+               INNER JOIN stats ON characters.stats_id = stats.id
+               INNER JOIN classes ON characters.class_id = classes.id
+               INNER JOIN races ON characters.race_id = races.id
+               INNER JOIN regions ON characters.region_id = regions.id
+               WHERE username = _username AND password = _password;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPlebInfo`(_id varchar(45))
+BEGIN
+SELECT speels.*,speel_stats.id as speel_stats_id,speel_stats.strength as speel_stats_strength,speel_stats.intellect as speel_stats_intellect,speel_stats.constitution as speel_stats_constitution,speel_stats.dexterity as speel_stats_dexterity,speel_stats.wisdom as speel_stats_wisdom,speel_stats.charisma as speel_stats_charisma,
+                buff.id as buff_id,buff.stats_id as buff_stats_id,buff.name as buff_name,buff.nb_turn as buff_nb_turn,buff.hp_change as buff_hp_change,buff.mana_change as buff_mana_change,
+                debuff.id as debuff_id,debuff.stats_id as debuff_stats_id,debuff.name as debuff_name,debuff.nb_turn as debuff_nb_turn,debuff.hp_change as debuff_hp_change,debuff.mana_change as debuff_mana_change,
+                buff_stats.id as buff_stats_id,buff_stats.strength as buff_stats_strength,buff_stats.intellect as buff_stats_intellect,buff_stats.constitution as buff_stats_constitution,buff_stats.dexterity as buff_stats_dexterity,buff_stats.wisdom as buff_stats_wisdom,buff_stats.charisma as buff_stats_charisma,
+                debuff_stats.id as debuff_stats_id,debuff_stats.strength as debuff_stats_strength,debuff_stats.intellect as debuff_stats_intellect,debuff_stats.constitution as debuff_stats_constitution,debuff_stats.dexterity as debuff_stats_dexterity,debuff_stats.wisdom as debuff_stats_wisdom,debuff_stats.charisma as debuff_stats_charisma
+
+                FROM speels
+                INNER JOIN speelbook ON speelbook.speel_id = speels.id
+                INNER JOIN characters ON speelbook.character_id = characters.id
+                INNER JOIN stats as speel_stats ON speel_stats.id = speels.required_stats_id
+                INNER JOIN buffs as buff ON buff.id = speels.buff_id
+                INNER JOIN stats as buff_stats ON buff.stats_id = buff_stats.id
+                INNER JOIN buffs as debuff ON debuff.id = speels.debuff_id
+                INNER JOIN stats as debuff_stats ON debuff.stats_id = debuff_stats.id
+				WHERE characters.id = _id;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 

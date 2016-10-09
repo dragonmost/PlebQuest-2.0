@@ -146,22 +146,7 @@ namespace PlebQuest
             List<Speel> LstSpeels = new List<Speel>();
             try
             {
-                MySqlDataReader reader = DataBase.DbRead(@"
-				SELECT speels.*,speel_stats.id as speel_stats_id,speel_stats.strength as speel_stats_strength,speel_stats.intellect as speel_stats_intellect,speel_stats.constitution as speel_stats_constitution,speel_stats.dexterity as speel_stats_dexterity,speel_stats.wisdom as speel_stats_wisdom,speel_stats.charisma as speel_stats_charisma,
-                buff.id as buff_id,buff.stats_id as buff_stats_id,buff.name as buff_name,buff.nb_turn as buff_nb_turn,buff.hp_change as buff_hp_change,buff.mana_change as buff_mana_change,
-                debuff.id as debuff_id,debuff.stats_id as debuff_stats_id,debuff.name as debuff_name,debuff.nb_turn as debuff_nb_turn,debuff.hp_change as debuff_hp_change,debuff.mana_change as debuff_mana_change,
-                buff_stats.id as buff_stats_id,buff_stats.strength as buff_stats_strength,buff_stats.intellect as buff_stats_intellect,buff_stats.constitution as buff_stats_constitution,buff_stats.dexterity as buff_stats_dexterity,buff_stats.wisdom as buff_stats_wisdom,buff_stats.charisma as buff_stats_charisma,
-                debuff_stats.id as debuff_stats_id,debuff_stats.strength as debuff_stats_strength,debuff_stats.intellect as debuff_stats_intellect,debuff_stats.constitution as debuff_stats_constitution,debuff_stats.dexterity as debuff_stats_dexterity,debuff_stats.wisdom as debuff_stats_wisdom,debuff_stats.charisma as debuff_stats_charisma
-
-                FROM speels
-                INNER JOIN speelbook ON speelbook.speel_id = speels.id
-                INNER JOIN characters ON speelbook.character_id = characters.id
-                INNER JOIN stats as speel_stats ON speel_stats.id = speels.required_stats_id
-                INNER JOIN buffs as buff ON buff.id = speels.buff_id
-                INNER JOIN stats as buff_stats ON buff.stats_id = buff_stats.id
-                INNER JOIN buffs as debuff ON debuff.id = speels.debuff_id
-                INNER JOIN stats as debuff_stats ON debuff.stats_id = debuff_stats.id
-				WHERE characters.id = '" + data.GetString("id") + "'");
+                MySqlDataReader reader = DataBase.DbRead(@"call GetPlebInfo('" + data.GetString("id") + "')");
 
                 while (reader.Read())
                 {

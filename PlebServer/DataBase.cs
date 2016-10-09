@@ -107,19 +107,7 @@ namespace PlebServer
         {
             try
             {
-                MySqlDataReader reader = DbRead(@"
-               SELECT characters.id,characters.name,characters.gender,characters.current_hp,characters.age,characters.level,characters.current_exp,characters.alignement,characters.is_cheater,
-                characters.gold,characters.current_mp,stats.id AS stats_id, stats.strength,stats.intellect,stats.constitution,stats.dexterity,stats.wisdom,stats.charisma,
-                classes.id As class_id, classes.name As class_name,classes.description As class_description,races.id AS race_id,races.name As race_name,
-                races.description As race_description,regions.id As region_id,regions.name AS region_name,regions.description AS region_description
-               FROM characters 
-               INNER JOIN users ON characters.id = users.character_id 
-               INNER JOIN stats ON characters.stats_id = stats.id
-               INNER JOIN classes ON characters.class_id = classes.id
-               INNER JOIN races ON characters.race_id = races.id
-               INNER JOIN regions ON characters.region_id = regions.id
-               WHERE username = '" + username+"' AND password = '"+password+"'");                
-
+                MySqlDataReader reader = DbRead(@"call GetPleb('" + username + "'," + "'" + password + "')");
                 Pleb pleb = null;
                 while (reader.Read())
                 {
