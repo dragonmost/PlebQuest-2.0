@@ -10,11 +10,11 @@ using PlebQuest;
 
 namespace PlebServer
 {
-    class GameClient
+    public class GameClient
     {
-        public TcpClient client { get; private set; }                                   //client
-        public StreamReader Reader { get; private set; }                                //lit les données
-        public StreamWriter Writer { get; private set; }                                //envoie les données
+        public TcpClient client { get; private set; }
+        public StreamReader Reader { get; private set; }
+        public StreamWriter Writer { get; private set; }
         public NetworkStream Stream { get { return client.GetStream(); } }
         public EndPoint RemoteEndPoint { get { return client.Client.RemoteEndPoint; } }
         public Pleb Pleb { get; private set; }

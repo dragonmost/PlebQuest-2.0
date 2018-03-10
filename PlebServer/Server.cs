@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using PlebQuest;
+using System.Reflection;
 
 namespace PlebServer
 {
-    class Server
+    class Server : ICommands
     {
-        static List<Task> receiveTask = new List<Task>();                   // liste d'action a faire
+        static List<Task> receiveTask = new List<Task>();
         public List<GameClient> lstClient = new List<GameClient>();
 
         public Server()
@@ -38,17 +39,10 @@ namespace PlebServer
                 GameClient gameClient = new GameClient(client);
 
                 receiveTask.Add(ReceiveData(gameClient));
-                //connected
                 lstClient.Add(gameClient);
                 Console.WriteLine("New Connection: " + gameClient.RemoteEndPoint.ToString());
-
-                /*using (StreamWriter streamWriter = new StreamWriter(client.GetStream()))
-                {
-                    streamWriter.AutoFlush = true;
-                    //PlayerConnection(streamWriter);
-                }*/
             }
-        }
+        }        
 
         private async Task ReceiveData(GameClient gameClient)
         {
@@ -56,8 +50,14 @@ namespace PlebServer
             {
                 while (true)
                 {
-                    string strData = await gameClient.Reader.ReadLineAsync();  // donné recu par le client
-                    ProcessData(gameClient, strData);
+                    string data = await gameClient.Reader.ReadLineAsync();
+
+                    Packet packet = JsonConvert.DeserializeObject<Packet>(data);
+
+                    MethodInfo method = this.GetType().GetMethod(packet.CommandName);
+                    object response = method.Invoke(this, packet.Parameters);
+
+                    gameClient.Writer.WriteLine(JsonConvert.SerializeObject(response));
                 }
             }
             catch (IOException ex)
@@ -68,7 +68,7 @@ namespace PlebServer
             }
         }
 
-        private void PlayerConnection(GameClient gameClient, string[] data)
+        public Response PlayerConnection(GameClient gameClient, string[] data)
         {
             //DataBase.DbExecute("INSERT INTO items(name, gold_value, weight) VALUES('Goblin ear', 10, 1)");
             Pleb pleb = DataBase.GetPleb(data[1], data[2]);
@@ -93,39 +93,47 @@ namespace PlebServer
                 streamWriter.AutoFlush = true;
                 streamWriter.WriteLine(dataToSend);//send character
             }
+
+            return null;//pls
         }
 
-        private void ProcessData(GameClient gameClient, string data)
-        {
-            string[] parsedData = data.Split(';');
+        //private void ProcessData(GameClient gameClient, string data)
+        //{
+        //    string[] parsedData = data.Split(';');
+        //
+        //    switch (parsedData[0])
+        //    {
+        //        case Commands.CreateUser:
+        //            this.UserCreation(gameClient, parsedData[1], parsedData[2]);
+        //            break;
+        //        case Commands.PlayerConnection:
+        //            PlayerConnection(gameClient, parsedData);
+        //            break;
+        //        case Commands.SendCharacter:
+        //            string strPleb = data.Substring(Commands.SendCharacter.Length + 1);
+        //            try
+        //            {
+        //                Pleb pleb = JsonConvert.DeserializeObject<Pleb>(strPleb);
+        //            }
+        //            catch (Exception ex)
+        //            { }
+        //            break;
+        //    }
+        //}
 
-            switch (parsedData[0])
-            {
-                case Commands.CreateUser:
-                    this.UserCreation(gameClient, parsedData[1], parsedData[2]);
-                    break;
-                case Commands.PlayerConnection:
-                    PlayerConnection(gameClient, parsedData);
-                    break;
-                case Commands.SendCharacter:
-                    string strPleb = data.Substring(Commands.SendCharacter.Length + 1);
-                    try
-                    {
-                        Pleb pleb = JsonConvert.DeserializeObject<Pleb>(strPleb);
-                    }
-                    catch (Exception ex)
-                    { }
-                    break;
-            }
-        }
-
-        private void UserCreation(GameClient client, string username, string pw)
+        public Response UserCreation(GameClient client, string username, string pw)
         {
             bool created = DataBase.DbExecute(
                 "INSERT INTO users(username,password) VALUES("
                 + "'" + username + "'" + "," + "'" + pw + "'" + ")");
 
             client.Writer.WriteLine(Commands.UserCreationResponse + ";" + created.ToString());
+
+            return new Response
+            {
+                CommandName = "UserCreation",
+                Parameters = new object[] { created }
+            };
         }
 
         public static String sha256_hash(String value)

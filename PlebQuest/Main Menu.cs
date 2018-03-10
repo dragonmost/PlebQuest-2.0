@@ -19,7 +19,7 @@ namespace PlebQuest
         {
             InitializeComponent();
             this.pnlCharacterCreation.Visible = false;
-            //this.pnlGame.Visible = false;
+            this.pnlGame.Visible = false;
             this.CreateGamePanels();
             this.RefreshQuest(null, null, "Fetch 3 left goblin ears from the same goblin"); 
         }
@@ -49,6 +49,7 @@ namespace PlebQuest
 
             string[] data = new string[] { Commands.PlayerConnection, txtMenuUsername.Text, Utils.sha256_hash(txtMenuPassword.Text) };
             //Client.Instance.SendDataWithResponse(data);
+            
         }
 
         private void butPlay_Click(object sender, EventArgs e)

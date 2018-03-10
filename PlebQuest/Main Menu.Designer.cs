@@ -214,7 +214,7 @@
             this.butCreationMale.Checked = true;
             this.butCreationMale.Location = new System.Drawing.Point(295, 4);
             this.butCreationMale.Name = "butCreationMale";
-            this.butCreationMale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationMale.Size = new System.Drawing.Size(25, 23);
             this.butCreationMale.TabIndex = 9;
             this.butCreationMale.TabStop = true;
             this.butCreationMale.Text = "\t♂";
@@ -226,7 +226,7 @@
             this.butCreationFemale.AutoSize = true;
             this.butCreationFemale.Location = new System.Drawing.Point(330, 4);
             this.butCreationFemale.Name = "butCreationFemale";
-            this.butCreationFemale.Size = new System.Drawing.Size(29, 23);
+            this.butCreationFemale.Size = new System.Drawing.Size(23, 23);
             this.butCreationFemale.TabIndex = 8;
             this.butCreationFemale.Text = "♀";
             this.butCreationFemale.UseVisualStyleBackColor = true;
@@ -675,7 +675,7 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // Form1
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -693,7 +693,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainMenu";
             this.Text = "PlebQuest 2";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
