@@ -13,6 +13,8 @@ namespace PlebServer
 
         public static void SilentLog(Exception ex)
         {
+            Console.WriteLine(ex.Message);
+
             using (StreamWriter wr = File.AppendText(path))
             {
                 wr.WriteLine(DateTime.Now);
