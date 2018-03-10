@@ -31,6 +31,7 @@ namespace PlebQuest.Frames
 
             string[] data = new string[] { Commands.PlayerConnection, txtMenuUsername.Text, Utils.sha256_hash(txtMenuPassword.Text) };
             //Client.Instance.SendDataWithResponse(data);
+            DataBase.GetPleb(data[1], data[2]);
         }
 
         private void butMenuCreate_Click(object sender, EventArgs e)

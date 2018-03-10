@@ -182,6 +182,7 @@
             this.lstCreationClass.Name = "lstCreationClass";
             this.lstCreationClass.Size = new System.Drawing.Size(165, 355);
             this.lstCreationClass.TabIndex = 4;
+            this.lstCreationClass.SelectedIndexChanged += new System.EventHandler(this.SetControlState);
             // 
             // txtCreationName
             // 
@@ -206,6 +207,7 @@
             this.lstCreationRace.Name = "lstCreationRace";
             this.lstCreationRace.Size = new System.Drawing.Size(165, 355);
             this.lstCreationRace.TabIndex = 1;
+            this.lstCreationRace.SelectedIndexChanged += new System.EventHandler(this.SetControlState);
             // 
             // butCreationStart
             // 

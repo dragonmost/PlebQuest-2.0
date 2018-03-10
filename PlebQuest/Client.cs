@@ -9,7 +9,7 @@ using PlebServer;
 
 namespace PlebQuest
 {
-    class Client
+    internal class Client
     {
         private static Client instance;
 

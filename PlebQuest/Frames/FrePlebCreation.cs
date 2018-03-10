@@ -123,8 +123,19 @@ namespace PlebQuest.Frames
 
         private void butCreationStart_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(this.txtCreationName.Text))
+            {
+                // show message
+            }
+
             //this.parentForm.StartGame(
             //new Pleb(this.txtCreationName.Text, butCreationMale.Checked, this.gameCreation.Stats, this.cheated));
+        }
+
+        private void SetControlState(object sender, EventArgs e)
+        {
+            this.butCreationStart.Enabled = !string.IsNullOrWhiteSpace(this.txtCreationName.Text)
+                && this.lstCreationRace.SelectedIndex != -1 && this.lstCreationClass.SelectedIndex != -1;
         }
     }
 }

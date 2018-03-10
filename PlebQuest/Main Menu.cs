@@ -37,14 +37,7 @@ namespace PlebQuest
         {
             this.frePlebCreation.LoadCreationScreen();
             this.frePlebCreation.BringToFront();
-        }
-
-        private void SetControlState(object sender, EventArgs e)
-        {
-            //this.butCreationStart.Enabled = !string.IsNullOrWhiteSpace(this.txtCreationName.Text)
-            //    && this.lstCreationRace.SelectedIndex != -1 && this.lstCreationClass.SelectedIndex != -1;
-        }
-               
+        }               
 
         private void txtCreationName_KeyPress(object sender, KeyPressEventArgs e)
         {
