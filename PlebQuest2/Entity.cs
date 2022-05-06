@@ -1,12 +1,10 @@
-﻿internal record Entity(string Name)
+﻿internal record Entity(string Name, Stats Stats)
 {
     private const int BaseHealth = 100;
 
     public int Level { get; init; }
 
     public Equipment Equipment { get; init; } = new();
-
-    public Stats Stats { get; set; }
 
     public int MaxHealth => (int)GetTotalStats().Constitution + BaseHealth;
 
