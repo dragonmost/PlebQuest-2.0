@@ -7,30 +7,35 @@
 
     public Fight(Entity attacker, Entity defender)
     {
-        Attacker = new(defender);
-        Defender = new(attacker);
+        Attacker = new(attacker);
+        Defender = new(defender);
     }
 
     public string Step()
     {
-        (Attacker, Defender) = (Defender, Attacker);
-
-        int damage = Attacker.Entity.GetDamage(Attacker.Entity.Equipment.RightHand.Item);
-
-        if (damage < 0)
+        try
         {
-            return $"{Attacker.Entity.Name} is too weak and does not damage to {Defender.Entity.Name}";
+            int damage = Attacker.Entity.GetDamage(Attacker.Entity.Equipment.RightHand.Item);
+
+            if (damage < 0)
+            {
+                return $"{Attacker.Entity.Name} is too weak and does not damage to {Defender.Entity.Name}";
+            }
+
+            Defender.Health -= damage;
+
+            if (Defender.Health <= 0)
+            {
+                Defender.Health = 0;
+                return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, killing them";
+            }
+
+            return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, bringing them to {Defender.Health}";
         }
-
-        Defender.Health -= damage;
-
-        if (Defender.Health <= 0)
+        finally
         {
-            Defender.Health = 0;
-            return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, killing them";
+            (Attacker, Defender) = (Defender, Attacker);
         }
-
-        return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, bringing them to {Defender.Health}";
     }
 
     internal record FightingEntity(Entity Entity)

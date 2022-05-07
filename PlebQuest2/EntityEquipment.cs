@@ -21,7 +21,7 @@
     public EquipmentSlot<Boot> RightBoot { get; } = new();
 
     public EquipmentSlot<Helmet> Helmet { get; } = new();
-    public EquipmentSlot<ArmorPiece> ArmorPiece { get; } = new();
+    public EquipmentSlot<ChestPiece> ChestPiece { get; } = new();
     public EquipmentSlot<Pants> Pants { get; } = new();
 
     public EquipmentSlots<Amulet> Amulets { get; } = new(5);
@@ -53,7 +53,7 @@
     {
         return allSlots
             .Select(s => s.Item)
-            .NotNull()
+            .OfType<Equipment>()
             .Select(i => i.Stats)
             .Aggregate(new Stats(), (a, b) => a + b);
     }
