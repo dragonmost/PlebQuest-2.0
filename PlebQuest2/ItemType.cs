@@ -12,5 +12,6 @@ internal enum ItemType
     Amulet = 128,
     Bracelet = 256,
     Earring = 512,
+    Object = 1024,
     All = Sword | Armor | Boot | Glove | Pants | Helmet | Ring | Amulet | Bracelet | Earring
 }

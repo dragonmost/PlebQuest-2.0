@@ -6,6 +6,8 @@
 
     public Equipment Equipment { get; init; } = new();
 
+    public Inventory Inventory { get; init; } = new();
+
     public int MaxHealth => (int)GetTotalStats().Constitution + BaseHealth;
 
     public int GetDamage(Item? item)
