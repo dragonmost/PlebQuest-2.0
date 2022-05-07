@@ -1,9 +1,12 @@
 ﻿internal class WeaponFactory
 {
-    public Item CreateWeapon(string name, int damage, Stats baseStats = default) => new Item(name, ItemType.Weapon, damage)
+    public Weapon CreateWeapon(string name, SolidMaterial material, int damage) => new Weapon(name, damage)
     {
-        BaseStats = baseStats,
-        Scaling = new Stats
+        Stats = new Stats
+        {
+            Strength = material.Hardness
+        },
+        StatsScaling = new Stats
         {
             Strength = 1,
             Dexterity = 0.7

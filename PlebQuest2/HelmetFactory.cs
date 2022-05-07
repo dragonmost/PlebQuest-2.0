@@ -2,12 +2,8 @@
 
 internal class HelmetFactory
 {
-    public Item CreateHelmet(string name, Stats baseStats = default) => new(name, ItemType.Helmet)
+    public Helmet CreateHelmet(string name, Stats baseStats = default) => new(name)
     {
-        BaseStats = baseStats,
-        Scaling = new Stats()
-        {
-            Constitution = 0.5
-        }
+        Stats = baseStats
     };
 }

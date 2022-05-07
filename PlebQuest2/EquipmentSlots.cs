@@ -1,17 +1,18 @@
-﻿internal record EquipmentSlots
+﻿internal record EquipmentSlots<T> : IEquipmentSlots
+    where T : Item
 {
-    public ItemType ItemTypes { get; }
     public int Count { get; }
 
-    public ImmutableArray<EquipmentSlot> Slots { get; }
+    public ImmutableArray<EquipmentSlot<T>> Slots { get; }
 
-    public EquipmentSlot this[int index] => Slots[index];
+    IEnumerable<IEquipmentSlot> IEquipmentSlots.Slots => Slots;
 
-    public EquipmentSlots(ItemType itemTypes, int count)
+    public EquipmentSlot<T> this[int index] => Slots[index];
+
+    public EquipmentSlots(int count)
     {
-        ItemTypes = itemTypes;
         Count = count;
 
-        Slots = Enumerable.Range(0, count).Select(_ => new EquipmentSlot(itemTypes)).ToImmutableArray();
+        Slots = Enumerable.Range(0, count).Select(_ => new EquipmentSlot<T>()).ToImmutableArray();
     }
 }

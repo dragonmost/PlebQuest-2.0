@@ -1,17 +1,7 @@
-﻿internal record EquipmentSlot(ItemType ItemTypes)
+﻿internal record EquipmentSlot<T> : IEquipmentSlot
+    where T : Item
 {
-    public Item? Item { get; private set; }
-    
-    public bool CanEquip(ItemType itemType) => ItemTypes.HasFlag(itemType);
+    public T? Item { get; set; }
 
-    public bool TryEquip(Item? item)
-    {
-        if (item is null || !CanEquip(item.Type))
-        {
-            return false;
-        }
-
-        Item = item;
-        return true;
-    }
+    Item? IEquipmentSlot.Item => Item;
 }

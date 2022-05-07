@@ -4,7 +4,7 @@
 
     public int Level { get; init; }
 
-    public Equipment Equipment { get; init; } = new();
+    public EntityEquipment Equipment { get; init; } = new();
 
     public Inventory Inventory { get; init; } = new();
 
@@ -12,14 +12,14 @@
 
     public int GetDamage(Item? item)
     {
-        if (item is null)
+        if (item is not Weapon weapon)
         {
             return 1;
         }
 
-        Stats itemDamageStats = GetTotalStats() * item.Scaling;
+        Stats itemDamageStats = GetTotalStats() * weapon.StatsScaling;
 
-        return (int)(itemDamageStats.Total - itemDamageStats.Constitution) + item.Damage;
+        return (int)(itemDamageStats.Total - itemDamageStats.Constitution) + weapon.Damage;
     }
 
     public Stats GetTotalStats()
