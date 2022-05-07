@@ -2,7 +2,7 @@
 internal enum ItemType
 {
     None = 0,
-    Sword = 1,
+    Weapon = 1,
     Armor = 2,
     Boot = 4,
     Glove = 8,
@@ -13,5 +13,5 @@ internal enum ItemType
     Bracelet = 256,
     Earring = 512,
     Object = 1024,
-    All = Sword | Armor | Boot | Glove | Pants | Helmet | Ring | Amulet | Bracelet | Earring
+    All = Weapon | Armor | Boot | Glove | Pants | Helmet | Ring | Amulet | Bracelet | Earring
 }
