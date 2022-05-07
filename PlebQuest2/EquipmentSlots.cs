@@ -3,7 +3,7 @@
 {
     public int Count { get; }
 
-    public ImmutableArray<EquipmentSlot<T>> Slots { get; }
+    public ImmutableValueArray<EquipmentSlot<T>> Slots { get; }
 
     IEnumerable<IEquipmentSlot> IEquipmentSlots.Slots => Slots;
 

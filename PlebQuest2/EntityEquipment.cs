@@ -1,7 +1,5 @@
 ﻿internal record EntityEquipment
 {
-    private ImmutableArray<IEquipmentSlot> allSlots;
-
     public EquipmentSlots<Bracelet> LeftWristBracelets { get; } = new(5);
     public EquipmentSlots<Bracelet> RightWristBracelets { get; } = new(5);
 
@@ -38,23 +36,14 @@
     public EquipmentSlots<Ring> RightIndexFingerRings { get; } = new(4);
     public EquipmentSlots<Ring> RightThumbRings { get; } = new(2);
 
-    public EntityEquipment()
+    public IEquipmentSlot[] GetAllEquipmentSlots()
     {
         var properties = GetType().GetProperties().Select(p => p.GetValue(this));
 
-        allSlots = properties
+        return properties
             .OfType<IEquipmentSlots>()
             .SelectMany(s => s.Slots)
             .Concat(properties.OfType<IEquipmentSlot>())
-            .ToImmutableArray();
-    }
-
-    public Stats GetTotalStats()
-    {
-        return allSlots
-            .Select(s => s.Item)
-            .OfType<Equipment>()
-            .Select(i => i.Stats)
-            .Aggregate(new Stats(), (a, b) => a + b);
+            .ToArray();
     }
 }

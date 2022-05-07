@@ -24,6 +24,12 @@
 
     public Stats GetTotalStats()
     {
-        return Equipment.GetTotalStats() + Stats;
+        Stats totalStats = Equipment.GetAllEquipmentSlots()
+            .Select(s => s.Item)
+            .OfType<Equipment>()
+            .Select(i => i.Stats)
+            .Aggregate(new Stats(), (a, b) => a + b);
+
+        return totalStats + Stats;
     }
 }
