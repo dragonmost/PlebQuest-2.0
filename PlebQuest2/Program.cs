@@ -1,4 +1,8 @@
-﻿Weapon ironSword = new("Sword", SolidMaterial.Iron, 10);
+﻿using PlebQuest2.Entities;
+using PlebQuest2.Fights;
+using PlebQuest2.Items;
+
+Weapon ironSword = new("Sword", SolidMaterial.Iron, 10);
 Weapon morningWood = new("Wood", SolidMaterial.Wood, 10);
 Weapon swordOfBaba = ironSword with { Suffix = ItemSuffix.OfBaba };
 Helmet supremeBoot = new("Boot", SolidMaterial.Rubber) { Prefix = ItemPrefix.Supreme };
@@ -10,12 +14,11 @@ samuel.Equipment.RightHand.Item = ironSword with { Suffix = ItemSuffix.OfBaba };
 samuel.Equipment.Helmet.Item = supremeBoot;
 samuel.Inventory.Add(kaysOrangeBowl);
 
-
 Entity michel = new("Michel", new Stats(25, 2, 1, 90, 50, 20));
 michel.Equipment.RightHand.Item = morningWood;
 michel.Equipment.Helmet.Item = helmetOfMorningGlory;
 
-Fight fight = new(samuel, michel);
+FightSimulation fight = new(samuel, michel);
 
 while (!fight.Done)
 {

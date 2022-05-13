@@ -1,4 +1,6 @@
-﻿internal record Material(string Name);
+﻿namespace PlebQuest2.Items;
+
+internal record Material(string Name);
 
 internal record SolidMaterial(string Name, int Hardness, int Flexibitlity) : Material(Name)
 {

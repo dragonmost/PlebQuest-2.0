@@ -1,4 +1,8 @@
-﻿internal record Item(string Name)
+﻿using PlebQuest2.Entities;
+
+namespace PlebQuest2.Items;
+
+internal record Item(string Name)
 {
     public virtual string DisplayName => Name;
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
-using System.ComponentModel;
+
+namespace PlebQuest2.Items;
 
 internal class Inventory : IEnumerable<ItemStack>
 {

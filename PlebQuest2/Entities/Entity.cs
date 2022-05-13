@@ -1,4 +1,8 @@
-﻿internal record Entity(string Name, Stats Stats)
+﻿using PlebQuest2.Items;
+
+namespace PlebQuest2.Entities;
+
+internal record Entity(string Name, Stats Stats)
 {
     private const int BaseHealth = 100;
 

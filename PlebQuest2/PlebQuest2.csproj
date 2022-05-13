@@ -9,6 +9,8 @@
 
 	<ItemGroup>
 		<Using Include="System.Collections.Immutable" />
+		<Using Include="PlebQuest2" />
+		<Using Include="PlebQuest2.Utils" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿internal record EquipmentSlots<T> : IEquipmentSlots
+﻿namespace PlebQuest2.Items;
+
+internal record EquipmentSlots<T> : IEquipmentSlots
     where T : Item
 {
     public int Count { get; }

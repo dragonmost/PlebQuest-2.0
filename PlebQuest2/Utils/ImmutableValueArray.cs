@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
+namespace PlebQuest2.Utils;
+
 internal struct ImmutableValueArray<T> : IEnumerable<T>
 {
     private readonly ImmutableArray<T> values;

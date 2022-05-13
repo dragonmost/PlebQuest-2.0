@@ -1,11 +1,15 @@
-﻿internal class Fight
+﻿using PlebQuest2.Entities;
+
+namespace PlebQuest2.Fights;
+
+internal class FightSimulation
 {
     public FightingEntity Attacker { get; set; }
     public FightingEntity Defender { get; set; }
 
     public bool Done => Attacker.Health <= 0 || Defender.Health <= 0;
 
-    public Fight(Entity attacker, Entity defender)
+    public FightSimulation(Entity attacker, Entity defender)
     {
         Attacker = new(attacker);
         Defender = new(defender);

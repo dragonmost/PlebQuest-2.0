@@ -1,4 +1,6 @@
-﻿internal record struct Stats(double Strength, double Dexterity, double Intelligence, double Charisma, double Constitution, double Wisdom)
+﻿namespace PlebQuest2.Entities;
+
+internal record struct Stats(double Strength, double Dexterity, double Intelligence, double Charisma, double Constitution, double Wisdom)
 {
     public double Total => Strength + Dexterity + Intelligence + Charisma + Constitution + Wisdom;
 

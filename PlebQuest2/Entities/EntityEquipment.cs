@@ -1,4 +1,8 @@
-﻿internal record EntityEquipment
+﻿using PlebQuest2.Items;
+
+namespace PlebQuest2.Entities;
+
+internal record EntityEquipment
 {
     public EquipmentSlots<Bracelet> LeftWristBracelets { get; } = new(5);
     public EquipmentSlots<Bracelet> RightWristBracelets { get; } = new(5);
