@@ -2,17 +2,13 @@
 
 namespace PlebQuest2.Entities;
 
-internal record Entity(string Name, Stats Stats)
+internal record Traits(string Name, int Level, int MaxHealth);
+
+internal record Entity(Traits Traits, Stats Stats)
 {
-    private const int BaseHealth = 100;
-
-    public int Level { get; init; }
-
     public EntityEquipment Equipment { get; init; } = new();
 
     public Inventory Inventory { get; init; } = new();
-
-    public int MaxHealth => (int)GetTotalStats().Constitution + BaseHealth;
 
     public int GetDamage(Item? item)
     {

@@ -23,7 +23,7 @@ internal class FightSimulation
 
             if (damage < 0)
             {
-                return $"{Attacker.Entity.Name} is too weak and does not damage to {Defender.Entity.Name}";
+                return $"{Attacker.Entity.Traits.Name} is too weak and does not damage to {Defender.Entity.Traits.Name}";
             }
 
             Defender.Health -= damage;
@@ -31,10 +31,10 @@ internal class FightSimulation
             if (Defender.Health <= 0)
             {
                 Defender.Health = 0;
-                return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, killing them";
+                return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, killing them";
             }
 
-            return $"{Attacker.Entity.Name} deals {damage} damage to {Defender.Entity.Name}, bringing them to {Defender.Health}";
+            return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, bringing them to {Defender.Health}";
         }
         finally
         {
@@ -44,6 +44,6 @@ internal class FightSimulation
 
     internal record FightingEntity(Entity Entity)
     {
-        public int Health { get; set; } = Entity.MaxHealth;
+        public int Health { get; set; } = Entity.Traits.MaxHealth;
     }
 }
