@@ -19,7 +19,7 @@ internal record Entity(Traits Traits, Stats Stats)
 
         Stats itemDamageStats = GetTotalStats() * weapon.StatsScaling;
 
-        return (int)(itemDamageStats.Total - itemDamageStats.Constitution) + weapon.Damage;
+        return (int)(itemDamageStats.GetTotal() - itemDamageStats.Constitution) + weapon.Damage;
     }
 
     public Stats GetTotalStats()

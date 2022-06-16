@@ -1,9 +1,6 @@
 ﻿using PlebQuest2.Entities;
 using PlebQuest2.Items;
 using System.Data;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Transactions;
 using Terminal.Gui;
 
 var player = new Entity(new("Bob The Player", 2, 200), new Stats
@@ -43,7 +40,6 @@ var statsTableView = new TableView(CreateTable(player.Stats, "Stat"))
     Y = Pos.Bottom(traitsTableView),
     Width = Dim.Fill(),
     Height = 9,
-    FullRowSelect = true,
     Style = new()
     {
         ShowVerticalCellLines = false,
@@ -64,20 +60,15 @@ var inventoryTableView = new TableView(inventoryTable)
     X = Pos.Right(characterSheet),
     Width = Dim.Fill(),
     Height = Dim.Fill(),
-    FullRowSelect = true,
     Style = new()
     {
-        ShowVerticalCellLines = false,
-        ColumnStyles = new()
-        {
-            [inventoryTable.Columns[2]] = new() { MaxWidth = 0 }
-        }
+        ShowVerticalCellLines = false
     }
 };
 
 inventoryTableView.CellActivated += e =>
 {
-    if (e.Table.Rows[e.Row][2] is ItemStack stack)
+    if (e.Table.Rows[e.Row] is DataRow<ItemStack> itemRow && itemRow.Value is ItemStack stack)
     {
         MessageBox.Query(window.Frame.Width / 2, window.Frame.Height / 2, "Item View", stack.Item.ToString(), "Ok");
     }
@@ -92,14 +83,13 @@ Application.Shutdown();
 
 static DataTable CreateTable<TModel>(TModel model, string propertyName = "Name", string valueName = "Value") where TModel : notnull
 {
-    var table = new DataTable();
+    var table = new DataTable<TModel>();
     table.Columns.Add(propertyName);
     table.Columns.Add(valueName);
-    table.Columns.Add(new DataColumn("Model", typeof(TModel)));
 
     foreach (var property in typeof(TModel).GetProperties())
     {
-        table.Rows.Add(property.Name, property.GetValue(model), model);
+        table.AddRow(model, property.Name, property.GetValue(model));
     }
 
     return table;
@@ -107,14 +97,13 @@ static DataTable CreateTable<TModel>(TModel model, string propertyName = "Name",
 
 static DataTable CreateTableFromList<TModel>(IEnumerable<TModel> models, Func<TModel, string> keySelector, Func<TModel, object> valueSelector, string propertyName = "Name", string valueName = "Value")
 {
-    var table = new DataTable();
+    var table = new DataTable<TModel>();
     table.Columns.Add(propertyName);
     table.Columns.Add(valueName);
-    table.Columns.Add(new DataColumn("Model", typeof(TModel)));
 
     foreach (var model in models)
     {
-        table.Rows.Add(keySelector(model), valueSelector(model), model);
+        table.AddRow(model, keySelector(model), valueSelector(model));
     }
 
     return table;
