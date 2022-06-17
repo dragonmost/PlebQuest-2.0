@@ -21,20 +21,22 @@ internal class FightSimulation
         {
             int damage = Attacker.Entity.GetDamage(Attacker.Entity.Equipment.RightHand.Item);
 
-            if (damage < 0)
-            {
-                return $"{Attacker.Entity.Traits.Name} is too weak and does not damage to {Defender.Entity.Traits.Name}";
-            }
+            //if (damage < 0)
+            //{
+            //    return $"{Attacker.Entity.Traits.Name} is too weak and does not damage to {Defender.Entity.Traits.Name}";
+            //}
 
-            Defender.Health -= damage;
+            //Defender.Health -= damage;
 
-            if (Defender.Health <= 0)
-            {
-                Defender.Health = 0;
-                return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, killing them";
-            }
+            //if (Defender.Health <= 0)
+            //{
+            //    Defender.Health = 0;
+            //    return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, killing them";
+            //}
 
-            return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, bringing them to {Defender.Health}";
+            //return $"{Attacker.Entity.Traits.Name} deals {damage} damage to {Defender.Entity.Traits.Name}, bringing them to {Defender.Health}";
+
+            return ""; //TODO: Update this
         }
         finally
         {
@@ -44,6 +46,6 @@ internal class FightSimulation
 
     internal record FightingEntity(Entity Entity)
     {
-        public int Health { get; set; } = Entity.Traits.MaxHealth;
+        public int Health { get; set; } = Entity.MaxHealth;
     }
 }

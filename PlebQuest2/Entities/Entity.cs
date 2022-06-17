@@ -2,13 +2,20 @@
 
 namespace PlebQuest2.Entities;
 
-internal record Traits(string Name, int Level, int MaxHealth);
-
-internal record Entity(Traits Traits, Stats Stats)
+internal abstract class Entity
 {
-    public EntityEquipment Equipment { get; init; } = new();
+    public abstract int Level { get; }
+    public abstract int MaxHealth { get; }
 
+    public Stats Stats { get; init; }
+
+    public EntityEquipment Equipment { get; init; } = new();
     public Inventory Inventory { get; init; } = new();
+
+    protected Entity(Stats stats)
+    {
+        Stats = stats;
+    }
 
     public int GetDamage(Item? item)
     {
