@@ -3,13 +3,28 @@ using Terminal.Gui;
 using Attribute = Terminal.Gui.Attribute;
 using Color = System.Drawing.Color;
 
+namespace PlebQuest2.UI;
+
 internal class ImageView : View
 {
-    private readonly Bitmap image;
+    private Bitmap image;
 
-    public ImageView(string path)
+    public Bitmap Image
     {
-        image = new Bitmap(path);
+        get => image;
+        set
+        {
+            image = value;
+            SetNeedsDisplay();
+        }
+    }
+
+    public ImageView(Bitmap image)
+    {
+        this.image = image;
+
+        Width = Dim.Fill();
+        Height = Dim.Fill();
     }
 
     public override void OnDrawContent(Rect viewport)
