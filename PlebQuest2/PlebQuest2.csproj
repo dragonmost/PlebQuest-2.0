@@ -28,8 +28,4 @@
 		<Using Include="PlebQuest2.Utils" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Views\" />
-	</ItemGroup>
-
 </Project>
