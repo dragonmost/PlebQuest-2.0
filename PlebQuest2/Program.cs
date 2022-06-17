@@ -52,18 +52,27 @@ static FrameView AddCharacterSheet(Character character)
         }
     };
 
-    var experienceProgressBar = new ProgressBar()
+    var progressBarview = new FrameView("Experience")
     {
         Y = Pos.Bottom(statsTableView),
         Width = Dim.Fill(),
-        Height = 1,
-        Fraction = character.Experience / 100f,
-        ProgressBarStyle = ProgressBarStyle.Continuous
+        Height = 3
     };
+    var experienceProgressBar = new ProgressBar()
+    {
+        Fraction = character.Experience / 100f,
+        ProgressBarStyle = ProgressBarStyle.MarqueeBlocks,
+        Width = Dim.Fill(),
+        ColorScheme = new ColorScheme
+        {
+            Normal = new(Color.Magenta, Color.Gray)
+        }
+    };
+    progressBarview.Add(experienceProgressBar);
 
     characterSheet.Add(traitsTableView);
     characterSheet.Add(statsTableView);
-    characterSheet.Add(experienceProgressBar);
+    characterSheet.Add(progressBarview);
 
     return characterSheet;
 }
