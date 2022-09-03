@@ -6,7 +6,7 @@ namespace PlebQuest2;
 
 internal static class MVVMExtensions
 {
-    public static void Bind<TModel>(this TextField textField, TModel model, Expression<Func<TModel, string>> expression)
+    public static void Bind<TModel>(this TextField textField, TModel model, Expression<Func<TModel, string?>> expression)
         where TModel : INotifyPropertyChanged
     {
         if (expression.Body is MemberExpression memberExpression)
@@ -16,7 +16,7 @@ internal static class MVVMExtensions
 
             void Update()
             {
-                textField.Text = @delegate(model);
+                textField.Text = @delegate(model) ?? "";
             }
 
             model.PropertyChanged += (e, args) =>

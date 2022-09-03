@@ -1,13 +1,15 @@
-﻿using PlebQuest2.ViewModels;
+﻿using PlebQuest2.Items;
+using PlebQuest2.ViewModels;
 using Terminal.Gui;
 
 namespace PlebQuest2.Views;
 
-internal class ItemInfoView : FrameView
+internal class ItemInfoView : ViewModelView<ItemViewModel>
 {
     private readonly TextField textField;
 
-    public ItemInfoView(IItemViewModel viewModel)
+    public ItemInfoView()
+        : base()
     {
         textField = new()
         {
@@ -17,6 +19,6 @@ internal class ItemInfoView : FrameView
 
         Add(textField);
 
-        textField.Bind(viewModel, t => t.Name);
+        textField.Bind(ViewModel, t => t.ItemName);
     }
 }

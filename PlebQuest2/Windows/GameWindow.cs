@@ -9,13 +9,9 @@ namespace PlebQuest2.Windows;
 
 internal class GameWindow : Window
 {
-    private ItemViewModel itemViewModel;
-
     public GameWindow(Game game)
         : base("Pleb Quest 2")
     {
-        itemViewModel = new ItemViewModel(game.Character.Inventory.First().Item);
-
         var characterSheet = AddCharacterSheet(game.Character);
         Add(characterSheet);
 
@@ -91,7 +87,7 @@ internal class GameWindow : Window
             Height = Dim.Fill()
         };
 
-        var selectedInventoryItemView = new ItemInfoView(itemViewModel)
+        var selectedInventoryItemView = new ItemInfoView
         {
             Width = Dim.Fill(),
             Height = 3
@@ -114,35 +110,11 @@ internal class GameWindow : Window
         {
             if (e.Table.Rows[e.Row] is DataRow<ItemStack> itemRow && itemRow.Value is ItemStack stack)
             {
-                //MessageBox.Query(Frame.Width / 2, Frame.Height / 2, "Item View", stack.Item.ToString(), "Ok");
-
-                itemViewModel.UpdateItemName(stack.Item.DisplayName);
+                selectedInventoryItemView.ViewModel.ItemName = stack.Item.DisplayName;
             }
         };
         inventoryView.Add(inventoryTableView);
 
         return inventoryView;
-    }
-}
-
-class ItemViewModel : IItemViewModel
-{
-    public string Name
-    {
-        get;
-        set;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    public ItemViewModel(Item item)
-    {
-        Name = item.DisplayName;
-    }
-
-    public void UpdateItemName(string name)
-    {
-        Name = name;
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
     }
 }
