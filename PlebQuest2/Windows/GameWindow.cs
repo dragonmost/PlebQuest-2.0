@@ -10,8 +10,9 @@ namespace PlebQuest2.Windows;
 internal class GameWindow : Window
 {
     public GameWindow(Game game)
-        : base("Pleb Quest 2")
+        //: base("Pleb Quest 2")
     {
+        Border = new();
         var characterSheet = AddCharacterSheet(game.Character);
         Add(characterSheet);
 
