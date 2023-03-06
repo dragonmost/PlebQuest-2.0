@@ -1,10 +1,17 @@
-﻿using System.ComponentModel;
-using Terminal.Gui;
+﻿using Terminal.Gui;
 
 namespace PlebQuest2.Views;
 
 internal abstract class ViewModelView<TViewModel> : FrameView
-    where TViewModel : new()
 {
-    public TViewModel ViewModel { get; } = new();
+    public TViewModel ViewModel { get; }
+
+    protected ViewModelView(TViewModel viewModel, string? title = default)
+        : base(title ?? "")
+    {
+        Width = Dim.Fill();
+        Height = Dim.Fill();
+
+        ViewModel = viewModel;
+    }
 }

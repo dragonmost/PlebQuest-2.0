@@ -1,5 +1,4 @@
-﻿using PlebQuest2.Items;
-using PlebQuest2.ViewModels;
+﻿using PlebQuest2.ViewModels;
 using Terminal.Gui;
 
 namespace PlebQuest2.Views;
@@ -8,8 +7,8 @@ internal class ItemInfoView : ViewModelView<ItemViewModel>
 {
     private readonly TextField textField;
 
-    public ItemInfoView()
-        : base()
+    public ItemInfoView() 
+        : base(new())
     {
         textField = new()
         {
